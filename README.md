@@ -5,7 +5,7 @@ This is a Chatvibe project.
 First, run the development server:
 
 ````bash
-npm run dev
+npm i
 ```bash
 npm run dev
 # or
