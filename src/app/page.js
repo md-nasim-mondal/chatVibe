@@ -1,11 +1,12 @@
-import Image from "next/image";
+import React from "react";
 
-export default function Home() {
+function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        Hello , wellcome to our ChatVibe
-      </main>
+    <div>
+      <h2 className="text-center text-red-500">home page design coming soon</h2>
+      <h2>wellcome</h2>
     </div>
   );
 }
+
+export default HomePage;
