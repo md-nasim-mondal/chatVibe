@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/toaster";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 import "react-datepicker/dist/react-datepicker.css";
 
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -22,8 +21,8 @@ export const metadata: Metadata = {
   title: "ChatVibe",
   description: "video calling app",
   icons: {
-    icon: '/icons/logo.svg'
-  }
+    icon: "/icons/logo.svg",
+  },
 };
 
 export default function RootLayout({
@@ -32,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-        <ClerkProvider
+    <html lang='en'>
+      <ClerkProvider
         appearance={{
           layout: {
             socialButtonsVariant: "iconButton",
@@ -46,16 +45,12 @@ export default function RootLayout({
             colorInputBackground: "#252A41",
             colorInputText: "#fff",
           },
-        }}
-      >
-
-   
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-dark-2 antialiased`}
-      >
-        {children}
-        <Toaster />
-      </body>
+        }}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} bg-dark-2 antialiased`}>
+          {children}
+          <Toaster />
+        </body>
       </ClerkProvider>
     </html>
   );
