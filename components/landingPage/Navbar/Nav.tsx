@@ -37,13 +37,18 @@ function Nav() {
             <li className="hover:text-blue-600 transition-all ">
               <Link href={"/pricing"}>Pricing</Link>
             </li>
+            <li className="hover:text-blue-600 transition-all ">
+              <Link href={"/dashboard"}>Dashboard</Link>
+            </li>
           </ul>
         </menu>
 
         <div>
           {user ? (
             <div className="hidden md:block">
+
               <UserButton />
+
             </div>
           ) : (
             <ul className=" hidden md:flex items-center gap-1 ">
