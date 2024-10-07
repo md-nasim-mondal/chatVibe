@@ -96,7 +96,7 @@ const MeetingTypeList = () => {
         title='View Recordings'
         description='Meeting Recordings'
         className='bg-yellow-1'
-        handleClick={() => router.push("/main/recordings")}
+        handleClick={() => router.push("/dashboard/recordings")}
       />
 
       {!callDetail ? (

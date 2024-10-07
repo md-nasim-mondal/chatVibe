@@ -1,30 +1,54 @@
 export const sidebarLinks = [
     
     {
-        label: 'Home',
-        route: '/main',
+        label: 'Dashboard',
+        route: '/dashboard',
         imgUrl: '/icons/Home.svg',
     },
     {
         label: 'Upcoming',
-        route: '/main/upcoming',
+        route: '/dashboard/upcoming',
         imgUrl: '/icons/upcoming.svg',
     },
     {
         label: 'Previous',
-        route: '/main/previous',
+        route: '/dashboard/previous',
         imgUrl: '/icons/previous.svg',
     },
     {
         label: 'Recordings',
-        route: '/main/recordings',
+        route: '/dashboard/recordings',
         imgUrl: '/icons/Video.svg',
     },
     {
         label: 'Personal Room',
-        route: '/main/personal-room',
+        route: '/dashboard/personal-room',
         imgUrl: '/icons/add-personal.svg',
     },
+]
+export const navbarLinks = [
+    
+    {
+        label: 'Home',
+        route: '/',
+        imgUrl: '/icons/Home.svg',
+    },
+    {
+        label: 'Pricing',
+        route: '/pricing',
+        imgUrl: '/icons/upcoming.svg',
+    },
+    {
+        label: 'Contact',
+        route: '/contact',
+        imgUrl: '/icons/previous.svg',
+    },
+    {
+        label: 'About ',
+        route: '/about',
+        imgUrl: '/icons/Video.svg',
+    },
+
 ]
 
 export const avatarImages = [
