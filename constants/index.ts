@@ -35,7 +35,8 @@ export const navbarLinks = [
     },
     {
         label:"Dashboard",
-        routeModule: "dashboard",
+        route: "dashboard",
+         imgUrl: '/icons/Home.svg',
     },
     {
         label: 'Pricing',
