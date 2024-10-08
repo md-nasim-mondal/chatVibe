@@ -127,6 +127,9 @@ const config = {
         blue: {
           1: '#0E78F9',
         },
+        main: {
+          1: '#14B8A6'
+        },
         sky: {
           1: '#C9DDFF',
           2: '#ECF0FF',
