@@ -24,7 +24,7 @@ const RootLayoutComponent = ({
         </>
       ) : (
         <>
-          <main>{children}</main>
+          <div>{children}</div>
         </>
       )}
     </>
