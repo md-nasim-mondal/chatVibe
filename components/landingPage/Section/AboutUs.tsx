@@ -1,6 +1,6 @@
 import React from "react";
-import SectionContainer from "./ShareComponents/SectionContainer";
-import Member from "./ShareComponents/Member";
+import SectionContainer from "../ShareComponents/SectionContainer";
+import Member from "../ShareComponents/Member";
 
 const AboutUs = () => {
   const members = [
@@ -51,7 +51,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className='flex gap-4 md:gap-2 flex-wrap justify-around'>
-          {members.map(({ name, img, profession, role }, idx) => (
+          {members?.map(({ name, img, profession, role }, idx) => (
             <Member
               key={idx + 1}
               name={name}
