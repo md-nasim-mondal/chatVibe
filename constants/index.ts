@@ -34,6 +34,11 @@ export const navbarLinks = [
         imgUrl: '/icons/Home.svg',
     },
     {
+        label:"Dashboard",
+        route: "dashboard",
+         imgUrl: '/icons/Home.svg',
+    },
+    {
         label: 'Pricing',
         route: '/pricing',
         imgUrl: '/icons/upcoming.svg',

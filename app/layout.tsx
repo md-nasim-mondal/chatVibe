@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 import "react-datepicker/dist/react-datepicker.css";
+import RootLayoutComponent from "@/components/clientComponents/RootLayoutComponent";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' data-theme="light">
+    <html lang='en' data-theme='light'>
       <ClerkProvider
         appearance={{
           layout: {
@@ -48,7 +49,7 @@ export default function RootLayout({
         }}>
         <body
           className={`${geistSans.variable} ${geistMono.variable} bg-dark-2 antialiased`}>
-          {children}
+          <RootLayoutComponent children={children} />
           <Toaster />
         </body>
       </ClerkProvider>
