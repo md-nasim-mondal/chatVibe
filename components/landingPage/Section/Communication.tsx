@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import React from "react";
 import SectionContainer from "../ShareComponents/SectionContainer";
@@ -28,7 +27,7 @@ const Communication = () => {
             Discuss directly with the team, you can send document files for the
             next level of collaboration.
           </p>
-          <button className='btn border-0 text-white text-base mt-4 bg-blue-500 '>
+          <button className='p-2 md:py-2 md:px-4 rounded-lg hover:bg-blue-600 transition duration-300 border-0 text-white text-base mt-4 bg-blue-500 '>
             Learn More
           </button>
         </div>
