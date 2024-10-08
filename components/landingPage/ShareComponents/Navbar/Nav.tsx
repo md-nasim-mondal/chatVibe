@@ -9,6 +9,7 @@ import Sidebar from "./Sidebar";
 import SmallNav from "./SmallNav";
 import { usePathname } from "next/navigation";
 
+
 const Nav = () => {
   const { user, isLoaded } = useUser() || {};
   const pathname = usePathname();
@@ -49,17 +50,17 @@ const Nav = () => {
   ];
 
   return (
-    <nav className='text-[#1973e8] bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0'>
-      <div className='flex justify-between items-center container mx-auto'>
+    <nav className="text-[#1973e8] bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0">
+      <div className="flex justify-between items-center container mx-auto">
         <a
-          href='/'
-          className='text-center md:p-5 font-bold text-3xl text-blue-600'>
-          Chat<span className=''>Vibe</span>
+          href="/"
+          className="text-center md:p-5 font-bold text-3xl text-blue-600">
+          Chat<span className="">Vibe</span>
         </a>
 
         {/* desktop menu */}
-        <menu className='hidden md:flex items-center gap-20 text-white font-semibold mr-6'>
-          <ul className='flex gap-4'>
+        <menu className="hidden md:flex items-center gap-20 text-white font-semibold mr-6">
+          <ul className="flex gap-4">
             {navRoutes.map(({ label, address }, index) => (
               <li
                 key={index + 1}
@@ -76,12 +77,12 @@ const Nav = () => {
 
         <div>
           {user ? (
-            <div className='hidden md:block'>
+            <div className="hidden md:block">
               <UserButton />
             </div>
           ) : (
-            <ul className=' hidden md:flex items-center gap-1 '>
-              <li className=' py-2  px-4 text-xl text-white rounded-md bg-blue-500 hover:text-white  hover:scale-105 transition-all'>
+            <ul className=" hidden md:flex items-center gap-1 ">
+              <li className=" py-2  px-4 text-xl text-white rounded-md bg-blue-500 hover:text-white  hover:scale-105 transition-all">
                 <Link href={`/sign-in`}>
                   <button>logIn</button>
                 </Link>
@@ -92,7 +93,7 @@ const Nav = () => {
         {/* mobile menu */}
         {/* <MobileMenu /> */}
       </div>
-      <div className='md:hidden left-0 top-[72px]'>
+      <div className="md:hidden left-0 top-[72px]">
         {/* <Sidebar /> */}
         <SmallNav />
       </div>
