@@ -18,10 +18,8 @@ const Communication = () => {
 
         <div className='flex flex-col justify-center md:flex-1 lg:flex-initial'>
           <h2 className='text-4xl font-bold'>
-            <span className='text-4xl font-bold text-blue-500'>
-              Communication
-            </span>{" "}
-            with Live Discussions
+            <span className='text-blue-500'>Communication</span>{" "}
+            <span className='text-white'>with Live Discussions</span>
           </h2>
           <p className='text-base text-[#677471] lg:w-[500px] pt-4'>
             Discuss directly with the team, you can send document files for the

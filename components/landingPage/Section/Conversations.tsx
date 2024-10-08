@@ -11,8 +11,8 @@ const Conversations = () => {
             Communicate-Share Ideas-Save Time
           </h6>
           <h2 className='text-4xl font-bold'>
-            <span className='text-4xl font-bold text-blue-500'>Secure</span>{" "}
-            Conversations
+            <span className='text-blue-500'>Secure</span>{" "}
+            <span className='text-white'>Conversations</span>
           </h2>
           <p className='text-base text-[#677471] lg:w-[500px] pt-4'>
             Many of the poses, such as downward dog, upword dog and the plank

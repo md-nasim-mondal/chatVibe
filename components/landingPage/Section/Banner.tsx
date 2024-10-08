@@ -44,7 +44,7 @@ const Banner = () => {
         <div className='flex flex-col-reverse md:flex-row items-center justify-evenly '>
           {/* Left Section - Text and Buttons */}
           <div className='h-full flex flex-col justify-center text-left md:p-4 lg:p-4 lg:mr-4 space-y-4 lg:space-y-6'>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold mb-4'>
+            <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white'>
               Meeting and Video Call for <br />
               Everyone with
               <span className='text-blue-500'> ChatVibe</span>
