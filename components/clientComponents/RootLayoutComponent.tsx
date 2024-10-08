@@ -9,7 +9,7 @@ const RootLayoutComponent = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const path = ["/", "/pricing", "/about"];
+  const path = ["/", "/pricing", "/about", "/contact"];
   const pathName = usePathname();
   return (
     <>
@@ -19,7 +19,7 @@ const RootLayoutComponent = ({
             <Nav />
           </header>
           <CustomContainer>
-            <main>{children}</main>
+            <main className='py-12'>{children}</main>
           </CustomContainer>
         </>
       ) : (
