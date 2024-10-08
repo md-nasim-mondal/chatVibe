@@ -16,7 +16,7 @@ const RootLayoutComponent = ({
     <>
       {path?.includes(pathName) ? (
         <>
-          <header className="sticky top-0 z-[100]">
+          <header className="sticky  top-0 z-[100]">
             <Nav />
           </header>
           <CustomContainer>
