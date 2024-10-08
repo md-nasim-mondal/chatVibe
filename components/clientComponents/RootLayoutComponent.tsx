@@ -20,7 +20,7 @@ const RootLayoutComponent = ({
             <Nav />
           </header>
           <CustomContainer>
-            <main className='py-12'>{children}</main>
+            <main className='py-12 min-h-[calc(100vh-216px)]'>{children}</main>
           </CustomContainer>
           <Footer />
         </>

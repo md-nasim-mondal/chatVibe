@@ -52,7 +52,7 @@ const Banner = () => {
 
             <div className='flex flex-col gap-4 md:flex-row space-x-3'>
               <Link
-                href='https://chatvibe-eta.vercel.app/'
+                href='/dashboard'
                 className='w-full text-center bg-blue-500 text-white p-2 md:py-2 md:px-4 rounded-lg hover:bg-blue-600 transition duration-300'>
                 Try Now
               </Link>

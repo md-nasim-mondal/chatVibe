@@ -149,10 +149,10 @@ const Page = () => {
         </div>
         <div className='flex md:flex-col items-center justify-center w-full gap-2 md:flex-1'>
           <div className='h-px md:h-52 w-full md:w-px bg-blue-500'></div>
-          <h3 className='text-3xl'>Or</h3>
+          <h3 className='text-3xl text-white'>Or</h3>
           <div className='h-px md:h-52 w-full md:w-px bg-blue-500'></div>
         </div>
-        <div className='flex flex-col gap-4 items-center md:items-start'>
+        <div className='flex flex-col gap-4 items-center md:items-start text-white'>
           <h3 className={`text-3xl font-medium capitalize`}>
             Visit our social pages
           </h3>
