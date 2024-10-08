@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar";
-import Sidebar from "@/components/Sidebar";
+import Navbar from "@/components/meetComponents/Navbar";
+import Sidebar from "@/components/meetComponents/Sidebar";
 import { Metadata } from "next";
 import React, { ReactNode } from "react";
 
