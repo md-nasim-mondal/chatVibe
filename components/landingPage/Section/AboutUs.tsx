@@ -42,9 +42,8 @@ const AboutUs = () => {
     },
   ];
   return (
-    <div id='#about'>
       <SectionContainer>
-        <div className='text-center pb-12'>
+        <div id='about' className='text-center pb-12'>
           <h2 className='text-4xl font-bold text-[#3b82f6]'>About Us</h2>
           <p className='text-xl font-semibold capitalize'>
             Meet our team members
@@ -62,7 +61,6 @@ const AboutUs = () => {
           ))}
         </div>
       </SectionContainer>
-    </div>
   );
 };
 

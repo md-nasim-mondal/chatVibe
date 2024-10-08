@@ -16,9 +16,9 @@ const Member: React.FC<MemberProps> = ({ src, name, profession, role }) => {
         alt={name}
         height={200}
         width={200}
-        className='rounded-lg rounded-b-none w-full h-full'
+        className='rounded-t-lg w-full h-full'
       />
-      <div className='bg-blue-500 hover:bg-blue-600 w-full text-blue-100 p-2'>
+      <div className='bg-blue-500 hover:bg-blue-600 w-full text-blue-100 p-2 rounded-b-lg'>
         <h3 className='text-2xl font-semibold'>{name}</h3>
         <p className='font-semibold'>{profession}</p>
         <p className='font-semibold'>{role}</p>
