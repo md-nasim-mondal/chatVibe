@@ -1,3 +1,5 @@
+
+
 import { MongoClient, ServerApiVersion, Db } from "mongodb";
 
 let db: Db | null = null; // Declare db with type `Db` or `null`

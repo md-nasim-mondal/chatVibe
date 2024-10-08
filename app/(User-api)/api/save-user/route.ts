@@ -13,7 +13,7 @@ interface UserRequestBody {
 // Define the response data type
 interface ResponseData {
   message: string;
-  newUser?: user;
+  newUser?:  user;
   error?: any;
 }
 
