@@ -75,7 +75,7 @@ const Banner = () => {
               </button>
             </div> */}
 
-            <p className="mt-10 text-gray-500">
+            <p className="mt-10 text-gray-300">
               Learn more about{" "}
               <a href="#" className="text-main-1">
                 Our team.
@@ -93,10 +93,10 @@ const Banner = () => {
                 alt={slides[activeSlide].text}
                 className="w-52 h-52  rounded-full mx-auto"
               />
-              <p className="mt-4 text-center text-gray-600">
+              <p className="mt-4 text-center text-black font-semibold">
                 {slides[activeSlide].text}
               </p>
-              <p className="mt-2 text-center text-sm text-gray-500">
+              <p className="mt-2 text-center text-sm text-gray-600">
                 {slides[activeSlide].description}
               </p>
             </div>
