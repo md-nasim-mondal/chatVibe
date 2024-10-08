@@ -31,7 +31,6 @@ const Page = () => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    console.log(formData);
     setFormData({
       name: "",
       email: "",
