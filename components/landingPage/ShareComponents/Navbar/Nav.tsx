@@ -10,8 +10,8 @@ const Nav = () => {
   const pathname = usePathname();
   const [activeRoute, setActiveRoute] = useState(pathname); // State to manage the active route
   const dynamicColorStart = "#14B8A6"; // Base teal color
-  const dynamicColorVia = "#1fd5c4";   // Vibrant light teal
-  const dynamicColorEnd = "#16e7c4";   // Bright aqua color
+  const dynamicColorVia = "#14B8A6";   // Vibrant light teal
+  const dynamicColorEnd = "#14B8A6";   // Bright aqua color
 
   useEffect(() => {
     if (window.location.hash) {
@@ -52,7 +52,7 @@ const Nav = () => {
                   className={`transition-all duration-300 ease-in-out transform ${
                     isActive
                       ? "text-main-1 border-b-2 border-b-main-1"
-                      : `hover:text-transparent hover:bg-clip-text 
+                      : `hover:text-[#96d5cf] hover:bg-clip-text 
                           hover:bg-gradient-to-r from-[${dynamicColorStart}] 
                           via-[${dynamicColorVia}] to-[${dynamicColorEnd}] 
                           hover:border-b-2 hover:border-b-transparent 
