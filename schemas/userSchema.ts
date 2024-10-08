@@ -1,11 +1,11 @@
-import mongooes from 'mongoose'
+// models/User.js
+import mongoose from "mongoose";
 
-const userSchema =new mongooes.Schema({
+const UserSchema = new mongoose.Schema({
+  clerkId: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
-  username: { type: String, required: true },
-  imageUrl: { type: String },
-  password: { type: String, required: true }, //password will be hash
-  role: { type: String, enum: ["user", "admin"], default: "user" },
+  name: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
+});
 
-})
-export default mongooes.models.userSchema;
+export default mongoose.models.User || mongoose.model("User", UserSchema);

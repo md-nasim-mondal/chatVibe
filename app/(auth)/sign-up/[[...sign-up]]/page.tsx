@@ -1,10 +1,10 @@
-import SignUp from "@/components/form/SignUp"
+import Signup from "@/components/form/SignUp"
 
 
 const SignUpPage = () => {
   return (
     <main className='flex h-screen w-full items-center justify-center'>
-        <SignUp />
+        <Signup />
     </main>
   )
 }
