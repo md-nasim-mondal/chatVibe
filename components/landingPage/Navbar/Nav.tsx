@@ -13,7 +13,7 @@ function Nav() {
   console.log(user);
 
   return (
-    <nav className='text-[#1973e8] bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 md:pl-0 py-5 md:py-0'>
+    <nav className='text-[#1973e8] bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0'>
       <div className='flex justify-between items-center container mx-auto'>
         <a
           href='/'
