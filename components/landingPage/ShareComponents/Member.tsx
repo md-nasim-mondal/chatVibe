@@ -10,7 +10,7 @@ interface MemberProps {
 
 const Member: React.FC<MemberProps> = ({ src, name, profession, role }) => {
   return (
-    <div className='flex flex-col items-center justify-between border border-black rounded-md bg-transparent hover:bg-[#aabcd8] hover:scale-105 transition-all h-auto max-w-[320px] mx-auto'>
+    <div className='flex flex-col items-center justify-between border border-black rounded-md bg-transparent hover:bg-[#aabcd8] hover:scale-105 transition-all h-auto w-auto max-w-[320px] mx-auto'>
       <Image
         src={src}
         alt={name}
@@ -18,7 +18,7 @@ const Member: React.FC<MemberProps> = ({ src, name, profession, role }) => {
         width={200}
         className='rounded-t-lg w-full h-full'
       />
-      <div className='bg-blue-500 hover:bg-blue-600 w-full text-blue-100 p-2 rounded-b-lg'>
+      <div className='bg-main-2 hover:bg-main-1 w-full text-blue-100 p-2 rounded-b-lg'>
         <h3 className='text-2xl font-semibold'>{name}</h3>
         <p className='font-semibold'>{profession}</p>
         <p className='font-semibold'>{role}</p>
