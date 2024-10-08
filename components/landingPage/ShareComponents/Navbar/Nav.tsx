@@ -81,7 +81,7 @@ const Nav = () => {
             <ul className="hidden md:flex items-center gap-1">
               <li className="py-2 px-4 text-xl text-white rounded-md bg-blue-500 hover:text-white hover:scale-105 transition-all">
                 <Link href={`/sign-in`}>
-                  <button>logIn</button>
+                  <button>LogIn</button>
                 </Link>
               </li>
             </ul>
