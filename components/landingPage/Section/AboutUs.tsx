@@ -44,7 +44,7 @@ const AboutUs = () => {
   return (
       <SectionContainer>
         <div id='about' className='text-center pb-12'>
-          <h2 className='text-4xl font-bold text-[#3b82f6]'>About Us</h2>
+          <h2 className='text-4xl font-bold text-main-1'>About Us</h2>
           <p className='text-xl font-semibold capitalize text-white'>
             Meet our team members
           </p>
