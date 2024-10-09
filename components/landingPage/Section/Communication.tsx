@@ -25,7 +25,7 @@ const Communication = () => {
             Discuss directly with the team, you can send document files for the
             next level of collaboration.
           </p>
-          <button className='p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-1 transition duration-300 border-0 text-white text-base mt-4 bg-main-2 '>
+          <button className='p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-3 transition duration-300 border-0 text-white text-base mt-4 bg-main-2 '>
             Learn More
           </button>
         </div>
