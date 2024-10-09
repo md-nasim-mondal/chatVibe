@@ -3,14 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import MobileNav from "./MobileNav";
-import { SignedIn, UserButton, useUser } from "@clerk/nextjs";
+import { SignedIn, UserButton} from "@clerk/nextjs";
 import { table } from "console";
 
 const Navbar = () => {
-  const { isLoaded, isSignedIn, user } = useUser();
-  console.log(user)
-  console.log(isSignedIn)
- 
+  
   return (
     <nav className='flex flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10'>
       <Link href={`/`} className='flex items-center gap-1'>

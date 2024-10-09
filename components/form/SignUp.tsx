@@ -6,7 +6,6 @@ import Loader from "../meetComponents/Loader";
 
 export default function Signup() {
   const { isLoaded, isSignedIn, user } = useUser();
-  console.log(user)
 
   // Save user to the database once signed up and user data is loaded
   useEffect(() => {

@@ -1,33 +1,29 @@
+import mongoose from 'mongoose';
 
+// Define an async function to connect to MongoDB
+const connectDB = async (): Promise<void> => {
+  // Define the MongoDB connection URL from environment variables and assert it's a string
+  const url: string = process.env.MONGODB_URL as string;
 
-import { MongoClient, ServerApiVersion, Db } from "mongodb";
-
-let db: Db | null = null; // Declare db with type `Db` or `null`
-
-const connectDB = async (): Promise<Db | null> => {
-  if (db) return db; // Return the existing database connection
+  // Check if the URL is valid
+  if (!url) {
+    throw new Error('MongoDB connection URL is missing from environment variables');
+  }
 
   try {
-    const uri: string | undefined = process.env.MONGODB_URL; // Add your MongoDB connection string
-    if (!uri) {
-      throw new Error("Please define the MONGODB_URI environment variable");
-    }
+    // Avoid multiple connections by checking the readyState
+    if (mongoose.connection.readyState >= 1) return;
 
-    const client = new MongoClient(uri, {
-      serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-      },
-    });
+    // Connect to MongoDB with the provided URL
+    await mongoose.connect(url);
 
-    await client.connect(); // Connect to the MongoDB server
-    db = client.db("ChatVibe"); // Select the database
-    return db; // Return the database connection
+    console.log('MongoDB connected successfully');
   } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
-    return null; // Return null on error
+    console.error('MongoDB connection error:', error);
+    throw new Error('Failed to connect to MongoDB');
   }
 };
 
 export default connectDB;
+
+

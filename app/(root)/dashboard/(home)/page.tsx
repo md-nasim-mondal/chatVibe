@@ -1,7 +1,17 @@
+'use client'
 import MeetingTypeList from "@/components/meetComponents/MeetingTypeList";
+import { useUser } from "@clerk/clerk-react";
 import React from "react";
 
 const Home = () => {
+   const { isLoaded, isSignedIn, user } = useUser();
+ 
+ 
+  
+  if(isSignedIn && isLoaded && user){
+console.log(user)
+  }
+
   const now = new Date();
 
   const time = now.toLocaleTimeString("en-BD", {
