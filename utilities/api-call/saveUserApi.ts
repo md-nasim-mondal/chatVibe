@@ -13,11 +13,9 @@ const  saveUserApi = async(user: UserResource )=> {
               fullName,
               imageUrl,
             };
-       
-            console.log(userData)
+            
             try {
               const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/save`, userData);
-               console.log(userData)
               if (res.status === 201) {
                 console.log("User saved to MongoDB");
               }

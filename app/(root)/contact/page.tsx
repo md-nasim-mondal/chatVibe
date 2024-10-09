@@ -12,8 +12,6 @@ import {
 } from "react-icons/fa";
 import SectionContainer from "@/components/landingPage/ShareComponents/SectionContainer";
 import { useState } from "react";
-import useGetALlUsers from "@/hooks/apiHooks/userHooks/useGetAllUser";
-import useGetRoleOrUser from "@/hooks/apiHooks/userHooks/useGetRoleOrUser";
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -54,9 +52,6 @@ const Page = () => {
   };
 
 
-
- useGetALlUsers()
-const {data} = useGetRoleOrUser()
 
 
   return (
