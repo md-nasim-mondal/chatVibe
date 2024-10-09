@@ -36,7 +36,7 @@ const Nav = () => {
 
   return (
     <nav className='text-main-1 bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0'>
-      <div className='flex justify-between items-center container mx-auto md:py-6'>
+      <div className='flex justify-between items-center container mx-auto md:py-5'>
         <Link
           href={`/`}
           className='flex items-center text-center md:px-2 font-bold text-3xl text-main-1 gap-1'>
@@ -67,7 +67,7 @@ const Nav = () => {
               return (
                 <li
                   key={index + 1}
-                  className={`transition-all duration-300 ease-in-out transform md:text-lg lg:text-2xl ${
+                  className={`transition-all duration-300 ease-in-out transform text-lg ${
                     isActive
                       ? "text-main-1 border-b-2 border-b-main-1"
                       : `hover:text-[#96d5cf] hover:bg-clip-text 
@@ -104,8 +104,8 @@ const Nav = () => {
               <li>
                 <Link
                   href='/sign-in'
-                  className='py-2 px-4 text-white text-[24px] bg-main-2 hover:bg-main-3 hover:scale-105 transition-all rounded-lg'>
-                  Login
+                  className='py-2 px-4 text-white text-xl bg-main-2 hover:bg-main-3 hover:scale-105 transition-all rounded-lg'>
+                  SignIn
                 </Link>
               </li>
             </ul>
