@@ -19,7 +19,7 @@ const Conversations = () => {
             pose, build upper- body strength. The standing poses, especially if
             you hold them for several long breaths
           </p>
-          <button className='p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-1 transition duration-300 border-0 text-white text-base mt-4 bg-main-2 '>
+          <button className='p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-3 transition duration-300 border-0 text-white text-base mt-4 bg-main-2 '>
             Get Started
           </button>
         </div>

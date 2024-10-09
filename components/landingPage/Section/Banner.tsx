@@ -47,7 +47,7 @@ const Banner = () => {
             <div className="flex flex-col gap-4 md:flex-row space-x-3">
               <Link
                 href="/dashboard"
-                className="w-full text-center bg-main-2 text-white p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-1 transition duration-300"
+                className="w-full text-center bg-main-2 text-white p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-3 transition duration-300"
               >
                 Try Now
               </Link>
@@ -101,7 +101,7 @@ const Banner = () => {
               </p>
             </div>
             <div className="flex justify-between mt-4">
-              <button
+              <span
                 onClick={() =>
                   setActiveSlide(
                     (activeSlide - 1 + slides.length) % slides.length
@@ -123,8 +123,8 @@ const Banner = () => {
                     d="M15 19l-7-7 7-7"
                   />
                 </svg>
-              </button>
-              <button
+              </span>
+              <span
                 onClick={() =>
                   setActiveSlide((activeSlide + 1) % slides.length)
                 }
@@ -144,7 +144,7 @@ const Banner = () => {
                     d="M9 5l7 7-7 7"
                   />
                 </svg>
-              </button>
+              </span>
             </div>
           </div>
         </div>
