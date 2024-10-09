@@ -5,6 +5,7 @@ import { UserButton, useUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import SmallNav from "./SmallNav";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const Nav = () => {
   const { user } = useUser() || {};
@@ -36,9 +37,24 @@ const Nav = () => {
   return (
     <nav className="text-main-1 bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0">
       <div className="flex justify-between items-center container mx-auto">
-        <a href="/" className="text-center md:p-5 font-bold text-3xl text-main-1">
-          Chat<span className="">Vibe</span>
-        </a>
+      <Link href={`/`} className='flex items-center text-center md:p-5 font-bold text-3xl text-main-1 gap-1'>
+        <Image
+          src={`/icons/logo.svg`}
+          width={32}
+          height={32}
+          alt='Chat Vibe'
+          className='max-sm:size-10'
+        />
+<p
+  className='text-[26px] font-extrabold bg-clip-text text-transparent max-sm:hidden'
+  style={{
+    backgroundImage: 'linear-gradient(90deg, #14B8A6, #12A193, #10A0B0)',
+  }}
+>
+  ChatVibe
+</p>
+
+      </Link>
 
         {/* desktop menu */}
         <menu className="hidden md:flex items-center gap-20 text-white font-semibold mr-6">

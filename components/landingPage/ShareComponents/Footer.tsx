@@ -15,7 +15,14 @@ const Footer = () => {
         <Link
           href='/'
           className='text-center p-5 font-bold text-3xl text-main-1'>
-          ChatVibe
+         <p
+  className='text-[26px] font-extrabold bg-clip-text text-transparent max-sm:hidden'
+  style={{
+    backgroundImage: 'linear-gradient(90deg, #14B8A6, #12A193, #10A0B0)',
+  }}
+>
+  ChatVibe
+</p>
         </Link>
 
         <ul className='self-center py-6 space-y-4 text-center sm:flex sm:space-y-0 sm:justify-around sm:space-x-4 lg:flex-1 lg:justify-start text-white'>
