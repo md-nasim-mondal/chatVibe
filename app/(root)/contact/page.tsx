@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import SectionContainer from "@/components/landingPage/ShareComponents/SectionContainer";
 import { useState } from "react";
+import useGetALlUsers from "@/hooks/apiHooks/userHooks/useGetAllUser";
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -50,6 +51,12 @@ const Page = () => {
       },
     });
   };
+
+
+
+const {data} = useGetALlUsers()
+
+console.log(data)
 
   return (
     <SectionContainer>
