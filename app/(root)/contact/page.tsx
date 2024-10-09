@@ -13,6 +13,7 @@ import {
 import SectionContainer from "@/components/landingPage/ShareComponents/SectionContainer";
 import { useState } from "react";
 import useGetALlUsers from "@/hooks/apiHooks/userHooks/useGetAllUser";
+import useGetRoleOrUser from "@/hooks/apiHooks/userHooks/useGetRoleOrUser";
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -54,9 +55,9 @@ const Page = () => {
 
 
 
-const {data} = useGetALlUsers()
+ useGetALlUsers()
+const {data} = useGetRoleOrUser()
 
-console.log(data)
 
   return (
     <SectionContainer>
