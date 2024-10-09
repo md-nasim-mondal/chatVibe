@@ -77,7 +77,7 @@ const Banner = () => {
 
             <p className="mt-10 text-gray-300">
               Learn more about{" "}
-              <a href="#" className="text-main-1">
+              <a href="#" className="text-main-1 hover:underline">
                 Our team.
               </a>
             </p>

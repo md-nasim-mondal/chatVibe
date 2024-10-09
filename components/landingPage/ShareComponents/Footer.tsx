@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import {
@@ -12,18 +13,24 @@ const Footer = () => {
   return (
     <footer className='bg-dark-1'>
       <div className='container flex flex-col p-4 mx-auto md:p-8 lg:flex-row dark:divide-gray-600'>
-        <Link
-          href='/'
-          className='text-center p-5 font-bold text-3xl text-main-1'>
-         <p
-  className='text-[26px] font-extrabold bg-clip-text text-transparent max-sm:hidden'
+      <Link href={`/`} className='flex items-center justify-center text-center md:p-5 font-bold text-3xl text-main-1 gap-1'>
+        <Image
+          src={`/icons/logo.svg`}
+          width={32}
+          height={32}
+          alt='Chat Vibe'
+          className='max-sm:size-10 text-center flex items-center justify-center'
+        />
+<p
+  className='text-[26px] font-extrabold bg-clip-text text-transparent '
   style={{
     backgroundImage: 'linear-gradient(90deg, #14B8A6, #12A193, #10A0B0)',
   }}
 >
   ChatVibe
 </p>
-        </Link>
+
+      </Link>
 
         <ul className='self-center py-6 space-y-4 text-center sm:flex sm:space-y-0 sm:justify-around sm:space-x-4 lg:flex-1 lg:justify-start text-white'>
           <li>About</li>
