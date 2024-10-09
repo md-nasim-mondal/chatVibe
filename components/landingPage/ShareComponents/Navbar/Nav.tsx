@@ -12,8 +12,8 @@ const Nav = () => {
   const pathname = usePathname();
   const [activeRoute, setActiveRoute] = useState(pathname); // State to manage the active route
   const dynamicColorStart = "#14B8A6"; // Base teal color
-  const dynamicColorVia = "#14B8A6";   // Vibrant light teal
-  const dynamicColorEnd = "#14B8A6";   // Bright aqua color
+  const dynamicColorVia = "#14B8A6"; // Vibrant light teal
+  const dynamicColorEnd = "#14B8A6"; // Bright aqua color
 
   useEffect(() => {
     if (window.location.hash) {
@@ -35,30 +35,31 @@ const Nav = () => {
   ];
 
   return (
-    <nav className="text-main-1 bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0">
-      <div className="flex justify-between items-center container mx-auto">
-      <Link href={`/`} className='flex items-center text-center md:p-5 font-bold text-3xl text-main-1 gap-1'>
-        <Image
-          src={`/icons/logo.svg`}
-          width={32}
-          height={32}
-          alt='Chat Vibe'
-          className='max-sm:size-10'
-        />
-<p
-  className='text-[26px] font-extrabold bg-clip-text text-transparent '
-  style={{
-    backgroundImage: 'linear-gradient(90deg, #14B8A6, #12A193, #10A0B0)',
-  }}
->
-  ChatVibe
-</p>
-
-      </Link>
+    <nav className='text-main-1 bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0'>
+      <div className='flex justify-between items-center container mx-auto md:py-6'>
+        <Link
+          href={`/`}
+          className='flex items-center text-center md:px-2 font-bold text-3xl text-main-1 gap-1'>
+          <Image
+            src={`/icons/logo.svg`}
+            width={36}
+            height={36}
+            alt='Chat Vibe'
+            className='max-sm:size-10'
+          />
+          <p
+            className='text-[26px] lg:text-3xl font-extrabold bg-clip-text text-transparent '
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, #14B8A6, #12A193, #10A0B0)",
+            }}>
+            ChatVibe
+          </p>
+        </Link>
 
         {/* desktop menu */}
-        <menu className="hidden md:flex items-center gap-20 text-white font-semibold mr-6">
-          <ul className="flex gap-4">
+        <menu className='hidden md:flex items-center gap-20 text-white font-semibold mr-6'>
+          <ul className='flex gap-4'>
             {navRoutes.map(({ label, address }, index) => {
               // Check if the current route is active
               const isActive = activeRoute === address;
@@ -66,7 +67,7 @@ const Nav = () => {
               return (
                 <li
                   key={index + 1}
-                  className={`transition-all duration-300 ease-in-out transform ${
+                  className={`transition-all duration-300 ease-in-out transform md:text-lg lg:text-2xl ${
                     isActive
                       ? "text-main-1 border-b-2 border-b-main-1"
                       : `hover:text-[#96d5cf] hover:bg-clip-text 
@@ -78,8 +79,7 @@ const Nav = () => {
                           hover:via-[${dynamicColorVia}] 
                           hover:to-[${dynamicColorEnd}] 
                           hover:scale-105 hover:shadow-lg`
-                  }`}
-                >
+                  }`}>
                   <Link href={address} onClick={() => handleLinkClick(address)}>
                     {label}
                   </Link>
@@ -91,16 +91,15 @@ const Nav = () => {
 
         <div>
           {user ? (
-            <div className=" flex justify-center items-center">
+            <div className=' flex justify-center items-center'>
               <UserButton />
             </div>
           ) : (
-            <ul className="hidden md:flex items-center gap-1">
-              <li className="py-2 px-4 text-xl text-white hover:text-white hover:scale-105 transition-all">
-              <Button className="text-white bg-main-2 hover:bg-main-1">
-  <Link href="/sign-in">Login</Link> 
- 
-</Button>
+            <ul className='hidden md:flex items-center gap-1'>
+              <li className='py-2 px-4 text-white hover:text-white hover:scale-105 transition-all'>
+                <Button className='text-white md:text-xl lg:text-2xl bg-main-2 hover:bg-main-1'>
+                  <Link href='/sign-in'>Login</Link>
+                </Button>
               </li>
             </ul>
           )}
@@ -108,7 +107,7 @@ const Nav = () => {
         {/* mobile menu */}
         {/* <MobileMenu /> */}
       </div>
-      <div className="md:hidden left-0 top-[72px]">
+      <div className='md:hidden left-0 top-[72px]'>
         {/* <Sidebar /> */}
         <SmallNav />
       </div>
