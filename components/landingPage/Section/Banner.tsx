@@ -107,7 +107,7 @@ const Banner = () => {
                     (activeSlide - 1 + slides.length) % slides.length
                   )
                 }
-                className="text-blue-500"
+                className="text-main-1"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +128,7 @@ const Banner = () => {
                 onClick={() =>
                   setActiveSlide((activeSlide + 1) % slides.length)
                 }
-                className="text-blue-500"
+                className="text-main-1"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -7,9 +7,9 @@ const Conversations = () => {
     <SectionContainer>
       <div className='flex flex-col-reverse md:flex-row justify-around gap-8 items-center'>
         <div className='flex flex-col justify-center md:flex-1 lg:flex-initial'>
-          <h6 className='text-main-1 font-semibold pb-2'>
+          <h3 className='text-main-1 font-semibold pb-2'>
             Communicate-Share Ideas-Save Time
-          </h6>
+          </h3>
           <h2 className='text-4xl font-bold'>
             <span className='text-main-1'>Secure</span>{" "}
             <span className='text-white'>Conversations</span>
