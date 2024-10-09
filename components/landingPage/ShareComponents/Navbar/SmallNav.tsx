@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetClose,
@@ -8,6 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -16,6 +18,7 @@ import { useEffect, useState } from "react";
 const SmallNav = () => {
   const pathname = usePathname();
   const [activeLink, setActiveLink] = useState(pathname); // State to manage the active link
+  const {user} = useUser() || {};
 
   // Updated navbar links with hash links
   const navbarLinks = [
@@ -127,9 +130,25 @@ const SmallNav = () => {
                 );
               })}
             </section>
+            
+{user ?
+
+<div className="hidden">
+<UserButton  />
+</div>
+: 
+<Button className="text-white bg-main-2 hover:bg-main-1">
+  <Link href="/sign-in">Login</Link> 
+ 
+</Button>
+}
           </div>
+
         </SheetContent>
+        
       </Sheet>
+
+
     </section>
   );
 };

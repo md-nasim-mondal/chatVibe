@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import SmallNav from "./SmallNav";
+import { Button } from "@/components/ui/button";
 
 const Nav = () => {
   const { user } = useUser() || {};
@@ -74,15 +75,16 @@ const Nav = () => {
 
         <div>
           {user ? (
-            <div className="hidden md:block">
+            <div className=" flex justify-center items-center">
               <UserButton />
             </div>
           ) : (
             <ul className="hidden md:flex items-center gap-1">
-              <li className="py-2 px-4 text-xl text-white rounded-md bg-blue-500 hover:text-white hover:scale-105 transition-all">
-                <Link href={`/sign-in`}>
-                  <button>LogIn</button>
-                </Link>
+              <li className="py-2 px-4 text-xl hover:text-white hover:scale-105 transition-all">
+              <Button className="text-white bg-main-2 hover:bg-main-1">
+  <Link href="/sign-in">Login</Link> 
+ 
+</Button>
               </li>
             </ul>
           )}

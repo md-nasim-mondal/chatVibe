@@ -14,7 +14,7 @@ const Conversations = () => {
             <span className='text-main-1'>Secure</span>{" "}
             <span className='text-white'>Conversations</span>
           </h2>
-          <p className='text-base text-[#677471] lg:w-[500px] pt-4'>
+          <p className='text-base text-gray-300 lg:w-[500px] pt-4'>
             Many of the poses, such as downward dog, upword dog and the plank
             pose, build upper- body strength. The standing poses, especially if
             you hold them for several long breaths
