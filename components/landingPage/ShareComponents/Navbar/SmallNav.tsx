@@ -137,7 +137,7 @@ const SmallNav = () => {
 <UserButton  />
 </div>
 : 
-<Button className="text-white bg-main-2 hover:bg-main-1">
+<Button className="text-white bg-main-2 hover:bg-main-3">
   <Link href="/sign-in">Login</Link> 
  
 </Button>

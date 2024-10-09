@@ -96,10 +96,17 @@ const Nav = () => {
             </div>
           ) : (
             <ul className='hidden md:flex items-center gap-1'>
-              <li className='py-2 px-4 text-white hover:text-white hover:scale-105 transition-all'>
-                <Button className='text-white md:text-xl lg:text-2xl bg-main-2 hover:bg-main-1'>
+              {/* <li className='py-2 px-4 text-white hover:text-white hover:scale-105 transition-all'>
+                <Button className='text-white text-xl bg-main-2 hover:bg-main-1'>
                   <Link href='/sign-in'>Login</Link>
                 </Button>
+              </li> */}
+              <li>
+                <Link
+                  href='/sign-in'
+                  className='py-2 px-4 text-white text-[24px] bg-main-2 hover:bg-main-3 hover:scale-105 transition-all rounded-lg'>
+                  Login
+                </Link>
               </li>
             </ul>
           )}

@@ -22,7 +22,7 @@ const page = () => {
                 </p>
                 <button
                   disabled
-                  className='mb-4 px-4 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-1 transition-colors duration-300'>
+                  className='mb-4 px-4 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300'>
                   Free
                 </button>
               </th>
@@ -36,7 +36,7 @@ const page = () => {
                   </span>
                   <span className='font-medium '>/mon</span>
                 </p>
-                <button className='mb-4 px-2 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-1 transition-colors duration-300'>
+                <button className='mb-4 px-2 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300'>
                   Buy Now
                 </button>
               </th>
@@ -50,7 +50,7 @@ const page = () => {
                   </span>
                   <span className='font-medium dark:text-gray-600'>/mon</span>
                 </p>
-                <button className='mb-4 px-2 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-1 transition-colors duration-300'>
+                <button className='mb-4 px-2 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300'>
                   Buy Now
                 </button>
               </th>
