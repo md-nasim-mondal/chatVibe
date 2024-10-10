@@ -24,7 +24,7 @@ const ManageUsers: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/user/all");
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/all`);
         setUsers(response.data);
       } catch (err) {
         setError("Failed to fetch users.");
