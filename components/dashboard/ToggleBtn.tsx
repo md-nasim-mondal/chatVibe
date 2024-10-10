@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface ToggleBtnProps {
@@ -6,6 +7,15 @@ interface ToggleBtnProps {
 }
 
 const ToggleBtn: React.FC<ToggleBtnProps> = ({ setToggle, toggle }) => {
+  const router = useRouter();
+  const userHandler = () => {
+    setToggle('user')
+    router.push('/dashboard')
+  }
+  const adminHandler = () => {
+    setToggle('admin');
+    router.push('/dashboard/admin-statistics')
+  }
   return (
     <label
       htmlFor='Toggle3'
@@ -18,12 +28,12 @@ const ToggleBtn: React.FC<ToggleBtnProps> = ({ setToggle, toggle }) => {
         readOnly
       />
       <span
-        onClick={() => setToggle('user')}
+        onClick={() => userHandler()}
         className={`px-4 py-1 rounded-l-md ${toggle === 'user' ? 'bg-main-1' : 'bg-gray-300'}`}>
         User
       </span>
       <span
-        onClick={() => setToggle('admin')}
+        onClick={() => adminHandler()}
         className={`px-4 py-1 rounded-r-md ${toggle === 'admin' ? 'bg-main-1' : 'bg-gray-300'}`}>
         Admin
       </span>

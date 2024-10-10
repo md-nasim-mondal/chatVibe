@@ -29,7 +29,7 @@ export const sidebarLinks = [
 export const adminSidebarLinks = [
   {
     label: "Statistics",
-    route: "/dashboard",
+    route: "/dashboard/admin-statistics",
     imgUrl: "/icons/Home.svg",
   },
   {
