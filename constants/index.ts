@@ -30,12 +30,12 @@ export const adminSidebarLinks = [
   {
     label: "Statistics",
     route: "/dashboard/admin-statistics",
-    imgUrl: "/icons/Home.svg",
+    imgUrl: "/icons/statistics.svg",
   },
   {
     label: "Manage User",
     route: "/dashboard/manage-user",
-    imgUrl: "/icons/upcoming.svg",
+    imgUrl: "/icons/manage.svg",
   },
 ];
 
