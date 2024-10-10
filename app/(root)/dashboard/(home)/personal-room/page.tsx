@@ -30,13 +30,14 @@ const Table = ({
 const PersonalRoom = () => {
   const router = useRouter();
   const { user } = useUser();
+  console.log(user)
   const client = useStreamVideoClient();
   const { toast } = useToast();
 
   const meetingId = user?.id;
 
   const { call } = useGetCallById(meetingId!);
-
+  console.log(user)
   const startRoom = async () => {
     if (!client || !user) return;
 
