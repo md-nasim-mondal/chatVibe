@@ -1,23 +1,20 @@
-'use client'
+"use client";
 import MeetingTypeList from "@/components/meetComponents/MeetingTypeList";
 import saveUserApi from "@/utilities/api-call/saveUserApi";
 import { useUser } from "@clerk/clerk-react";
 import React, { useEffect } from "react";
 
 const Home = () => {
-   const { isLoaded, isSignedIn, user } = useUser();
- useEffect(()=>{
-  if(isSignedIn && isLoaded && user){
-    
-console.log(user)
- saveUserApi(user)
-  }
-  },[user])
- 
-  
-  if(isSignedIn && isLoaded && user){
-console.log(user)
-  }
+  const { isLoaded, isSignedIn, user } = useUser();
+  useEffect(() => {
+    if (isSignedIn && isLoaded && user) {
+      saveUserApi(user);
+    }
+  }, [user]);
+
+  // if (isSignedIn && isLoaded && user) {
+  //   console.log(user);
+  // }
 
   const now = new Date();
 
@@ -45,7 +42,6 @@ console.log(user)
           </div>
         </div>
       </div>
-
       <MeetingTypeList />
     </section>
   );
