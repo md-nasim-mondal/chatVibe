@@ -18,34 +18,34 @@ import { useEffect, useState } from "react";
 const SmallNav = () => {
   const pathname = usePathname();
   const [activeLink, setActiveLink] = useState(pathname); // State to manage the active link
-  const {user} = useUser() || {};
+  const { user } = useUser() || {};
 
   // Updated navbar links with hash links
   const navbarLinks = [
     {
-      label: 'Home',
-      route: '/',
-      imgUrl: '/icons/Home.svg',
+      label: "Home",
+      route: "/",
+      imgUrl: "/icons/Home.svg",
     },
     {
       label: "Dashboard",
       route: "/dashboard",
-      imgUrl: '/icons/Home.svg',
+      imgUrl: "/icons/Home.svg",
     },
     {
-      label: 'Pricing',
-      route: '/pricing',
-      imgUrl: '/icons/upcoming.svg',
+      label: "Pricing",
+      route: "/pricing",
+      imgUrl: "/icons/upcoming.svg",
     },
     {
-      label: 'Contact',
-      route: '/contact',
-      imgUrl: '/icons/previous.svg',
+      label: "Contact",
+      route: "/contact",
+      imgUrl: "/icons/previous.svg",
     },
     {
-      label: 'About',
-      route: '/#about', // Hash link for About
-      imgUrl: '/icons/Video.svg',
+      label: "About",
+      route: "/#about", // Hash link for About
+      imgUrl: "/icons/Video.svg",
     },
   ];
 
@@ -58,7 +58,11 @@ const SmallNav = () => {
     }
   }, [pathname]);
 
-  const handleLinkClick = (link: { label?: string; route: any; imgUrl?: string; }) => {
+  const handleLinkClick = (link: {
+    label?: string;
+    route: any;
+    imgUrl?: string;
+  }) => {
     setActiveLink(link.route); // Update active link state
   };
 
@@ -78,16 +82,15 @@ const SmallNav = () => {
         <SheetContent
           side="left"
           className="border-none bg-dark-1"
-        //   aria-describedby="sheet-description"
+          //   aria-describedby="sheet-description"
         >
-
-<SheetTitle className="hidden" aria-describedby="dsf">
-    {/* Edit profile */}
-     sdfdsf
-    </SheetTitle>
+          <SheetTitle className="hidden" aria-describedby="dsf">
+            {/* Edit profile */}
+            sdfdsf
+          </SheetTitle>
           <SheetDescription className="hidden">
             {/* Make changes to your profile here. Click save when you're done. */}
-          adfasd
+            adfasd
           </SheetDescription>
 
           {/* If you want to add an actual description, you can put it here */}
@@ -97,7 +100,7 @@ const SmallNav = () => {
 
           <Link href="/" className="flex items-center gap-1">
             <Image
-              src="/icons/logo.svg"
+              src="/images/logo.png"
               width={32}
               height={32}
               alt="Chat Vibe"
@@ -121,34 +124,32 @@ const SmallNav = () => {
                         {
                           "bg-main-1": isActive, // Active link style
                         }
-                      )}
-                    >
-                      <Image src={link.imgUrl} width={24} height={24} alt={link.label} />
+                      )}>
+                      <Image
+                        src={link.imgUrl}
+                        width={24}
+                        height={24}
+                        alt={link.label}
+                      />
                       <p className="font-semibold">{link.label}</p>
                     </Link>
                   </SheetClose>
                 );
               })}
             </section>
-            
-{user ?
 
-<div className="hidden">
-<UserButton  />
-</div>
-: 
-<Button className="text-white bg-main-2 hover:bg-main-3">
-  <Link href="/sign-in">Login</Link> 
- 
-</Button>
-}
+            {user ? (
+              <div className="hidden">
+                <UserButton />
+              </div>
+            ) : (
+              <Button className="text-white bg-main-2 hover:bg-main-3">
+                <Link href="/sign-in">Login</Link>
+              </Button>
+            )}
           </div>
-
         </SheetContent>
-        
       </Sheet>
-
-
     </section>
   );
 };
