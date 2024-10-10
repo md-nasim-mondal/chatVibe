@@ -18,9 +18,14 @@ const Navbar = () => {
           alt='Chat Vibe'
           className='max-sm:size-10'
         />
-        <p className='text-[26px] font-extrabold text-white max-sm:hidden'>
-          ChatVibe
-        </p>
+     <p
+  className='text-[26px] font-extrabold bg-clip-text text-transparent max-sm:hidden'
+  style={{
+    backgroundImage: 'linear-gradient(90deg, #14B8A6, #12A193, #10A0B0)',
+  }}
+>
+  ChatVibe
+</p>
       </Link>
       <div className='flex-between gap-5'>
         {/* Clerk - {User Management} */}

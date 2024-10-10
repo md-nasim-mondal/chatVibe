@@ -1,90 +1,111 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import MobileMenu from "./MobileMenu";
-import { IoNotifications } from "react-icons/io5";
-import { CgProfile } from "react-icons/cg";
 import { UserButton, useUser } from "@clerk/nextjs";
-import Sidebar from "./Sidebar";
-import SmallNav from "./SmallNav";
 import { usePathname } from "next/navigation";
-
+import SmallNav from "./SmallNav";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const Nav = () => {
-  const { user, isLoaded } = useUser() || {};
+  const { user } = useUser() || {};
   const pathname = usePathname();
-  const [hashActive, setHashActive] = useState("");
+  const [activeRoute, setActiveRoute] = useState(pathname); // State to manage the active route
+  const dynamicColorStart = "#14B8A6"; // Base teal color
+  const dynamicColorVia = "#14B8A6"; // Vibrant light teal
+  const dynamicColorEnd = "#14B8A6"; // Bright aqua color
 
   useEffect(() => {
-    // Check if there's a hash in the URL
     if (window.location.hash) {
-      // Scroll to the top of the page
       window.scrollTo({ top: 0, behavior: "smooth" });
-
-      // Remove the hash from the URL without reloading the page
       history.replaceState(null, "", window.location.pathname);
     }
   }, []);
 
+  const handleLinkClick = (address: React.SetStateAction<string>) => {
+    setActiveRoute(address); // Update the active route state
+  };
+
   const navRoutes = [
-    {
-      label: "Home",
-      address: "/",
-    },
-    {
-      label: "Pricing",
-      address: "/pricing",
-    },
-    {
-      label: "About",
-      address: "/#about",
-    },
-    {
-      label: "Contact",
-      address: "/contact",
-    },
-    {
-      label: "Dashboard",
-      address: "/dashboard",
-    },
+    { label: "Home", address: "/" },
+    { label: "Pricing", address: "/pricing" },
+    { label: "About", address: "/#about" },
+    { label: "Contact", address: "/contact" },
+    { label: "Dashboard", address: "/dashboard" },
   ];
 
   return (
-    <nav className="text-[#1973e8] bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0">
-      <div className="flex justify-between items-center container mx-auto">
-        <a
-          href="/"
-          className="text-center md:p-5 font-bold text-3xl text-blue-600">
-          Chat<span className="">Vibe</span>
-        </a>
+    <nav className='text-main-1 bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0'>
+      <div className='flex justify-between items-center container mx-auto md:py-5'>
+        <Link
+          href={`/`}
+          className='flex items-center text-center md:px-2 font-bold text-3xl text-main-1 gap-1'>
+          <Image
+            src={`/icons/logo.svg`}
+            width={36}
+            height={36}
+            alt='Chat Vibe'
+            className='max-sm:size-10'
+          />
+          <p
+            className='text-[26px] lg:text-3xl font-extrabold bg-clip-text text-transparent '
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, #14B8A6, #12A193, #10A0B0)",
+            }}>
+            ChatVibe
+          </p>
+        </Link>
 
         {/* desktop menu */}
-        <menu className="hidden md:flex items-center gap-20 text-white font-semibold mr-6">
-          <ul className="flex gap-4">
-            {navRoutes.map(({ label, address }, index) => (
-              <li
-                key={index + 1}
-                className={`hover:text-blue-600 transition-all ${
-                  address === pathname
-                    ? "text-blue-600 border-b-2 border-b-blue-600"
-                    : ""
-                } `}>
-                <Link href={address}>{label}</Link>
-              </li>
-            ))}
+        <menu className='hidden md:flex items-center gap-20 text-white font-semibold mr-6'>
+          <ul className='flex gap-4'>
+            {navRoutes.map(({ label, address }, index) => {
+              // Check if the current route is active
+              const isActive = activeRoute === address;
+
+              return (
+                <li
+                  key={index + 1}
+                  className={`transition-all duration-300 ease-in-out transform text-lg ${
+                    isActive
+                      ? "text-main-1 border-b-2 border-b-main-1"
+                      : `hover:text-[#96d5cf] hover:bg-clip-text 
+                          hover:bg-gradient-to-r from-[${dynamicColorStart}] 
+                          via-[${dynamicColorVia}] to-[${dynamicColorEnd}] 
+                          hover:border-b-2 hover:border-b-transparent 
+                          hover:bg-clip-border hover:bg-gradient-to-r 
+                          hover:from-[${dynamicColorStart}] 
+                          hover:via-[${dynamicColorVia}] 
+                          hover:to-[${dynamicColorEnd}] 
+                          hover:scale-105 hover:shadow-lg`
+                  }`}>
+                  <Link href={address} onClick={() => handleLinkClick(address)}>
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </menu>
 
         <div>
           {user ? (
-            <div className="hidden md:block">
+            <div className=' flex justify-center items-center'>
               <UserButton />
             </div>
           ) : (
-            <ul className=" hidden md:flex items-center gap-1 ">
-              <li className=" py-2  px-4 text-xl text-white rounded-md bg-blue-500 hover:text-white  hover:scale-105 transition-all">
-                <Link href={`/sign-in`}>
-                  <button>logIn</button>
+            <ul className='hidden md:flex items-center gap-1'>
+              {/* <li className='py-2 px-4 text-white hover:text-white hover:scale-105 transition-all'>
+                <Button className='text-white text-xl bg-main-2 hover:bg-main-1'>
+                  <Link href='/sign-in'>Login</Link>
+                </Button>
+              </li> */}
+              <li>
+                <Link
+                  href='/sign-in'
+                  className='py-2 px-4 text-white text-xl bg-main-2 hover:bg-main-3 hover:scale-105 transition-all rounded-lg'>
+                  SignIn
                 </Link>
               </li>
             </ul>
@@ -93,7 +114,7 @@ const Nav = () => {
         {/* mobile menu */}
         {/* <MobileMenu /> */}
       </div>
-      <div className="md:hidden left-0 top-[72px]">
+      <div className='md:hidden left-0 top-[72px]'>
         {/* <Sidebar /> */}
         <SmallNav />
       </div>

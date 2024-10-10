@@ -26,35 +26,7 @@ export const sidebarLinks = [
         imgUrl: '/icons/add-personal.svg',
     },
 ]
-export const navbarLinks = [
-    
-    {
-        label: 'Home',
-        route: '/',
-        imgUrl: '/icons/Home.svg',
-    },
-    {
-        label:"Dashboard",
-        route: "dashboard",
-         imgUrl: '/icons/Home.svg',
-    },
-    {
-        label: 'Pricing',
-        route: '/pricing',
-        imgUrl: '/icons/upcoming.svg',
-    },
-    {
-        label: 'Contact',
-        route: '/contact',
-        imgUrl: '/icons/previous.svg',
-    },
-    {
-        label: 'About ',
-        route: '/about',
-        imgUrl: '/icons/Video.svg',
-    },
 
-]
 
 export const avatarImages = [
   "/images/avatar-1.jpeg",

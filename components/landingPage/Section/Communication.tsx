@@ -18,14 +18,14 @@ const Communication = () => {
 
         <div className='flex flex-col justify-center md:flex-1 lg:flex-initial'>
           <h2 className='text-4xl font-bold'>
-            <span className='text-blue-500'>Communication</span>{" "}
+            <span className='text-main-1'>Communication</span>{" "}
             <span className='text-white'>with Live Discussions</span>
           </h2>
-          <p className='text-base text-[#677471] lg:w-[500px] pt-4'>
+          <p className='text-base text-white lg:w-[500px] pt-4'>
             Discuss directly with the team, you can send document files for the
             next level of collaboration.
           </p>
-          <button className='p-2 md:py-2 md:px-4 rounded-lg hover:bg-blue-600 transition duration-300 border-0 text-white text-base mt-4 bg-blue-500 '>
+          <button className='p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-3 transition duration-300 border-0 text-white text-base mt-4 bg-main-2 '>
             Learn More
           </button>
         </div>

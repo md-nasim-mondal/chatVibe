@@ -31,7 +31,6 @@ const Page = () => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    console.log(formData);
     setFormData({
       name: "",
       email: "",
@@ -81,7 +80,7 @@ const Page = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 p-2.5'
+                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5'
               />
             </div>
             <div>
@@ -98,7 +97,7 @@ const Page = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 p-2.5'
+                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5'
               />
             </div>
             <div>
@@ -115,7 +114,7 @@ const Page = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 p-2.5'
+                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-indigo-500 focus:border-main-1 p-2.5'
               />
             </div>
             <div>
@@ -131,12 +130,12 @@ const Page = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 p-2.5'></textarea>
+                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5'></textarea>
             </div>
             <div className='flex items-center justify-center'>
               <button
                 type='submit'
-                className='w-full py-2.5 px-4 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
+                className='w-full py-2.5 px-4 text-base font-medium text-white bg-main-2 hover:bg-main-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-main-1'>
                 Submit
               </button>
             </div>
@@ -151,15 +150,15 @@ const Page = () => {
           </div>
         </div>
         <div className='flex md:flex-col items-center justify-center w-full gap-2 md:flex-1'>
-          <div className='h-px md:h-52 w-full md:w-px bg-blue-500'></div>
+          <div className='h-px md:h-52 w-full md:w-px bg-main-1'></div>
           <h3 className='text-3xl text-white'>Or</h3>
-          <div className='h-px md:h-52 w-full md:w-px bg-blue-500'></div>
+          <div className='h-px md:h-52 w-full md:w-px bg-main-1'></div>
         </div>
         <div className='flex flex-col gap-4 items-center md:items-start text-white'>
           <h3 className={`text-3xl font-medium capitalize`}>
             Visit our social pages
           </h3>
-          <div className={`text-4xl flex gap-4 text-blue-500`}>
+          <div className={`text-4xl flex gap-4 text-main-1`}>
             <a href='#'>
               <FaFacebookSquare />
             </a>
@@ -174,7 +173,7 @@ const Page = () => {
             </a>
           </div>
           <h3 className={`text-3xl font-medium`}>Chat With Us</h3>
-          <div className={`text-4xl flex gap-4 text-blue-500`}>
+          <div className={`text-4xl flex gap-4 text-main-1`}>
             <a href='#'>
               <FaFacebookMessenger />
             </a>

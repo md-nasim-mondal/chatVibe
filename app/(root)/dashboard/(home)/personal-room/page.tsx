@@ -65,11 +65,11 @@ const PersonalRoom = () => {
         <Table title='Invite Link' description={meetingLink} />
       </div>
       <div className='flex gap-5'>
-        <Button className='bg-blue-1' onClick={startRoom}>
+        <Button className='bg-blue-1 hover:bg-green-700' onClick={startRoom}>
           Start Meeting
         </Button>
         <Button
-          className='bg-dark-3'
+          className='bg-dark-3 hover:bg-blue-2'
           onClick={() => {
             navigator.clipboard.writeText(meetingLink);
             toast({
