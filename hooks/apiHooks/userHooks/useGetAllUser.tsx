@@ -5,6 +5,7 @@ import axios from "axios";
 
 // Define a User type based on your user data structure
 interface User {
+  role: string;
   _id: string;
   emailAddresses: string;
   firstName?: string;

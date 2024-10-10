@@ -6,10 +6,10 @@ import UserRoutes from "../dashboard/userDashboard/UserRoutes";
 import AdminRoutes from "../dashboard/adminDashboard/AdminRoutes";
 
 const Sidebar = () => {
-  const { userData, role, loading, error } = useGetRoleOrUser();
+  const { userData, role} = useGetRoleOrUser();
   const [toggle, setToggle] = useState<string>(() => {
     const savedToggleState = localStorage.getItem("sidebarToggle");
-    return savedToggleState ? savedToggleState : 'admin';
+    return savedToggleState ? savedToggleState : 'user';
   });
   
   useEffect(() => {
