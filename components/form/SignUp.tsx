@@ -19,13 +19,12 @@ export default function Signup() {
           fullName,
           imageUrl,
         };
-     console.log(user)
         try {
           const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/save-user`, userData);
 
-          if (res.status === 201) {
-            console.log("User saved to MongoDB");
-          }
+          // if (res.status === 201) {
+          //   console.log("User saved to MongoDB");
+          // }
         } catch (error) {
           console.error("Error saving user to DB", error);
         }
