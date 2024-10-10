@@ -46,7 +46,7 @@ const ManageUsers: React.FC = () => {
     Swal.fire({
       position: "top",
       icon: "success",
-      title: "Your message has been sent successfully",
+      title: "User role update successful!!",
       showConfirmButton: false,
       timer: 1500,
       background: "#227670",
