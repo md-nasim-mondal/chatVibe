@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "ChatVibe",
   description: "video calling app",
   icons: {
-    icon: "/icons/logo.svg",
+    icon: "/images/logo.png",
   },
 };
 
@@ -37,7 +37,7 @@ export default function RootLayout({
         appearance={{
           layout: {
             socialButtonsVariant: "iconButton",
-            // logoImageUrl: "/icons/yoom-logo.svg",
+            logoImageUrl: "/images/logo.png",
           },
           variables: {
             colorText: "#fff",

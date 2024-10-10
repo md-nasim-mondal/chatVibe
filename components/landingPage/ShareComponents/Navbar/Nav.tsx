@@ -35,20 +35,20 @@ const Nav = () => {
   ];
 
   return (
-    <nav className='text-main-1 bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0'>
-      <div className='flex justify-between items-center container mx-auto md:py-5'>
+    <nav className="text-main-1 bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0">
+      <div className="flex justify-between items-center container mx-auto md:py-5">
         <Link
           href={`/`}
-          className='flex items-center text-center md:px-2 font-bold text-3xl text-main-1 gap-1'>
+          className="flex items-center text-center md:px-2 font-bold text-3xl text-main-1 gap-1">
           <Image
-            src={`/icons/logo.svg`}
+            src={`/images/logo.png`}
             width={36}
             height={36}
-            alt='Chat Vibe'
-            className='max-sm:size-10'
+            alt="Chat Vibe"
+            className="max-sm:size-10"
           />
           <p
-            className='text-[26px] lg:text-3xl font-extrabold bg-clip-text text-transparent '
+            className="text-[26px] lg:text-3xl font-extrabold bg-clip-text text-transparent "
             style={{
               backgroundImage:
                 "linear-gradient(90deg, #14B8A6, #12A193, #10A0B0)",
@@ -58,8 +58,8 @@ const Nav = () => {
         </Link>
 
         {/* desktop menu */}
-        <menu className='hidden md:flex items-center gap-20 text-white font-semibold mr-6'>
-          <ul className='flex gap-4'>
+        <menu className="hidden md:flex items-center gap-20 text-white font-semibold mr-6">
+          <ul className="flex gap-4">
             {navRoutes.map(({ label, address }, index) => {
               // Check if the current route is active
               const isActive = activeRoute === address;
@@ -91,11 +91,11 @@ const Nav = () => {
 
         <div>
           {user ? (
-            <div className=' flex justify-center items-center'>
+            <div className=" flex justify-center items-center">
               <UserButton />
             </div>
           ) : (
-            <ul className='hidden md:flex items-center gap-1'>
+            <ul className="hidden md:flex items-center gap-1">
               {/* <li className='py-2 px-4 text-white hover:text-white hover:scale-105 transition-all'>
                 <Button className='text-white text-xl bg-main-2 hover:bg-main-1'>
                   <Link href='/sign-in'>Login</Link>
@@ -103,8 +103,8 @@ const Nav = () => {
               </li> */}
               <li>
                 <Link
-                  href='/sign-in'
-                  className='py-2 px-4 text-white text-xl bg-main-2 hover:bg-main-3 hover:scale-105 transition-all rounded-lg'>
+                  href="/sign-in"
+                  className="py-2 px-4 text-white text-xl bg-main-2 hover:bg-main-3 hover:scale-105 transition-all rounded-lg">
                   SignIn
                 </Link>
               </li>
@@ -114,7 +114,7 @@ const Nav = () => {
         {/* mobile menu */}
         {/* <MobileMenu /> */}
       </div>
-      <div className='md:hidden left-0 top-[72px]'>
+      <div className="md:hidden left-0 top-[72px]">
         {/* <Sidebar /> */}
         <SmallNav />
       </div>

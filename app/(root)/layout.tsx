@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "ChatVibe",
   description: "video calling app",
   icons: {
-    icon: "/icons/logo.svg",
+    icon: "/images/logo.png",
   },
 };
 
