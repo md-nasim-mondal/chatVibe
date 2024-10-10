@@ -17,7 +17,7 @@ const connectDB = async (): Promise<void> => {
     // Connect to MongoDB with the provided URL
     await mongoose.connect(url);
 
-    console.log('MongoDB connected successfully');
+    // console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('MongoDB connection error:', error);
     throw new Error('Failed to connect to MongoDB');
