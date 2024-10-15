@@ -38,7 +38,7 @@ type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 type Message = string | { [key: string]: any }| any; // Can be a string or an object
 
 const MeetingRoom = () => {
-  const socket = io("http://localhost:4000");
+  const socket = io("https://chatvibecahtingbackend.onrender.com");
 
   const [displayChat, setDisplayChat] = useState(false)
 
