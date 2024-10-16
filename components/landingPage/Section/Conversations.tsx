@@ -67,8 +67,8 @@ const Conversations = () => {
             src={`https://i.ibb.co.com/9YQvyS2/bg.jpg`}
             alt="Secure Conversations"
             className="h-full lg:w-[460px] lg:h-[460px] mt-6 object-cover border-0 rounded-full md:ml-auto lg:ml-0"
-            width={320}
-            height={320}
+            width={540}
+            height={540}
           />
         </motion.div>
       </div>
