@@ -36,17 +36,22 @@ const ManageUsers: React.FC = () => {
     fetchUsers();
   }, []);
 
-  const handleRoleChangeFrontend = (userId: string, newRole: string) => {
-    setUsers((prevUsers) =>
-      prevUsers.map((user) =>
-        user._id === userId ? { ...user, role: newRole } : user
-      )
-    );
+  const handleRoleChangeFrontend = async(userId: string,email :string, newRole: string) => {
 
-    Swal.fire({
+  // update user role
+   try {
+    if(newRole === 'premiumUser'){
+      Swal.fire("premiumUser featured coming soon!");
+    }else{
+       await axios.put(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/updateRole?email=${email}`,
+      {
+    "role": newRole
+      });
+
+         Swal.fire({
       position: "top",
       icon: "success",
-      title: "User role update successful!!",
+      title: "User role update successfull",
       showConfirmButton: false,
       timer: 1500,
       background: "#227670",
@@ -54,6 +59,22 @@ const ManageUsers: React.FC = () => {
         title: "white-text",
       },
     });
+    }
+   } catch (error) {
+     Swal.fire({
+      icon: 'error',
+      title: "Something is worng!",
+     });
+   }
+
+
+    setUsers((prevUsers) =>
+      prevUsers.map((user) =>
+        user._id === userId ? { ...user, role: newRole } : user
+      )
+    );
+
+   
   };
 
   if (loading) {
@@ -112,7 +133,7 @@ const ManageUsers: React.FC = () => {
                   <select
                     value={user.role}
                     onChange={(e) =>
-                      handleRoleChangeFrontend(user._id, e.target.value)
+                      handleRoleChangeFrontend(user._id,user.emailAddresses,e.target.value)
                     }
                     className="bg-gray-700 text-white rounded px-2 py-1"
                   >
