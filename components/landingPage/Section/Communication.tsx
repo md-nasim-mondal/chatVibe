@@ -1,34 +1,77 @@
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 import SectionContainer from "../ShareComponents/SectionContainer";
 
 const Communication = () => {
+  // Animation variants
+  const imageVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      transition: { duration: 0.4, ease: "easeInOut" } 
+    },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.5, delay: 0.2, ease: "easeOut" } 
+    },
+  };
+
+  const buttonHover = {
+    scale: 1.1,
+    transition: { duration: 0.2, ease: "easeInOut" },
+  };
+
   return (
     <SectionContainer>
-      <div className='flex flex-col md:flex-row justify-around items-center gap-8'>
-        <div className='md:flex-1 lg:flex-initial'>
+      <div className="flex flex-col md:flex-row justify-around items-center gap-8">
+        {/* Image with animation */}
+        <motion.div
+          className="md:flex-1 lg:flex-initial"
+          variants={imageVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.5 }} // Trigger at 50% visibility
+        >
           <Image
             src={`https://i.ibb.co.com/M5GtMCV/message.png`}
-            alt='Secure Conversations'
-            className='lg:w-[460px] lg:h-[460px]  mt-6 object-cover border-0 rounded-xl'
+            alt="Secure Conversations"
+            className="lg:w-[460px] lg:h-[460px] mt-6 object-cover border-0 rounded-xl"
             width={320}
             height={320}
           />
-        </div>
+        </motion.div>
 
-        <div className='flex flex-col justify-center md:flex-1 lg:flex-initial'>
-          <h2 className='text-4xl font-bold'>
-            <span className='text-main-1'>Communication</span>{" "}
-            <span className='text-white'>with Live Discussions</span>
+        {/* Text content with animation */}
+        <motion.div
+          className="flex flex-col justify-center md:flex-1 lg:flex-initial"
+          variants={textVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.5 }}
+        >
+          <h2 className="text-4xl font-bold">
+            <span className="text-main-1">Communication</span>{" "}
+            <span className="text-white">with Live Discussions</span>
           </h2>
-          <p className='text-base text-white lg:w-[500px] pt-4'>
+          <p className="text-base text-white lg:w-[500px] pt-4">
             Discuss directly with the team, you can send document files for the
             next level of collaboration.
           </p>
-          <button className='p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-3 transition duration-300 border-0 text-white text-base mt-4 bg-main-2 '>
+          <motion.button
+            className="p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-3 transition duration-300 border-0 text-white text-base mt-4 bg-main-2"
+            whileHover={buttonHover}
+            whileTap={{ scale: 0.95 }}
+          >
             Learn More
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </SectionContainer>
   );
