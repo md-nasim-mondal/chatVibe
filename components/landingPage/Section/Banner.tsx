@@ -20,7 +20,7 @@ const Banner = () => {
     },
   ];
 
-  // Auto-slide every 3 seconds
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prevSlide) => (prevSlide + 1) % slides.length);
@@ -28,7 +28,7 @@ const Banner = () => {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  // Animation variants for the slides
+
   const slideVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 1000 : -1000,
@@ -48,12 +48,12 @@ const Banner = () => {
     <div className="overflow-x-hidden">
       <SectionContainer>
         <div className="flex flex-col-reverse md:flex-row items-center justify-evenly">
-          {/* Left Section - Text and Buttons */}
+
           <motion.div
             className="h-full flex flex-col justify-center text-left md:p-4 lg:p-4 lg:mr-4 space-y-4 lg:space-y-6"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }} // Animation when exiting
+            exit={{ opacity: 0, x: -50 }} 
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
@@ -62,8 +62,8 @@ const Banner = () => {
               <span className="text-main-1"> ChatVibe</span>
             </h1>
             <motion.div
-              whileHover={{ scale: 1.1 }} // Scale effect on hover
-              whileTap={{ scale: 0.9 }} // Scale down effect on tap
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <Link
@@ -81,7 +81,7 @@ const Banner = () => {
             </p>
           </motion.div>
 
-          {/* Right Section - Auto-Sliding Image/Slider */}
+       
           <motion.div
             className="flex-1 h-[500px] max-w-full md:max-w-[620px] pb-12 lg:max-w-[720px] lg:ml-8"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -91,7 +91,7 @@ const Banner = () => {
             <motion.div
               className="bg-[#d9d9d9] p-6 rounded-lg shadow-lg h-full flex flex-col justify-center space-y-4"
               key={activeSlide}
-              custom={1} // Adjust this to trigger unique animations
+              custom={1} 
               variants={slideVariants}
               initial="enter"
               animate="center"
