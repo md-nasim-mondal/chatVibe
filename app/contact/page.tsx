@@ -45,7 +45,7 @@ const Page = () => {
       title: "Your message has been sent successfully",
       showConfirmButton: false,
       timer: 1500,
-      background: "#9a9ae2",
+      background: "#227670",
       customClass: {
         title: "white-text",
       },
