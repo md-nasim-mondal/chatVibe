@@ -31,7 +31,7 @@ import { cn } from "@/lib/utils";
 import { io } from "socket.io-client";
 import { useUser } from "@clerk/clerk-react";
 import { RxCrossCircled } from "react-icons/rx";
-import { RiMessage3Fill } from "react-icons/ri";
+import { LuMessagesSquare } from "react-icons/lu";
 import { IoSend } from "react-icons/io5";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
@@ -41,7 +41,7 @@ const MeetingRoom = () => {
   // const socket = io("http://localhost:4000");
   const socket = io("https://chatvibecahtingbackend.onrender.com");
 
-  const [displayChat, setDisplayChat] = useState(false)
+  const [displayChat, setDisplayChat] = useState(false);
 
   console.log(displayChat);
 
@@ -55,12 +55,10 @@ const MeetingRoom = () => {
   const [showParticipants, setShowParticipants] = useState(false);
   const { useCallCallingState } = useCallStateHooks();
 
-  const {user} = useUser()
-
+  const { user } = useUser();
 
   useEffect(() => {
     socket.emit("join-room", meetingId);
-
     socket.on("messageFromServer", (mes: Message) => {
       setRes((prevRes) => [...prevRes, mes]); // Add the new message to the state
     });
@@ -71,14 +69,10 @@ const MeetingRoom = () => {
     };
   }, []);
 
-  // console.log(res);
-
   const handleSendMessage = (e: any) => {
     e.preventDefault();
     const message = e.target.message.value;
-    console.log(message);
-
-    const messageObj = {message, userinfo: user?.username }
+    const messageObj = { message, userinfo: user?.username };
 
     socket.emit("sendMessage", { meetingId, messageObj });
     e.target.reset();
@@ -108,7 +102,8 @@ const MeetingRoom = () => {
         <div
           className={cn("h-[calc(100vh-86px)] hidden ml-2", {
             "show-block": showParticipants,
-          })}>
+          })}
+        >
           <CallParticipantsList onClose={() => setShowParticipants(false)} />
         </div>
       </div>
@@ -128,7 +123,8 @@ const MeetingRoom = () => {
                 <DropdownMenuItem
                   onClick={() =>
                     setLayout(item.toLowerCase() as CallLayoutType)
-                  }>
+                  }
+                >
                   {item}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator className="border-dark-1" />
@@ -137,21 +133,23 @@ const MeetingRoom = () => {
           </DropdownMenuContent>
         </DropdownMenu>
         <CallStatsButton />
-        <button onClick={() => setShowParticipants((prev) => !prev)}>
+
+        <button title="Participents" onClick={() => setShowParticipants((prev) => !prev)}>
           <div className=" cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
             <Users size={20} className="text-white" />
           </div>
         </button>
-        {!isPersonalRoom && <EndCallButton />}
 
-
+        {/* chating button */}
         <button
-        onClick={() => setDisplayChat(!displayChat)}
-        title="Message/chat"
-        className="bg-dark-1 p-1 rounded-full">
-        <RiMessage3Fill className="text-3xl " />
-        <span className="text-[10px]">{res ? res.length : ""}</span>
-      </button>
+          onClick={() => setDisplayChat(!displayChat)}
+          title="Message/chat"
+          className="bg-[#20262c] p-2 rounded-full hover:bg-[#323B44]"
+        >
+          <LuMessagesSquare className="text-xl " />
+        </button>
+
+        {!isPersonalRoom && <EndCallButton />}
       </div>
 
       {/* chat box */}
@@ -166,16 +164,20 @@ const MeetingRoom = () => {
                     user?.username === msg.userinfo
                       ? "text-right bg-dark-4 my-1 rounded-lg overflow-hidden leading-[10px] mr-2"
                       : "bg-gray-500 my-1  rounded-lg overflow-hidden leading-[10px] ml-2"
-                  }`}>
-                  <span className="text-[10px] font-medium block bg-gray-200 px-2  text-blue-1">
+                  }`}
+                >
+                  <span className="text-xs font-medium block bg-gray-200 px-2  text-blue-1">
                     {msg.userinfo === user?.username ? "You" : msg.userinfo}
                   </span>
                   <br />
-                  <span className="text-lg font-bold pr-2">{msg.message}</span>
+                  <span className="text-lg font-bold px-2">{msg.message}</span>
                 </li>
               ))}
             </ul>
-            <form onSubmit={handleSendMessage} className="flex items-center justify-center">
+            <form
+              onSubmit={handleSendMessage}
+              className="flex items-center justify-center"
+            >
               <input
                 type="text"
                 name="message"
@@ -186,8 +188,8 @@ const MeetingRoom = () => {
                 type="submit"
                 className="max-w-[25%] mx-auto p-2 text-xl rounded-md bg-green-900 ml-2"
               >
-                <IoSend/>
-                </button>
+                <IoSend />
+              </button>
             </form>
           </div>
           <button
@@ -195,13 +197,12 @@ const MeetingRoom = () => {
               setDisplayChat(false);
             }}
             title="close"
-            className="text-white text-2xl rounded-full absolute top-0 right-0 hover:scale-105 hover:bg-red-700">
+            className="text-white text-2xl rounded-full absolute top-0 right-0 hover:scale-105 hover:bg-red-700"
+          >
             <RxCrossCircled />
           </button>
         </div>
       )}
-
-
     </section>
   );
 };
