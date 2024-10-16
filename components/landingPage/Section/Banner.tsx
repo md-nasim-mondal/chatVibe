@@ -62,17 +62,19 @@ const Banner = () => {
               <span className="text-main-1"> ChatVibe</span>
             </h1>
             <motion.div
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <Link
-                href="/dashboard"
-                className="w-full text-center bg-main-2 text-white p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-3 transition duration-300"
-              >
-                Try Now
-              </Link>
-            </motion.div>
+  className="flex justify-center w-full"
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ scale: 0.9 }}
+  transition={{ type: "spring", stiffness: 300 }}
+>
+  <Link
+    href="/dashboard"
+    className="w-full text-center bg-main-2 text-white p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-3 transition duration-300"
+  >
+    Try Now
+  </Link>
+</motion.div>
+
             <p className="mt-10 text-gray-300">
               Learn more about{" "}
               <a href="#" className="text-main-1 hover:underline">
