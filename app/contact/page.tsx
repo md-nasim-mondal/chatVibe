@@ -66,6 +66,7 @@ const Page = () => {
     },
     shake: {
       x: [0, -10, 10, -10, 10, 0],
+      y: [1, 10, -10, 10, -10, 1],
       transition: { duration: 0.5 },
     },
     bounce: {
@@ -90,7 +91,7 @@ const Page = () => {
             transition: "background-color 0.5s ease",
           }}
           variants={formVariants}
-          initial="hidden"
+          // initial="hidden"
           animate={formData.name || formData.email || formData.phone || formData.message ? "shake" : "visible"}
           whileHover={{ scale: 1.05 }} // Add a slight scaling effect on hover
         >
