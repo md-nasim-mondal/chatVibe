@@ -40,11 +40,12 @@ const Communication = () => {
           viewport={{ amount: 0.5 }} // Trigger at 50% visibility
         >
           <Image
-            src={`https://i.ibb.co.com/M5GtMCV/message.png`}
+          loading="lazy"
+            src={`/images/discussion-section-img.webp`}
             alt="Secure Conversations"
-            className="lg:w-[460px] lg:h-[460px] mt-6 object-cover border-0 rounded-xl"
-            width={320}
-            height={320}
+            className="max-w-full mt-6 object-cover border-0 rounded-xl"
+            width={580}
+            height={580}
           />
         </motion.div>
 

@@ -7,7 +7,7 @@ interface SectionContainerProps {
 const SectionContainer: React.FC<SectionContainerProps> = ({children}) => {
     return (
         <PageWrapper>
-        <section className='py-12 mx-auto'>
+        <section className='py-10 container mx-auto'>
             {children}
         </section>
         </PageWrapper>
