@@ -42,10 +42,7 @@ const MeetingRoom = () => {
   const socket = io("https://chatvibecahtingbackend.onrender.com");
 
   const [displayChat, setDisplayChat] = useState(false);
-
-  console.log(displayChat);
-
-  const [res, setRes] = useState<Message[]>([]); // State to store an array of messages
+  const [res, setRes] = useState<Message[]>([]);
 
   const { id: meetingId } = useParams();
   const searchParams = useSearchParams();
@@ -60,10 +57,9 @@ const MeetingRoom = () => {
   useEffect(() => {
     socket.emit("join-room", meetingId);
     socket.on("messageFromServer", (mes: Message) => {
-      setRes((prevRes) => [...prevRes, mes]); // Add the new message to the state
+      setRes((prevRes) => [...prevRes, mes]);
     });
 
-    // Cleanup to avoid duplicate listeners when component unmounts
     return () => {
       socket.off("messageFromServer");
     };
