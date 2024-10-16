@@ -143,6 +143,15 @@ const MeetingRoom = () => {
           </div>
         </button>
         {!isPersonalRoom && <EndCallButton />}
+
+
+        <button
+        onClick={() => setDisplayChat(!displayChat)}
+        title="Message/chat"
+        className="bg-dark-1 p-1 rounded-full">
+        <RiMessage3Fill className="text-3xl " />
+        <span className="text-[10px]">{res ? res.length : ""}</span>
+      </button>
       </div>
 
       {/* chat box */}
@@ -192,13 +201,7 @@ const MeetingRoom = () => {
         </div>
       )}
 
-      <button
-        onClick={() => setDisplayChat(!displayChat)}
-        title="Message/chat"
-        className="bg-blue-1 p-1 rounded-md absolute top-2/3 left-10">
-        <RiMessage3Fill className="text-3xl " />
-        <span className="text-[10px]">{res ? res.length : ""}</span>
-      </button>
+
     </section>
   );
 };
