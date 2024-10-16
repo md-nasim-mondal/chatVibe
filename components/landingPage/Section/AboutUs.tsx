@@ -1,6 +1,7 @@
 import React from "react";
 import SectionContainer from "../ShareComponents/SectionContainer";
 import Member from "../ShareComponents/Member";
+import { motion } from "framer-motion";
 
 const AboutUs = () => {
   const members = [
@@ -41,26 +42,37 @@ const AboutUs = () => {
       role: "Programmer/Developer",
     },
   ];
+
   return (
-      <SectionContainer>
-        <div id='about' className='text-center pb-12'>
-          <h2 className='text-4xl font-bold text-main-1'>About Us</h2>
-          <p className='text-xl font-semibold capitalize text-white'>
-            Meet our team members
-          </p>
-        </div>
-        <div className='flex gap-4 md:gap-2 flex-wrap justify-around'>
-          {members?.map(({ name, img, profession, role }, idx) => (
+    <SectionContainer>
+      <div id="about" className="text-center pb-12">
+        <h2 className="text-4xl font-bold text-main-1">About Us</h2>
+        <p className="text-xl font-semibold capitalize text-white">
+          Meet our team members
+        </p>
+      </div>
+      <div className="flex gap-4 md:gap-2 flex-wrap justify-around">
+        {members.map(({ name, img, profession, role }, idx) => (
+          <motion.button
+            key={idx + 1}
+            initial={{ opacity: 0.6 }}
+            whileHover={{
+              scale: 1.2,
+              transition: { duration: 1 },
+            }}
+            whileTap={{ scale: 0.9 }}
+            whileInView={{ opacity: 1 }}
+          >
             <Member
-              key={idx + 1}
               name={name}
               src={img}
               profession={profession}
               role={role}
             />
-          ))}
-        </div>
-      </SectionContainer>
+          </motion.button>
+        ))}
+      </div>
+    </SectionContainer>
   );
 };
 
