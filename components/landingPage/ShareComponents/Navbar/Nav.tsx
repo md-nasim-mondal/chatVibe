@@ -6,14 +6,12 @@ import { usePathname } from "next/navigation";
 import SmallNav from "./SmallNav";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const Nav = () => {
   const { user } = useUser() || {};
   const pathname = usePathname();
-  const [activeRoute, setActiveRoute] = useState(pathname); // State to manage the active route
-  const dynamicColorStart = "#14B8A6"; // Base teal color
-  const dynamicColorVia = "#14B8A6"; // Vibrant light teal
-  const dynamicColorEnd = "#14B8A6"; // Bright aqua color
+  const [activeRoute, setActiveRoute] = useState(pathname); 
 
   useEffect(() => {
     if (window.location.hash) {
@@ -23,7 +21,7 @@ const Nav = () => {
   }, []);
 
   const handleLinkClick = (address: React.SetStateAction<string>) => {
-    setActiveRoute(address); // Update the active route state
+    setActiveRoute(address); 
   };
 
   const navRoutes = [
@@ -35,11 +33,17 @@ const Nav = () => {
   ];
 
   return (
-    <nav className="text-main-1 bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0">
+    <motion.nav
+      className="text-main-1 bg-dark-1 shadow-lg relative flex justify-between items-center pr-2 py-5 md:p-0"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="flex justify-between items-center container mx-auto md:py-5">
         <Link
           href={`/`}
-          className="flex items-center text-center md:px-2 font-bold text-3xl text-main-1 gap-1">
+          className="flex items-center text-center md:px-2 font-bold text-3xl text-main-1 gap-1"
+        >
           <Image
             src={`/images/logo.png`}
             width={36}
@@ -48,11 +52,12 @@ const Nav = () => {
             className="max-sm:size-10"
           />
           <p
-            className="text-[26px] lg:text-3xl font-extrabold bg-clip-text text-transparent "
+            className="text-[26px] lg:text-3xl font-extrabold bg-clip-text text-transparent"
             style={{
               backgroundImage:
                 "linear-gradient(90deg, #14B8A6, #12A193, #10A0B0)",
-            }}>
+            }}
+          >
             ChatVibe
           </p>
         </Link>
@@ -61,64 +66,54 @@ const Nav = () => {
         <menu className="hidden md:flex items-center gap-20 text-white font-semibold mr-6">
           <ul className="flex gap-4">
             {navRoutes.map(({ label, address }, index) => {
-              // Check if the current route is active
               const isActive = activeRoute === address;
 
               return (
-                <li
+                <motion.li
                   key={index + 1}
                   className={`transition-all duration-300 ease-in-out transform text-lg ${
                     isActive
                       ? "text-main-1 border-b-2 border-b-main-1"
-                      : `hover:text-[#96d5cf] hover:bg-clip-text 
-                          hover:bg-gradient-to-r from-[${dynamicColorStart}] 
-                          via-[${dynamicColorVia}] to-[${dynamicColorEnd}] 
-                          hover:border-b-2 hover:border-b-transparent 
-                          hover:bg-clip-border hover:bg-gradient-to-r 
-                          hover:from-[${dynamicColorStart}] 
-                          hover:via-[${dynamicColorVia}] 
-                          hover:to-[${dynamicColorEnd}] 
-                          hover:scale-105 hover:shadow-lg`
-                  }`}>
+                      : "hover:text-[#96d5cf] hover:scale-105"
+                  }`}
+                  whileHover={{ scale: 1.1 }}
+                >
                   <Link href={address} onClick={() => handleLinkClick(address)}>
                     {label}
                   </Link>
-                </li>
+                </motion.li>
               );
             })}
           </ul>
         </menu>
 
-        <div>
-          {user ? (
-            <div className=" flex justify-center items-center">
-              <UserButton />
-            </div>
-          ) : (
-            <ul className="hidden md:flex items-center gap-1">
-              {/* <li className='py-2 px-4 text-white hover:text-white hover:scale-105 transition-all'>
-                <Button className='text-white text-xl bg-main-2 hover:bg-main-1'>
-                  <Link href='/sign-in'>Login</Link>
-                </Button>
-              </li> */}
-              <li>
-                <Link
-                  href="/sign-in"
-                  className="py-2 px-4 text-white text-xl bg-main-2 hover:bg-main-3 hover:scale-105 transition-all rounded-lg">
-                  SignIn
-                </Link>
-              </li>
-            </ul>
-          )}
-        </div>
+        {user ? (
+          <motion.div 
+          className="cursor-pointer"
+          whileHover={{ scale: 1.2, rotate: 15 }}
+          transition={{ type: "spring", stiffness: 300 }}
+       >
+            <UserButton />
+          </motion.div>
+        ) : (
+          <ul className="hidden md:flex items-center gap-1">
+            <li>
+              <Link
+                href="/sign-in"
+                className="py-2 px-4 text-white text-xl bg-main-2 hover:bg-main-3 hover:scale-105 transition-all rounded-lg"
+              >
+                SignIn
+              </Link>
+            </li>
+          </ul>
+        )}
+
         {/* mobile menu */}
-        {/* <MobileMenu /> */}
+        <div className="md:hidden left-0 top-[72px]">
+          <SmallNav />
+        </div>
       </div>
-      <div className="md:hidden left-0 top-[72px]">
-        {/* <Sidebar /> */}
-        <SmallNav />
-      </div>
-    </nav>
+    </motion.nav>
   );
 };
 

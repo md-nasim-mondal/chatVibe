@@ -8,6 +8,7 @@ const Statistics = () => {
   const { data } = useGetAllUsers();
 
   const totalAdmin = data?.filter((u) => u?.role === "admin");
+  const totaluser = data?.filter((u) => u?.role === "user");
 
   return (
     <section className="my-6 text-gray-800 rounded-md">
@@ -38,7 +39,9 @@ const Statistics = () => {
           </div>
           <div className="flex flex-col justify-center align-middle">
             <p className="text-3xl font-semibold leading-none">
-              {data?.length}
+             {
+              totaluser.length
+             }
             </p>
             <p className="capitalize">All users</p>
           </div>
