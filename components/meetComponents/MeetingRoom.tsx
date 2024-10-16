@@ -147,22 +147,22 @@ const MeetingRoom = () => {
 
       {/* chat box */}
       {displayChat && (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  bg-blue-1 p-4 rounded-md max-w-[300px]">
+        <div className="absolute top-1/2 right-4 -translate-y-1/2  bg-blue-1 p-4 rounded-md max-w-[300px]">
           <div className="relative">
-            <ul className="max-h-[300px] overflow-y-scroll">
+            <ul className="h-[300px] overflow-y-auto">
               {res.map((msg: Message, index: number) => (
                 <li
                   key={index}
                   className={`${
                     user?.username === msg.userinfo
-                      ? "text-right bg-dark-4 my-1 pr-4 rounded-md"
-                      : "bg-gray-500 my-1 pl-4 rounded-md leading-3"
+                      ? "text-right bg-dark-4 my-1 rounded-lg overflow-hidden leading-[10px] mr-2"
+                      : "bg-gray-500 my-1  rounded-lg overflow-hidden leading-[10px] ml-2"
                   }`}>
-                  <span className="text-[10px] font-medium">
+                  <span className="text-[10px] font-medium block bg-gray-200 px-2  text-blue-1">
                     {msg.userinfo === user?.username ? "You" : msg.userinfo}
                   </span>
                   <br />
-                  <span className="text-xl font-bold">{msg.message}</span>
+                  <span className="text-lg font-bold pr-2">{msg.message}</span>
                 </li>
               ))}
             </ul>
@@ -195,8 +195,8 @@ const MeetingRoom = () => {
       <button
         onClick={() => setDisplayChat(!displayChat)}
         title="Message/chat"
-        className="bg-blue-1 p-1 rounded-md absolute top-2/3 right-10">
-        <RiMessage3Fill className="text-2xl " />
+        className="bg-blue-1 p-1 rounded-md absolute top-2/3 left-10">
+        <RiMessage3Fill className="text-3xl " />
         <span className="text-[10px]">{res ? res.length : ""}</span>
       </button>
     </section>
