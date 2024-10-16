@@ -92,7 +92,7 @@ const Page = () => {
           variants={formVariants}
           initial="hidden"
           animate={formData.name || formData.email || formData.phone || formData.message ? "shake" : "visible"}
-          whileHover={{ scale: 1.05 }} 
+          whileHover={{ scale: 1.05 }} // Add a slight scaling effect on hover
         >
           <h2 className='text-center text-2xl md:text-3xl font-extrabold text-gray-900 uppercase mb-4'>
             Contact Us

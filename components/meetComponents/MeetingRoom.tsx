@@ -56,8 +56,6 @@ const MeetingRoom = () => {
   const { useCallCallingState } = useCallStateHooks();
 
   const {user} = useUser()
-  // console.log(user?.username)
-  // console.log(meetingId);
 
 
   useEffect(() => {
