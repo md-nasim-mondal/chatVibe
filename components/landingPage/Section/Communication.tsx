@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import SectionContainer from "../ShareComponents/SectionContainer";
 
 const Communication = () => {
-  // Animation variants
+
   const imageVariants = {
     hidden: { opacity: 0, x: -100 },
     visible: { 
