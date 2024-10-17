@@ -1,5 +1,5 @@
-import { useRouter } from "next/navigation";
-import React from "react";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 interface ToggleBtnProps {
   setToggle: (value: string) => void;
@@ -8,6 +8,21 @@ interface ToggleBtnProps {
 
 const ToggleBtn: React.FC<ToggleBtnProps> = ({ setToggle, toggle }) => {
   const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname === "/dashboard") {
+      setToggle("user");
+    } else if (
+      pathname === "/dashboard/admin-statistics" ||
+      pathname === "/dashboard/manage-user"
+    ) {
+      setToggle("admin");
+    } else {
+      setToggle("user");
+    }
+  }, [pathname]);
+
   const userHandler = () => {
     router.push("/dashboard");
     setTimeout(() => {
