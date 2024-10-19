@@ -6,7 +6,8 @@ First, run the development server:
 
 ```bash
 #cloneing the reop
-git clone https:www.github.com/
+[git clone https:www.github.com/](https://github.com/md-nasim-mondal/chatVibe.git)
+
 #then run `npm i` for install dependencies
 npm i
 
