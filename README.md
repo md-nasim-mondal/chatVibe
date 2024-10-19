@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 First, run the development server:
 
 ```bash
-#fon cloning the reop
+#fon cloneing the reop
 [git clone https:www.github.com/](https://github.com/md-nasim-mondal/chatVibe.git)
 
 #then run `npm i` for install dependencies
