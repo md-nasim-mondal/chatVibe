@@ -1,3 +1,4 @@
+'use client'
 import { useState } from "react";
 import { FiSend } from "react-icons/fi";
 import { AiOutlinePaperClip } from "react-icons/ai";
@@ -24,13 +25,14 @@ const ChattingPlace = () => {
   };
 
   return (
-    <div className="bg-gray-900 p-4 rounded-xl shadow-lg w-full md:w-3/4 mx-auto mt-10">
-      <div className="h-96 bg-gray-800 rounded-xl p-4 overflow-y-auto">
+   <div>
+     <div className="bg-gray-900 p-4 rounded-xl shadow-lg   mx-auto">
+      <div className="h-[60vh] bg-gray-800 rounded-xl p-4 overflow-y-auto">
         {/* Placeholder for the chat messages */}
         <div className="text-gray-400 text-center my-5">No messages yet...</div>
       </div>
 
-      <div className="mt-4 flex items-center space-x-3">
+      <div className="mt-4 flex items-center space-x-3 ">
         <div className="relative">
           <input
             type="file"
@@ -73,6 +75,7 @@ const ChattingPlace = () => {
         </div>
       )}
     </div>
+   </div>
   );
 };
 

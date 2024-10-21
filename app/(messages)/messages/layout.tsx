@@ -10,11 +10,11 @@ function layout({ children }: { children: ReactNode }) {
      <Navbar />
 
       <div  className="flex gap-4">
-          <div className="mt-14">
+          <div className="mt-12">
             <MessageUserList position="left-0" place="block"/> 
          
           </div>
-          <div className="p-5  mt-14">
+          <div className="p-5 flex-1 mt-14">
             {children}
           </div>
       </div>

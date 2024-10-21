@@ -40,7 +40,8 @@ const [users, setUsers] = useState<User[]>([]);
   return (
    <div>
   
-     <div className={` ${position} ${place} mt-6 p-2 md:w-96  bg-gray-900 shadow-lg rounded-lg z-50  border-2 overflow-y-scroll max-h-[90vh]`}>
+     <div className={` ${position} ${place} mt-6 p-2 md:w-96 sticky  bg-gray-900 shadow-lg rounded-lg z-50  border-2 overflow-y-scroll max-h-[calc(100vh-71px)]
+`}>
 
       <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2">
         {
