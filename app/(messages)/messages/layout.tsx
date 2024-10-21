@@ -14,7 +14,7 @@ function layout({ children }: { children: ReactNode }) {
             <MessageUserList position="left-0" place="block"/> 
          
           </div>
-          <div className="p-5 pt-10 mt-14">
+          <div className="p-5  mt-14">
             {children}
           </div>
       </div>

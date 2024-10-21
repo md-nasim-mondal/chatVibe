@@ -1,11 +1,14 @@
+import PartnerProfile from "@/components/messageComponents/PartnerProfile"
 
 
 function page() {
   return (
     <div>
-      sdkfjsdkfjsdkfj
+     <PartnerProfile />
     </div>
   )
 }
 
 export default page
+
+
