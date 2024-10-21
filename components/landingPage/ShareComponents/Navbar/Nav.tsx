@@ -105,7 +105,7 @@ const Nav = () => {
                     <BsChatSquareText  className="text-main-1 text-xl font-extrabold hover:scale-105 transition-all"/>
                     
                     {
-                      isDropDown && <MessageUserList    position ="right-0"/>
+                      isDropDown && <MessageUserList    position ="right-0" place="absolute"/>
                     }
                 </div>
 

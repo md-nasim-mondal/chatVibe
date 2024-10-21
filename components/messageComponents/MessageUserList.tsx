@@ -17,9 +17,10 @@ interface User {
 }
 interface MessageUserListProps {
   position: string;
+  place: string;
 }
 
-const MessageUserList: React.FC<MessageUserListProps> = ({ position }) => {
+const MessageUserList: React.FC<MessageUserListProps> = ({ position,place }) => {
 const [users, setUsers] = useState<User[]>([]);
 
  
@@ -38,12 +39,12 @@ const [users, setUsers] = useState<User[]>([]);
 
   return (
    <div>
-     <div className={`absolute ${position}  mt-6 p-2 md:w-96  bg-gray-900 shadow-lg rounded-lg z-50  border-2 overflow-y-scroll max-h-[90vh]`}>
+     <div className={` ${position} ${place} mt-6 p-2 md:w-96  bg-gray-900 shadow-lg rounded-lg z-50  border-2 overflow-y-scroll max-h-[90vh]`}>
 
       <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2">
         {
           users.map((user)=><li>
-             <Link href={`/messages`}>
+             <Link href={`/messages/${user._id}`}>
               <div className='flex items-center'>
               <span className="p-2 hidden md:block">
               <img src={user.imageUrl} alt={user.fullName} className="w-10 h-10 rounded-full" />
