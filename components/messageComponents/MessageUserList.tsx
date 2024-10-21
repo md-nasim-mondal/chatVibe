@@ -1,4 +1,4 @@
-
+'use client'
 import useGetAllUsers from '@/hooks/apiHooks/userHooks/useGetAllUser';
 import axios from 'axios';
 import { Divide } from 'lucide-react';
@@ -15,8 +15,11 @@ interface User {
   role: string;
   data: object;
 }
+interface MessageUserListProps {
+  position: string;
+}
 
-function MessageUserList() {
+const MessageUserList: React.FC<MessageUserListProps> = ({ position }) => {
 const [users, setUsers] = useState<User[]>([]);
 
  
@@ -35,12 +38,12 @@ const [users, setUsers] = useState<User[]>([]);
 
   return (
    <div>
-     <div className="absolute right-0 mt-6 p-2 md:w-96  bg-gray-900 shadow-lg rounded-lg z-50  border-2 overflow-y-scroll max-h-[90vh]">
+     <div className={`absolute ${position}  mt-6 p-2 md:w-96  bg-gray-900 shadow-lg rounded-lg z-50  border-2 overflow-y-scroll max-h-[90vh]`}>
 
       <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2">
         {
           users.map((user)=><li>
-             <Link href={`/message/${user.firstName}`}>
+             <Link href={`/messages`}>
               <div className='flex items-center'>
               <span className="p-2 hidden md:block">
               <img src={user.imageUrl} alt={user.fullName} className="w-10 h-10 rounded-full" />

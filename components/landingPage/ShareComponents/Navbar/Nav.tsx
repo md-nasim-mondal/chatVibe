@@ -12,6 +12,7 @@ import { IoNotifications } from "react-icons/io5";
 import MessageUserList from "@/components/messageComponents/MessageUserList";
 
 
+
 const Nav = () => {
   const [isDropDown,setIsDropDown] = useState(false)
   const { user } = useUser() || {};
@@ -104,7 +105,7 @@ const Nav = () => {
                     <BsChatSquareText  className="text-main-1 text-xl font-extrabold hover:scale-105 transition-all"/>
                     
                     {
-                      isDropDown && <MessageUserList />
+                      isDropDown && <MessageUserList    position ="right-0"/>
                     }
                 </div>
 
