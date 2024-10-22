@@ -1,28 +1,50 @@
-import connectDB from "@/lib/connectDB";
-import User from "@/schemas/userSchema";
-import { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { useState, useEffect } from "react";
 
-// Connect to the database
-connectDB();
-
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
-  try {
-   const { id } = req.query; // get ID from URL
-
-    if (!id) {
-      return NextResponse.json({ message: 'id  is required' }, { status: 400 });
-    }
-
-    // Find user by email
-    const user = await User.findOne({ _d: id }); // Replace 'emailAddresses' with your schema's field
-   
-    if (!user) {
-      return NextResponse.json({ message: 'User not found' }, { status: 404 });
-    }
-
-    return NextResponse.json(user,{status:201});
-  } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
-  }
+interface User {
+ _id: string;
+  emailAddresses: string;
+  firstName?: string;
+  lastName?: string;
+  fullName?: string;
+  imageUrl?: string;
 }
+
+interface UseGetOneUserReturn {
+  user: User | null;
+  loading: boolean;
+  error: string | null;
+}
+
+const useGetOneUser = (id: string): UseGetOneUserReturn => {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Fetch the user when the component mounts or ID changes
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/user/oneUser?id=${id}`);
+        
+        if (!response.ok) {
+          throw new Error("Failed to fetch user");
+        }
+
+        const data = await response.json();
+        setUser(data); // Assuming the API returns the user object
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Unknown error");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (id) {
+      fetchUser();
+    }
+  }, [id]);
+
+  return { user, loading, error };
+};
+
+export default useGetOneUser;

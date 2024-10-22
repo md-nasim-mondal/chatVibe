@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 const ChattingPlace = () => {
   const [message, setMessage] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  
 
   const handleSendMessage = () => {
     if (message.trim() || file) {
