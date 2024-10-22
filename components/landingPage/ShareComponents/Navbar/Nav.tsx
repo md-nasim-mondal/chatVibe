@@ -100,9 +100,15 @@ const Nav = () => {
             <li>
               <Link
                 href="/sign-in"
-                className="py-2 px-4 text-white text-xl bg-main-2 hover:bg-main-3 hover:scale-105 transition-all rounded-lg"
+               
               >
-                SignIn
+<Button
+  className=" text-white bg-main-2   px-7 hover:bg-transparent hover:border
+  transition-all duration-300 ease-in-out transform hover:scale-105"
+>
+  Login
+</Button>
+
               </Link>
             </li>
           </ul>
