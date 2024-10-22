@@ -6,6 +6,7 @@ import Banner from "@/components/landingPage/Section/Banner";
 import Conversations from "@/components/landingPage/Section/Conversations";
 import { useUser } from "@clerk/clerk-react";
 import saveUserApi from "@/utilities/api-call/saveUserApi";
+import Ready from "@/components/landingPage/Section/Ready";
 
 
 const LandingPage = () => {
@@ -21,6 +22,7 @@ const LandingPage = () => {
       <Communication />
       <Conversations />
       <AboutUs />
+     <Ready />
     </div>
   );
 };
