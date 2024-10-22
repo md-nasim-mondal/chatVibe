@@ -8,10 +8,34 @@ const IndustrySolutionsSection: React.FC = () => {
     transition: { type: "spring", stiffness: 250 },
   };
 
+  // Card animation
+  const cardAnimation = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.1 },
+    }),
+  };
+
+  const cards = [
+    { icon: '🎓', title: 'Education' },
+    { icon: '💰', title: 'Financial Services' },
+    { icon: '🏛️', title: 'Government' },
+    { icon: '🏥', title: 'Healthcare' },
+    { icon: '🏭', title: 'Manufacturing' },
+    { icon: '🏷️', title: 'Retail' },
+  ];
+
   return (
     <section className="flex flex-col md:flex-row container mx-auto items-center py-16 gap-8 text-white rounded-xl bg-[#184e47]">
       {/* Title and Description */}
-      <div className="text-center mb-12 max-w-3xl">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 100 }}
+        viewport={{ once: false, amount: 0.5 }}
+         className="text-center mb-12 max-w-3xl">
         <h2 className="text-3xl md:text-4xl font-semibold mb-4">
           Empowering Communication with ChatVibe
         </h2>
@@ -27,71 +51,29 @@ const IndustrySolutionsSection: React.FC = () => {
             Explore ChatVibe Solutions
           </Button>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Cards Container */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl">
-                {/* Individual Cards */}
-                <div className="flex items-center justify-center border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
-                    <div className="text-center">
-                        <div className="mb-4">
-                            {/* Replace with the appropriate icon */}
-                            <span className="text-4xl">🎓</span>
-                        </div>
-                        <h3 className="text-xl font-medium text-white">Education</h3>
-                    </div>
-                </div>
-
-                <div className="flex items-center justify-center border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
-                    <div className="text-center">
-                        <div className="mb-4">
-                            {/* Replace with the appropriate icon */}
-                            <span className="text-4xl">💰</span>
-                        </div>
-                        <h3 className="text-xl font-medium text-white">Financial Services</h3>
-                    </div>
-                </div>
-
-                <div className="flex items-center justify-center border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
-                    <div className="text-center">
-                        <div className="mb-4">
-                            {/* Replace with the appropriate icon */}
-                            <span className="text-4xl">🏛️</span>
-                        </div>
-                        <h3 className="text-xl font-medium text-white">Government</h3>
-                    </div>
-                </div>
-
-                <div className="flex items-center justify-center border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
-                    <div className="text-center">
-                        <div className="mb-4">
-                            {/* Replace with the appropriate icon */}
-                            <span className="text-4xl">🏥</span>
-                        </div>
-                        <h3 className="text-xl font-medium text-white">Healthcare</h3>
-                    </div>
-                </div>
-
-                <div className="flex items-center justify-center border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
-                    <div className="text-center">
-                        <div className="mb-4">
-                            {/* Replace with the appropriate icon */}
-                            <span className="text-4xl">🏭</span>
-                        </div>
-                        <h3 className="text-xl font-medium text-white">Manufacturing</h3>
-                    </div>
-                </div>
-
-                <div className="flex items-center justify-center border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
-                    <div className="text-center">
-                        <div className="mb-4">
-                            {/* Replace with the appropriate icon */}
-                            <span className="text-4xl">🏷️</span>
-                        </div>
-                        <h3 className="text-xl font-medium text-white">Retail</h3>
-                    </div>
-                </div>
+        {/* Individual Cards */}
+        {cards.map((card, index) => (
+          <motion.div
+            key={index}
+            className="flex items-center justify-center border border-gray-200 rounded-lg p-6 hover:shadow-lg transition"
+            initial="hidden"
+            whileInView="visible"
+            variants={cardAnimation}
+            custom={index}
+          >
+            <div className="text-center">
+              <div className="mb-4">
+                <span className="text-4xl">{card.icon}</span>
+              </div>
+              <h3 className="text-xl font-medium text-white">{card.title}</h3>
             </div>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 };
