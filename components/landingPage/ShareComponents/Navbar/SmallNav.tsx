@@ -122,7 +122,7 @@ const SmallNav = () => {
                       className={cn(
                         "flex gap-4 items-center p-4 rounded-lg w-full max-w-60 transition-all duration-300",
                         {
-                          "bg-main-1": isActive, // Active link style
+                          "bg-main-2": isActive, // Active link style
                         }
                       )}>
                       <Image
