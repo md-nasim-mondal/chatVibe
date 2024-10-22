@@ -14,9 +14,9 @@ interface IUser extends Document {
 
 const userSchema = new Schema<IUser>({
   emailAddresses: { type: String, required: true, unique: true },
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  fullName: { type: String, required: true },
+  firstName: { type: String },
+  lastName: { type: String },
+  fullName: { type: String },
   imageUrl: { type: String },
   role: { type: String, enum: ['user', 'admin'], default: 'user' }
   // Define other fields

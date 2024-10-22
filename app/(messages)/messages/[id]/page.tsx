@@ -22,7 +22,7 @@ function Page() {
   return (
     <div>
       <PartnerProfile user={user} /> {/* Pass user data to components */}
-      <ChattingPlace  />  {/* Pass user data to components */}
+      <ChattingPlace  partner={user} />  {/* Pass user data to components */}
     </div>
   );
 }

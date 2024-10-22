@@ -4,11 +4,27 @@ import { FiSend } from "react-icons/fi";
 import { AiOutlinePaperClip } from "react-icons/ai";
 import { motion } from "framer-motion";
 
-const ChattingPlace = () => {
+interface Partner{
+  _id: string;
+  emailAddresses: string;
+  firstName?: string;
+  lastName?: string;
+  fullName?: string;
+  imageUrl?: string;
+}
+
+interface ChattingPlaceProps{
+  partner : Partner;
+}
+
+
+const ChattingPlace:React.FC<ChattingPlaceProps> = ({partner}) => {
   const [message, setMessage] = useState("");
   const [file, setFile] = useState<File | null>(null);
   
 
+  console.log(partner._id, "This is Seander Id")
+  // send message
   const handleSendMessage = () => {
     if (message.trim() || file) {
       // Add logic to send message or file
