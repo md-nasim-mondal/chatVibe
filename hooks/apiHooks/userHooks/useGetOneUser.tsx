@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 interface User {
- _id: string;
+_id: string;
   emailAddresses: string;
   firstName?: string;
   lastName?: string;
@@ -10,13 +10,13 @@ interface User {
 }
 
 interface UseGetOneUserReturn {
-  user: User | null;
+  user: User | [];
   loading: boolean;
   error: string | null;
 }
 
 const useGetOneUser = (id: string): UseGetOneUserReturn => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | []>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 

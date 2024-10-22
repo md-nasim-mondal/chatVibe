@@ -15,14 +15,14 @@ function Page() {
 
   // Fetch user data using the custom hook
   const { user, loading, error } = useGetOneUser(id);
- 
-  if (loading) return <div><Loader/></div>;
+
+  if (loading) return <div><Loader /></div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
     <div>
-      <PartnerProfile  /> {/* Pass user data to components */}
-      <ChattingPlace />  {/* Pass user data to components */}
+      <PartnerProfile user={user} /> {/* Pass user data to components */}
+      <ChattingPlace  />  {/* Pass user data to components */}
     </div>
   );
 }
