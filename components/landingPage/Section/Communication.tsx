@@ -37,7 +37,7 @@ const Communication = () => {
           variants={imageVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.5 }} // Trigger at 50% visibility
+          viewport={{ amount: 0.5 }}
         >
           <Image
           loading="lazy"
@@ -49,7 +49,7 @@ const Communication = () => {
           />
         </motion.div>
 
-        {/* Text content with animation */}
+
         <motion.div
           className="flex flex-col justify-center md:flex-1 lg:flex-initial"
           variants={textVariants}
