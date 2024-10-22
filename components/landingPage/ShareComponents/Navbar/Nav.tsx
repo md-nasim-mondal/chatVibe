@@ -103,7 +103,7 @@ const Nav = () => {
                
               >
 <Button
-  className=" text-white bg-main-2   px-7 hover:bg-transparent hover:border
+  className=" text-white bg-main-2  px-7 hover:bg-transparent hover:border
   transition-all duration-300 ease-in-out transform hover:scale-105"
 >
   Login

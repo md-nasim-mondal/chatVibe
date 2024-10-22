@@ -7,6 +7,7 @@ import Conversations from "@/components/landingPage/Section/Conversations";
 import { useUser } from "@clerk/clerk-react";
 import saveUserApi from "@/utilities/api-call/saveUserApi";
 import Ready from "@/components/landingPage/Section/Ready";
+import ScreenRecording from "@/components/landingPage/Section/ScreenRecording";
 
 
 const LandingPage = () => {
@@ -20,6 +21,7 @@ const LandingPage = () => {
     <div>
       <Banner />
       <Communication />
+      <ScreenRecording />
       <Conversations />
       <AboutUs />
      <Ready />
