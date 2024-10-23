@@ -9,21 +9,37 @@ const Banner = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const slides = [
     {
-      text: "Get a Link You can share",
-      description: "Click new meeting to create a new meeting and share the link",
-      img: "https://www.gstatic.com/meet/premium_carousel_02_174e55774263506d1280ce6552233189.gif",
+      text: "Get a Link You Can Share",
+      description: "Click new meeting to create a new meeting and share the link.",
+      img: "https://i.ibb.co/n1F00XJ/Screenshot-76-removebg-preview-1.png",
     },
     {
-      text: "Connect with anyone",
+      text: "Connect with Anyone",
       description: "Invite your team members to join the meeting via a shared link.",
-      img: "https://i.ibb.co.com/0nvdBq6/isometric-recruiting-icon-with-male-recruiter-communicating-with-two-job-candidates-round-office-tab.png",
+      img: "https://i.ibb.co/0nvdBq6/isometric-recruiting-icon-with-male-recruiter-communicating-with-two-job-candidates-round-office-tab.png",
+    },
+    {
+      text: "Your meeting is safe",
+      description: "No one can join a meeting unless invited or admitted by host.",
+      img: "https://i.ibb.co/fnFdFVD/secure.png",
+    },
+    {
+      text: "User friendly interface",
+      description: "Navigate through our intuitive platform with ease.",
+      img: "https://i.ibb.co/ynh16GR/memory.png",
+    },
+    {
+      text: "Record Your Meetings",
+      description: "Capture important discussions and decisions by recording your meetings.",
+      img: "https://i.ibb.co/8m4bpcH/3707547-removebg-preview.png",
     },
   ];
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 2000); // Change interval to 2000 milliseconds (2 seconds)
+    }, 4000); 
     return () => clearInterval(interval);
   }, [slides.length]);
 
