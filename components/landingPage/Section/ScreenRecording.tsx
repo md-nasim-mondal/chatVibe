@@ -23,11 +23,11 @@ const ScreenRecording = () => {
         {/* Left: SVG Mockup */}
 
 
-<div className="md:hidden lg:flex">
+<div className=" relative">
 
 
 <h4
-          className="absolute z-50 mt-20 md:mt-0 text-center leading-9 flex items-center justify-center md:top-[107px] left-[32%] md:left-[17%]"
+          className="absolute z-50 text-center leading-9 flex items-center justify-center top-[107px] left-[25%]"
           style={{
             color: "#5F1D4E",
             fontFamily: "Montserrat",
@@ -38,7 +38,7 @@ const ScreenRecording = () => {
           Real-time team <br /> chat for your <br /> product universe
         </h4>
         <h6
-          className="absolute z-50 mt-20 md:mt-0 text-center flex items-center justify-center top-[38%] md:top-[70%] left-[33.2%] md:left-[17%]"
+          className="absolute z-50  text-center flex items-center justify-center top-[70%] left-[29%]"
           style={{
             color: "#677471",
             fontFamily: "Montserrat",
@@ -54,7 +54,7 @@ const ScreenRecording = () => {
 
         <Link
           href={`/dashboard`}
-          className="absolute z-40 top-[50%] md:top-[80%] left-[35.2%] md:left-[17.67%]"
+          className="absolute z-40 top-[80%] left-[32%]"
         >
           <motion.div whileHover={buttonHover} className="inline-block mt-6">
             <Button className="border text-white bg-main-2 px-7 hover:bg-dark-1 transition-all duration-200 ease-in-out">
@@ -70,7 +70,7 @@ const ScreenRecording = () => {
           height="238"
           viewBox="0 0 238 238"
           fill="none"
-          className="absolute z-20 top-[23%] md:top-[35.5%] left-[21.6%] md:left-[14.5%]"
+          className="absolute z-20 top-[35.5%] left-[14.5%]"
         >
           <circle
             cx="119"
@@ -83,7 +83,7 @@ const ScreenRecording = () => {
 
         {/* 2nd */}
         <svg
-          className="absolute z-20 top-[25.4%] md:top-[39.5%] left-[29.5%] md:left-[16.3%]"
+          className="absolute z-20 top-[39.9%] left-[23.5%]"
           xmlns="http://www.w3.org/2000/svg"
           width="176"
           height="176"
@@ -101,7 +101,7 @@ const ScreenRecording = () => {
 
         {/* 3rd */}
         <svg
-          className="z-40 absolute left-[29%] md:left-[15%] top-[22.9%] md:top-[37.8%]"
+          className="z-40 absolute left-[18%] top-[36.8%]"
           xmlns="http://www.w3.org/2000/svg"
           width="46"
           height="46"
@@ -113,7 +113,7 @@ const ScreenRecording = () => {
 
         {/* 4 */}
         <svg
-          className="z-40 absolute left-[31%] md:left-[15.5%] top-[23.8%] md:top-[39%]"
+          className="z-40 absolute left-[20.5%] top-[38.4%]"
           xmlns="http://www.w3.org/2000/svg"
           width="28"
           height="24"
@@ -129,7 +129,7 @@ const ScreenRecording = () => {
         {/* 5 */}
 
         <svg
-          className="z-40 absolute left-[65%] md:left-[24.5%] top-[37%] md:top-[58%]"
+          className="z-40 absolute left-[69.5%] top-[59%]"
           xmlns="http://www.w3.org/2000/svg"
           width="48"
           height="48"
@@ -146,7 +146,7 @@ const ScreenRecording = () => {
         {/* 6 */}
 
         <svg
-          className="z-50 absolute top-[20%] md:top-[31%] left-[47%] md:left-[20%] "
+          className="z-50 absolute top-[31%] left-[45%] "
           xmlns="http://www.w3.org/2000/svg"
           width="165"
           height="165"
@@ -268,7 +268,7 @@ const ScreenRecording = () => {
           />
         </svg>
 
-        <div className="w-full max-w-sm relative">
+        <div className="w-full ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="344"
