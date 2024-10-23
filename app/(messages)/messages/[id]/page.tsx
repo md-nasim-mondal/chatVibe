@@ -8,11 +8,11 @@ import { useEffect } from "react";
 
 interface Params {
   id: string;
+  user: object;
 }
 
 function Page() {
   const { id } = useParams() as unknown as Params; // Type assertion for `useParams` output
-
   // Fetch user data using the custom hook
   const { user, loading, error } = useGetOneUser(id);
 
