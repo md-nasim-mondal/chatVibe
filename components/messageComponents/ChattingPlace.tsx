@@ -36,9 +36,18 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner,senderId}) => {
 
   // send message
   const handleSendMessage = () => {
-    if (message.trim() || file) {
+    if (message.trim()) {
       // Add logic to send message or file
-      console.log("Message Sent: ", message, reciverId,senderId);
+       if(socketIo){
+         socketIo.emit('new message',{
+          sender: senderId,
+          reciver: reciverId,
+          text : message,
+          imageUrl: '',
+          videoUrl: '',
+          msgByUserId: senderId
+         })
+       }
       
       setMessage("");
       setFile(null);
