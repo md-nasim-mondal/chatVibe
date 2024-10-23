@@ -11,7 +11,7 @@ const Banner = () => {
     {
       text: "Get a Link You Can Share",
       description: "Click new meeting to create a new meeting and share the link.",
-      img: "https://www.gstatic.com/meet/user_edu_get_a_link_light_90698cd7b4ca04d3005c962a3756c42d.svg",
+      img: "https://i.ibb.co/n1F00XJ/Screenshot-76-removebg-preview-1.png",
     },
     {
       text: "Connect with Anyone",
@@ -20,21 +20,21 @@ const Banner = () => {
     },
     {
       text: "Your meeting is safe",
-      description: "No one can join a meeting unless invited or admitted by host",
-      img: "https://i.ibb.co.com/fnFdFVD/secure.png", 
+      description: "No one can join a meeting unless invited or admitted by host.",
+      img: "https://i.ibb.co/fnFdFVD/secure.png",
     },
     {
       text: "User friendly interface",
       description: "Navigate through our intuitive platform with ease.",
-      img: "https://i.ibb.co/ynh16GR/memory.png", 
+      img: "https://i.ibb.co/ynh16GR/memory.png",
     },
- 
     {
       text: "Record Your Meetings",
       description: "Capture important discussions and decisions by recording your meetings.",
-      img: "https://www.gstatic.com/meet/premium_carousel_04_9659d3a952a74b27223836d673fe391f.gif",
+      img: "https://i.ibb.co/8m4bpcH/3707547-removebg-preview.png",
     },
   ];
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
