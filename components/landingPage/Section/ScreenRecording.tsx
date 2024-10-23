@@ -22,7 +22,11 @@ const ScreenRecording = () => {
       <div className="flex justify-between items-center flex-col  md:flex-row ">
         {/* Left: SVG Mockup */}
 
-        <h4
+
+<div className="md:hidden lg:flex">
+
+
+<h4
           className="absolute z-50 mt-20 md:mt-0 text-center leading-9 flex items-center justify-center md:top-[107px] left-[32%] md:left-[17%]"
           style={{
             color: "#5F1D4E",
@@ -279,8 +283,11 @@ const ScreenRecording = () => {
             />
           </svg>
         </div>
+
+</div>
+
         {/* Right: Text Section */}
-        <div className="md:right-[7.17%] bg-main-2 p-8 text-white rounded-xl mt-4 md:mt-0 md:absolute">
+        <div className=" max-w-[1000px] bg-main-2 p-8 text-white rounded-xl mt-4 md:mt-0">
           <motion.h5
             className="uppercase text-sm tracking-wide mb-2"
             variants={textVariant}
