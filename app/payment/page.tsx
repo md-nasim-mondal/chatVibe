@@ -38,7 +38,7 @@ const PaymentPage = () => {
 
   return (
     <div className="mt-60">
-      <h2 className="text-white text-center mb-8 text-3xl">Checkout - {price ? `$${price}` : 'No Price Selected'}</h2>
+      
       <Elements stripe={stripePromise}>
         <CheckoutForm price={price} /> {/* Pass price as prop */}
       </Elements>
