@@ -28,7 +28,7 @@ const IndustrySolutionsSection: React.FC = () => {
   ];
 
   return (
-    <section className="flex flex-col md:flex-row container mx-auto items-center py-16 gap-8 text-white rounded-xl bg-[#184e47]">
+    <section className="flex flex-col lg:flex-row container mx-auto items-center py-16 gap-8 text-white rounded-xl bg-[#184e47]">
       {/* Title and Description */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -55,25 +55,27 @@ const IndustrySolutionsSection: React.FC = () => {
 
       {/* Cards Container */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl">
-        {/* Individual Cards */}
-        {cards.map((card, index) => (
-          <motion.div
-            key={index}
-            className="flex items-center justify-center border border-gray-200 rounded-lg p-6 hover:shadow-lg transition"
-            initial="hidden"
-            whileInView="visible"
-            variants={cardAnimation}
-            custom={index}
-          >
-            <div className="text-center">
-              <div className="mb-4">
-                <span className="text-4xl">{card.icon}</span>
-              </div>
-              <h3 className="text-xl font-medium text-white">{card.title}</h3>
-            </div>
-          </motion.div>
-        ))}
+  {cards.map((card, index) => (
+    <motion.div
+      key={index}
+      className="flex items-center justify-center border border-gray-200 rounded-lg p-6 hover:shadow-lg transition h-full"
+      initial="hidden"
+      whileInView="visible"
+      variants={cardAnimation}
+      custom={index}
+    >
+      <div className="flex flex-col items-center text-center w-full">
+        <div className="mb-4">
+          <span className="text-4xl">{card.icon}</span>
+        </div>
+        <h3 className="text-base text-white truncate w-full max-w-full">
+          {card.title}
+        </h3>
       </div>
+    </motion.div>
+  ))}
+</div>
+
     </section>
   );
 };
