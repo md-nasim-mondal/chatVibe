@@ -85,7 +85,6 @@ const Banner = () => {
                 className="w-full text-center bg-main-2 text-white p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-3 transition duration-300"
               >
                 Try Now
-                <h1>hasan hasan</h1>
               </Link>
             </motion.div>
 
