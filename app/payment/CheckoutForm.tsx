@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { set } from "mongoose";
 import { useState } from "react";
+import { RiSecurePaymentFill } from "react-icons/ri";
 
 const CheckoutForm = () => {
   const [error, setError] = useState("");
@@ -68,25 +69,10 @@ const CheckoutForm = () => {
             {/* Payment Security */}
             <div className="text-center mb-6">
               <div className="flex justify-center mb-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10 text-gray-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 11c.867 0 1.293-.008 1.636-.055a2 2 0 001.589-1.589C15.992 9.018 16 8.592 16 7.725V6a2 2 0 00-2-2H10a2 2 0 00-2 2v1.725c0 .867.008 1.293.055 1.636a2 2 0 001.589 1.589C8.707 10.992 9.133 11 10 11h2z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 7v4c0 3.584 1.151 6.994 3.239 9.354A12.062 12.062 0 0012 22a12.062 12.062 0 004.761-1.646C18.849 17.994 20 14.584 20 11V7"
-                  />
-                </svg>
+               
+              <RiSecurePaymentFill className="text-black text-6xl"/>
+       
+
               </div>
               <p className="text-gray-500 text-sm">
                 Your payment is 100% safe and secure. We use encryption to
