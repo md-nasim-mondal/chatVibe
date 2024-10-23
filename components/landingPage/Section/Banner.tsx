@@ -73,7 +73,7 @@ const Banner = () => {
               Meeting and Video Call for <br />
               Everyone with
               <span className="text-main-1"> ChatVibe</span>
-            </h1>
+            </h1> 
             <motion.div
               className="flex justify-center w-full"
               whileHover={{ scale: 1.1 }}

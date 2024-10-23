@@ -2,6 +2,7 @@
 import SectionContainer from "@/components/landingPage/ShareComponents/SectionContainer";
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -52,9 +53,11 @@ const page = () => {
                     <span className='text-2xl font-bold sm:text-4xl dark:text-gray-900'>19$</span>
                     <span className='font-medium'>/mon</span>
                   </p>
+                  <Link href="payment">
                   <button className='mb-4 px-2 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300'>
                     Buy Now
                   </button>
+                 </Link>
                 </motion.div>
               </th>
               <th
@@ -71,9 +74,10 @@ const page = () => {
                     <span className='text-2xl font-bold sm:text-4xl'>49$</span>
                     <span className='font-medium dark:text-gray-600'>/mon</span>
                   </p>
-                  <button className='mb-4 px-2 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300'>
+                  <Link href="payment"><button className='mb-4 px-2 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300'>
                     Buy Now
-                  </button>
+                  </button></Link>
+                  
                 </motion.div>
               </th>
             </motion.tr>
