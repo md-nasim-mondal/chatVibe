@@ -20,7 +20,7 @@ const ScreenRecording = () => {
     <SectionContainer>
       {/* Flex Container */}
       <div className="flex justify-between items-center flex-col  md:flex-row ">
-        {/* Left: SVG Mockup */}
+        
 
 
 <div className=" relative">
