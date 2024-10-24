@@ -49,7 +49,7 @@ const CheckoutForm = ({ price }) => {
 
       <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-center ">
-          <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
+          <div className="w-full max-w-md  bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-center text-gray-700 text-xl font-bold  mb-4">
               Total price
             </h2>
