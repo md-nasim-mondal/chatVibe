@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Loader from "@/components/meetComponents/Loader";
-import "./style.css";
+import Select from "react-select"; // Import React-Select
 
 interface User {
   _id: string;
@@ -16,16 +16,23 @@ interface User {
   role: string;
 }
 
+const roleOptions = [
+  { value: "user", label: "User" },
+  { value: "premiumUser", label: "Premium User" },
+  { value: "admin", label: "Admin" },
+];
+
 const ManageUsers: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch users on component load
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/all`);
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/all`
+        );
         setUsers(response.data);
       } catch (err) {
         setError("Failed to fetch users.");
@@ -37,24 +44,28 @@ const ManageUsers: React.FC = () => {
     fetchUsers();
   }, []);
 
-  const handleRoleChangeFrontend = async (userId: string, email: string, newRole: string) => {
+  const handleRoleChange = async (
+    userId: string,
+    email: string,
+    selectedOption: any
+  ) => {
+    const newRole = selectedOption.value;
+
     try {
       if (newRole === "premiumUser") {
         Swal.fire("Premium user feature coming soon!");
-        return; // No need to continue further if premium role is not implemented.
+        return;
       }
 
-      // Update the role in the backend
       await axios.put(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/updateRole?email=${email}`,
         { role: newRole }
       );
 
-      // Show success message
       Swal.fire({
         position: "top",
         icon: "success",
-        title: "User role update successful!",
+        title: "User role updated successfully!",
         showConfirmButton: false,
         timer: 1500,
         background: "#227670",
@@ -63,7 +74,6 @@ const ManageUsers: React.FC = () => {
         },
       });
 
-      // Update the role in state only after the API call succeeds
       setUsers((prevUsers) =>
         prevUsers.map((user) =>
           user._id === userId ? { ...user, role: newRole } : user
@@ -79,103 +89,94 @@ const ManageUsers: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen text-white">
+      <div className='flex justify-center items-center h-screen text-white'>
         <Loader />
       </div>
     );
   }
 
   if (error) {
-    return <div className="text-red-500 text-center">{error}</div>;
+    return <div className='text-red-500 text-center'>{error}</div>;
   }
 
   return (
-    <div className="min-h-screen bg-[#161925] text-white p-4">
-      <h1 className="text-2xl font-bold mb-6 text-center">All Users</h1>
-
-      {/* Table for Medium and Large Devices */}
-      <div className="overflow-x-auto p-4 hidden md:block">
-        <table className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2">
+    <div className='min-h-screen bg-[#161925] text-white p-4 text-center'>
+      <h1 className='text-2xl font-bold mb-6 text-center'>All Users</h1>
+      <div className='max-w-sm md:max-w-full overflow-x-auto mx-auto'>
+        <table className='bg-gray-800 border-separate border-spacing-y-2 mx-auto p-8 rounded-xl'>
           <thead>
-            <tr className="bg-main-2 text-left">
-              <th className="py-3 px-4 text-sm font-medium text-gray-300">#</th>
-              <th className="py-3 px-4 text-sm font-medium text-gray-300">Image</th>
-              <th className="py-3 px-4 text-sm font-medium text-gray-300">Full Name</th>
-              <th className="py-3 px-4 text-sm font-medium text-gray-300">Email</th>
-              <th className="py-3 px-4 text-sm font-medium text-gray-300">Role</th>
+            <tr className='bg-main-2'>
+              <th className='py-3 px-4 text-sm font-medium text-gray-300 text-center'>
+                #
+              </th>
+              <th className='py-3 px-4 text-sm font-medium text-gray-300 text-center'>
+                Image
+              </th>
+              <th className='py-3 px-4 text-sm font-medium text-gray-300 text-center'>
+                Full Name
+              </th>
+              <th className='py-3 px-4 text-sm font-medium text-gray-300 text-center'>
+                Email
+              </th>
+              <th className='py-3 px-4 text-sm font-medium text-gray-300 text-center'>
+                Role
+              </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='overflow-x-auto'>
             {users.map((user, index) => (
-              <tr key={user._id} className="hover:bg-[#1C1F2E] hover:text-white transition">
-                <td className="py-2 px-4">{index + 1}</td>
-                <td className="py-2 px-4">
+              <tr
+                key={user._id}
+                className='hover:bg-[#1C1F2E] hover:text-white transition'>
+                <td className='py-2 px-4 text-center'>{index + 1}</td>
+                <td className='py-2 px-4 text-center'>
                   <img
                     src={user.imageUrl}
                     alt={user.fullName}
-                    className="w-10 h-10 rounded-full"
+                    className='w-10 h-10 rounded-full mx-auto'
                   />
                 </td>
-                <td className="py-2 px-4 text-sm">{user.fullName}</td>
-                <td className="py-2 px-4 text-sm">{user.emailAddresses}</td>
-                <td className="py-2 px-4 text-sm">
-                  <select
-                    value={user.role}
-                    onChange={(e) =>
-                      handleRoleChangeFrontend(user._id, user.emailAddresses, e.target.value)
-                    }
-                    className="bg-gray-700 text-white rounded px-2 py-1"
-                  >
-                    <option value="user">User</option>
-                    <option value="premiumUser">Premium User</option>
-                    <option value="admin">Admin</option>
-                  </select>
+                <td className='py-2 px-4 text-sm text-center'>
+                  {user.fullName}
                 </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Mobile-Friendly Card Layout for Small Devices */}
-      <div className="overflow-x-auto p-4 md:hidden">
-        <table className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2">
-          <thead>
-            <tr className="bg-main-2 text-left">
-              <th className="py-3 px-4 text-sm font-medium text-gray-300 hidden md:block">#</th>
-              <th className="py-3 px-4 text-sm font-medium text-gray-300 hidden md:block">Image</th>
-              <th className="py-3 px-4 text-sm font-medium text-gray-300">Full Name</th>
-              <th className="py-3 px-4 text-sm font-medium text-gray-300 hidden md:block">Email</th>
-              <th className="py-3 px-4 text-sm font-medium text-gray-300">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <tr key={user._id} className="hover:bg-[#1C1F2E] hover:text-white transition">
-                <td className="py-2 px-4 hidden md:block">{index + 1}</td>
-                <td className="py-2 px-4 hidden md:block">
-                  <img
-                    src={user.imageUrl}
-                    alt={user.fullName}
-                    className="w-10 h-10 rounded-full"
-                  />
-                </td>
-                <td className="py-2 px-4 text-sm">{user.fullName}</td>
-                <td className="py-2 px-4 text-sm hidden md:block">
+                <td className='py-2 px-4 text-sm text-center'>
                   {user.emailAddresses}
                 </td>
-                <td className="py-2 px-4 text-sm">
-                  <select
-                    value={user.role}
-                    onChange={(e) =>
-                      handleRoleChangeFrontend(user._id, user.emailAddresses, e.target.value)
+                <td className='py-2 px-4 text-sm text-center'>
+                  <Select
+                    defaultValue={roleOptions.find(
+                      (option) => option.value === user.role
+                    )}
+                    onChange={(selectedOption) =>
+                      handleRoleChange(
+                        user._id,
+                        user.emailAddresses,
+                        selectedOption
+                      )
                     }
-                    className="bg-gray-700 text-white rounded px-2 py-1"
-                  >
-                    <option value="user">User</option>
-                    <option value="premiumUser">Premium User</option>
-                    <option value="admin">Admin</option>
-                  </select>
+                    options={roleOptions}
+                    className='text-black mb-2'
+                    styles={{
+                      control: (provided) => ({
+                        ...provided,
+                        backgroundColor: "white",
+                        minWidth: "150px", // Set minimum width
+                      }),
+                      menu: (provided) => ({
+                        ...provided,
+                        backgroundColor: "#1C1F2E", // Menu background
+                      }),
+                      option: (provided, state) => ({
+                        ...provided,
+                        backgroundColor: state.isFocused ? "green" : "#1C1F2E", // Hover effect: green background
+                        color: state.isFocused ? "white" : "white", // Text color on hover
+                      }),
+                      singleValue: (provided) => ({
+                        ...provided,
+                        color: "#324b4c", // Style for the selected value
+                      }),
+                    }}
+                  />
                 </td>
               </tr>
             ))}
