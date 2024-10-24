@@ -1,5 +1,3 @@
-// /pages/api/send.ts
-
 import nodemailer from 'nodemailer';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -30,7 +28,7 @@ export default async function handler(
       throw new Error('Email user or pass environment variables are not set');
     }
 
-    // Create a Nodemailer transporter using Gmail
+    // Create a Nodemailer transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -42,16 +40,9 @@ export default async function handler(
     // Configure the email options
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Send the email to yourself (or change this to the recipient's email)
+      to: process.env.EMAIL_USER, // Change this to your recipient email if needed
       subject: `New Contact Form Submission from ${name}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        Phone: ${phone}
-        
-        Message:
-        ${message}
-      `,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`,
     };
 
     // Send the email
