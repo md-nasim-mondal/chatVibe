@@ -136,9 +136,9 @@ const Page = () => {
         </table>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-        <div className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ">
+        <div data-aos="fade-up" className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ">
           <div className="bg-pink-500 text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
             <span className="font-bold uppercase text-sm">Starter</span>
           </div>
@@ -215,7 +215,7 @@ const Page = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ">
+        <div data-aos="fade-up" className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ">
           <div className="bg-pink-500 text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
             <span className="font-bold uppercase text-sm">Standard</span>
           </div>
@@ -294,7 +294,7 @@ const Page = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ">
+        <div data-aos="fade-up" className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ">
           <div className="bg-pink-500 text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
             <span className="font-bold uppercase text-sm">Premium</span>
           </div>
