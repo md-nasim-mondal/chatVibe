@@ -72,7 +72,8 @@ const ManageUsers: React.FC = () => {
   
       // Re-fetch the user list to reflect the updated role
       const updatedUsersResponse = await axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/all`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/all`,
+        { headers: { "Cache-Control": "no-cache" } }
       );
       setUsers(updatedUsersResponse?.data); // Update the state with the fresh data
     } catch (error) {
