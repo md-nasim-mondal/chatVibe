@@ -11,7 +11,7 @@ const PaymentPage = () => {
   const price = searchParams.get("price"); // Extract the "price" parameter
 
   return (
-    <div className="mt-60">
+    <div className="mt-56">
       
       <Elements stripe={stripePromise}>
         <CheckoutForm price={price} /> {/* Pass price as prop */}
