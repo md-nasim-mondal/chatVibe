@@ -98,7 +98,7 @@ const Nav = () => {
         {user ? (
          <div className="flex gap-2 items-center">
             {/* chat icon */}
-                <div
+                {/* <div
                   onClick={() => setIsDropDown(!isDropDown)}
                   className="size-8 flex justify-center rounded-full items-center  cursor-pointer"
                 >
@@ -107,10 +107,10 @@ const Nav = () => {
                     {
                       isDropDown && <MessageUserList    position ="right-0" place="absolute"/>
                     }
-                </div>
+                </div> */}
 
            {/* notification icon */}
-               <div
+               {/* <div
                   onClick={() => setIsDropDown(false)}
                   className=" py-1 px-2 relative text-2xl text-main-1
                   hover:text-white  hover:scale-105 transition-all cursor-pointer"
@@ -119,7 +119,7 @@ const Nav = () => {
                   <span className="bg-red-500 rounded-full size-4  text-[12px] font-bold absolute -top-1 left-5 flex justify-center items-center text-white">
                     3
                   </span>
-                </div>
+                </div> */}
            <motion.div 
           className="cursor-pointer"
           whileHover={{ scale: 1.2, rotate: 15 }}
