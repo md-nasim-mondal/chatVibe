@@ -16,6 +16,7 @@ const LandingPage = () => {
  useEffect(()=>{
   if(isSignedIn && isLoaded && user){
  saveUserApi(user)
+
   }
   },[user])
   return (
