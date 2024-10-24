@@ -8,6 +8,8 @@ const protectedRoutes = createRouteMatcher([
   // "/dashboard/recordings",
   // "/dashboard/personal-room",
   // "/dashboard/meeting(.*)",
+  // "/dashboard/admin-statistics",
+  // "/dashboard/manage-user"
 ]);
 
 export default clerkMiddleware((auth, req) => {

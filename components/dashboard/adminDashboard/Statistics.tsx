@@ -1,15 +1,14 @@
 "use client";
 import useGetAllUsers from "@/hooks/apiHooks/userHooks/useGetAllUser";
 import Image from "next/image";
-import React from "react";
 import { FaUsers } from "react-icons/fa";
 import { MdManageAccounts } from "react-icons/md";
 const Statistics = () => {
   const { data } = useGetAllUsers();
 
   const totalAdmin = data?.filter((u) => u?.role === "admin");
-  const totaluser = data?.filter((u) => u?.role === "user");
-
+  const totalUser = data?.filter((u) => u?.role === "user");
+  
   return (
     <section className="my-6 text-gray-800 rounded-md">
       <div className="p-8 rounded-md">
@@ -40,7 +39,7 @@ const Statistics = () => {
           <div className="flex flex-col justify-center align-middle">
             <p className="text-3xl font-semibold leading-none">
              {
-              totaluser.length
+              totalUser?.length
              }
             </p>
             <p className="capitalize">All users</p>
