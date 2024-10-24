@@ -78,7 +78,7 @@ const CheckoutForm = ({ price }) => {
               />
             </div>
             <p className="text-red-600 mb-8">{error}</p>
-            <div className="flex flex-col items-center bg-gray-100 p-4 rounded-md mb-6">
+            <div className="flex flex-col items-center bg-gray-100 p-4 rounded-md mb-6 border border-violet-300">
               <RiSecurePaymentFill className="text-black text-5xl"></RiSecurePaymentFill>
               <p className="text-center text-sm text-gray-600">
                 Your payment is 100% safe and secure. We use encryption to
