@@ -5,16 +5,16 @@ import { useClerk } from "@clerk/clerk-react";
 import { useRouter } from "next/navigation";
 import Loader from "../meetComponents/Loader";
 
-interface ProtectAdminProps {
+interface AdminProtectedProps {
   children: ReactNode;
 }
 
-const ProtectAdmin: React.FC<ProtectAdminProps> = ({ children }) => {
+const AdminProtected: React.FC<AdminProtectedProps> = ({ children }) => {
   const { role, loading } = useGetRoleOrUser();
   const router = useRouter();
   const { signOut } = useClerk();
 
-  if(loading) return <Loader/>
+  if (loading) return <Loader />;
 
   // If role is not 'admin', do not render the children
   if (role !== "admin" && !loading) {
@@ -26,4 +26,4 @@ const ProtectAdmin: React.FC<ProtectAdminProps> = ({ children }) => {
   return <>{children}</>;
 };
 
-export default ProtectAdmin;
+export default AdminProtected;

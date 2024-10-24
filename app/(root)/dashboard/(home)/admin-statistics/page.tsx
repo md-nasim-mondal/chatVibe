@@ -1,13 +1,13 @@
-import Statistics from '@/components/dashboard/adminDashboard/Statistics';
-import ProtectAdmin from '@/components/protectRoute/ProtectAdmin';
-import React from 'react';
+import Statistics from "@/components/dashboard/adminDashboard/Statistics";
+import AdminProtected from "@/components/protectedRoute/AdminProtected";
+import React from "react";
 
 const page = () => {
-    return (
-        <ProtectAdmin>
-           <Statistics/> 
-        </ProtectAdmin>
-    );
+  return (
+    <AdminProtected>
+      <Statistics />
+    </AdminProtected>
+  );
 };
 
 export default page;
