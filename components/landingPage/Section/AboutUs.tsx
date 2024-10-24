@@ -17,21 +17,21 @@ const AboutUs = () => {
       img: "/images/shamim.jpg",
       profession: "Web Developer",
       role: "UI Designer/Developer",
-      url: "https://www.google.com"
+      url: "https://my-portfolio-tau-gules.vercel.app/"
     },
     {
       name: "Sarajit Mandal",
       img: "/images/sarajit.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
-      url: "https://www.google.com"
+      url: "https://protfolio-sarajit-mandal.netlify.app/"
     },
     {
       name: "Md. Nasim Mondal",
       img: "/images/nasim.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
-      url: "https://www.google.com"
+      url: "https://md-nasim-mondal-portfolio1.netlify.app/"
     },
     {
       name: "Md Mahadi Hasan",
