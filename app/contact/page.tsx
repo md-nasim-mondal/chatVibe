@@ -1,4 +1,5 @@
 "use client";
+
 import Swal from "sweetalert2";
 import "./style.css";
 import {
@@ -22,35 +23,56 @@ const Page = () => {
     message: "",
   });
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-    Swal.fire({
-      position: "top",
-      icon: "success",
-      title: "Your message has been sent successfully",
-      showConfirmButton: false,
-      timer: 1500,
-      background: "#227670",
-      customClass: {
-        title: "white-text",
-      },
-    });
-  };
+    setError(null); // Reset any previous errors
 
+    // Input validation
+    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+      setError("All fields are required.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.status === 200) {
+// Show success message
+Swal.fire({
+  position: "top",
+  icon: "success",
+  title: "Your message has been sent successfully. We will try to connect with you as soon as possible!",
+  showConfirmButton: false,
+  timer: 2200,
+  background: "#227670",
+  customClass: {
+    title: "white-text",
+  },
+});
+
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        setError(result.error || "Something went wrong");
+      }
+    } catch (error) {
+      setError("Failed to send the message. Please try again.");
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -91,13 +113,13 @@ const Page = () => {
             transition: "background-color 0.5s ease",
           }}
           variants={formVariants}
-          // initial="hidden"
           animate={formData.name || formData.email || formData.phone || formData.message ? "shake" : "visible"}
           whileHover={{ scale: 1.05 }} // Add a slight scaling effect on hover
         >
           <h2 className='text-center text-2xl md:text-3xl font-extrabold text-gray-900 uppercase mb-4'>
             Contact Us
           </h2>
+          {error && <p className="text-red-500 text-center">{error}</p>} {/* Display error message if exists */}
           <form onSubmit={handleSubmit} className='space-y-4'>
             <div>
               <label htmlFor='name' className='block text-sm font-medium text-gray-700'>
@@ -199,49 +221,23 @@ const Page = () => {
           className='flex flex-col gap-4 items-center md:items-start text-white'
           variants={containerVariants}
         >
-          <h3 className={`text-3xl font-medium capitalize`}>
+          <h3 className='text-3xl font-medium capitalize'>
             Visit our social pages
           </h3>
-          <motion.div className={`text-4xl flex gap-4 text-main-1`}>
-            {[
-              <FaFacebookSquare />,
-              <FaInstagramSquare />,
-              <FaTwitterSquare />,
-              <FaLinkedinIn />,
-            ].map((icon, index) => (
+          <motion.div className='text-4xl flex gap-4 text-main-1'>
+            {[<FaFacebookSquare />, <FaInstagramSquare />, <FaTwitterSquare />, <FaLinkedinIn />].map((icon, index) => (
               <motion.a
                 href='#'
+                whileHover={{ scale: 1.2, color: "#0ea5e9" }} // Change the color on hover
                 key={index}
-                whileHover={{ scale: 1.2, rotate: 15 }}
-                transition={{ type: "spring", stiffness: 300 }}
               >
                 {icon}
               </motion.a>
             ))}
           </motion.div>
-          <h3 className={`text-3xl font-medium`}>Chat With Us</h3>
-          <motion.div className={`text-4xl flex gap-4 text-main-1`}>
-            {[
-              <FaFacebookMessenger />,
-              <FaWhatsappSquare />,
-              <FaTelegram />,
-            ].map((icon, index) => (
-              <motion.a
-                href='#'
-                key={index}
-                whileHover={{ scale: 1.2, rotate: 15 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                {icon}
-              </motion.a>
-            ))}
-          </motion.div>
-          <div>
-            <h3 className='text-3xl font-medium'>Call Our Hot-Lines</h3>
-            <a className='text-3xl' href='#'>
-              01699308-485
-            </a>
-          </div>
+          <h3 className='text-3xl font-medium capitalize'>Contact Us</h3>
+          <p className='text-xl'>+123 456 7890</p>
+          <p className='text-xl'>contact@domain.com</p>
         </motion.div>
       </motion.div>
     </SectionContainer>
