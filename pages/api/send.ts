@@ -12,6 +12,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  // Check if the request method is POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -41,7 +42,7 @@ export default async function handler(
     // Configure the email options
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Send the email to yourself
+      to: process.env.EMAIL_USER, // Send the email to yourself (or change this to the recipient's email)
       subject: `New Contact Form Submission from ${name}`,
       text: `
         Name: ${name}
