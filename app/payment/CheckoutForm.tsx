@@ -93,7 +93,8 @@ const CheckoutForm = ({ price }) => {
               className="w-full bg-[#227670] text-white font-semibold py-3 rounded-lg hover:bg-[#259990] transition duration-300"
             >
               Pay ${price} &rarr;
-            </button>
+                      </button>
+                      <button>Cancel</button>
           </div>
         </div>
       </form>
