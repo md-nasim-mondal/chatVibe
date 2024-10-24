@@ -301,7 +301,7 @@ const Page = () => {
 
           <div className="text-center">
             <h1 className="text-3xl font-extrabold">
-              $19<span className="text-sm font-light">/mon</span>
+              $49<span className="text-sm font-light">/mon</span>
             </h1>
           </div>
 
