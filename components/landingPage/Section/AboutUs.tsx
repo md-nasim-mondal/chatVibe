@@ -10,7 +10,7 @@ const AboutUs = () => {
       img: "/images/atikuzzaman.png",
       profession: "Web Developer",
       role: "Team Leader/Developer",
-      url: "https://www.google.com"
+      url: "https://atikuzzaman.netlify.app/"
     },
     {
       name: "Md Shamim",
