@@ -8,9 +8,11 @@ const Page = () => {
   return (
     <SectionContainer>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-        <div data-aos="fade-up" className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ">
-          <div className="bg-pink-500 text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
+        <div
+          data-aos="fade-up"
+          className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between "
+        >
+          <div className="bg-[#4d99da] text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
             <span className="font-bold uppercase text-sm">Starter</span>
           </div>
 
@@ -80,15 +82,19 @@ const Page = () => {
           </ul>
 
           <div className="text-center mt-4">
-            <Link href="dashboard"><button className="mb-4 px-4 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300">
-                      Free 
-                    </button></Link>
-          
+            <Link href="dashboard">
+              <button className="mb-4 px-4 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300">
+                Free
+              </button>
+            </Link>
           </div>
         </div>
 
-        <div data-aos="fade-up" className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ">
-          <div className="bg-pink-500 text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
+        <div
+          data-aos="fade-up"
+          className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between "
+        >
+          <div className="bg-[#4d99da] text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
             <span className="font-bold uppercase text-sm">Standard</span>
           </div>
 
@@ -158,16 +164,19 @@ const Page = () => {
           </ul>
 
           <div className="text-center mt-4">
-          <Link href="/payment?price=19">
-                    <button className="mb-4 px-4 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300">
-                      Buy Now
-                    </button>
-                  </Link>
+            <Link href="/payment?price=19">
+              <button className="mb-4 px-4 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300">
+                Buy Now
+              </button>
+            </Link>
           </div>
         </div>
 
-        <div data-aos="fade-up" className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ">
-          <div className="bg-pink-500 text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
+        <div
+          data-aos="fade-up"
+          className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between "
+        >
+          <div className="bg-[#4d99da] text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
             <span className="font-bold uppercase text-sm">Premium</span>
           </div>
 
@@ -237,19 +246,14 @@ const Page = () => {
           </ul>
 
           <div className="text-center mt-4">
-          <Link href="/payment?price=49">
-                    <button className="mb-4 px-2 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300">
-                      Buy Now
-                    </button>
-                  </Link>
+            <Link href="/payment?price=49">
+              <button className="mb-4 px-2 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300">
+                Buy Now
+              </button>
+            </Link>
           </div>
         </div>
-
-
       </div>
-
-
-
     </SectionContainer>
   );
 };
