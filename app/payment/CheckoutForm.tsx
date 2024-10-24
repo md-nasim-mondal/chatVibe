@@ -90,7 +90,7 @@ const CheckoutForm = ({ price }) => {
             <button
               type="submit"
               disabled={!stripe}
-              className="w-full bg-lime-500 text-white font-semibold py-3 rounded-lg hover:bg-lime-600 transition duration-300"
+              className="w-full bg-[#227670] text-white font-semibold py-3 rounded-lg hover:bg-[#259990] transition duration-300"
             >
               Pay ${price} &rarr;
             </button>

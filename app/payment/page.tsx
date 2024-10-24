@@ -1,5 +1,5 @@
 "use client";
-import { useSearchParams } from "next/navigation"; // Use `next/navigation` for `useSearchParams`
+import { useSearchParams } from "next/navigation"; 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm";
