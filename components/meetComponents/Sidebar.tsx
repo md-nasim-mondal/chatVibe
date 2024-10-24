@@ -12,14 +12,14 @@ const Sidebar = () => {
 
   if (loading) {
     return (
-      <div className='sticky left-0 top-0 flex min-h-screen w-fit flex-col justify-between bg-dark-1 p-6 pt-28 text-white max-sm:hidden lg:w-[264px]'>
+      <div className='sticky left-0 top-0 flex h-screen w-fit flex-col justify-between bg-dark-1 p-6 pt-28 text-white max-sm:hidden lg:w-[264px]'>
         <Loader />
       </div>
     );
   }
 
   return (
-    <section className='sticky left-0 top-0 flex h-screen w-fit flex-col justify-between bg-dark-1 p-6 pt-28 text-white max-sm:hidden lg:w-[264px]'>
+    <section className='sticky left-0 top-0 flex h-[110vh] md:h-[135vh] lg:h-screen w-fit flex-col justify-between bg-dark-1 p-6 pt-28 text-white max-sm:hidden lg:w-[264px]'>
       <div className='flex flex-1 flex-col gap-6'>
         <div>
           {userData?.emailAddresses && (
