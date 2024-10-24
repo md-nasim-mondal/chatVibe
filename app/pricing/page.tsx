@@ -220,7 +220,7 @@ const Page = () => {
               </th>
             </motion.tr>
           </thead>
-          <tbody className='space-y-6 text-center divide-y mt-12 dark:divide-gray-300'>
+          <tbody className='space-y-6 text-center divide-y mt-12  dark:divide-gray-300'>
             {[
               { title: "Video Call Minutes", values: ["100 min", "500 min", "Unlimited"] },
               { title: "Storage", values: ["0.5 GB", "10 GB", "100 GB"] },
@@ -235,7 +235,7 @@ const Page = () => {
                 className='hover:bg-[#227670] transition duration-300 ease-in-out'
               >
                 <th scope='row' className='text-left'>
-                  <h3 className='py-3'>{row.title}</h3>
+                  <h3 className='py-3 pl-2 '>{row.title}</h3>
                 </th>
                 {row.values.map((value, i) => (
                   <td key={i}>
