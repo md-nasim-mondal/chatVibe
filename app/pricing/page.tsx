@@ -318,7 +318,7 @@ const Page = () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span className="ml-2">500 Minutes Video Call</span>
+              <span className="ml-2">Unlimited Video Call</span>
             </li>
             <li className="flex items-center">
               <svg
