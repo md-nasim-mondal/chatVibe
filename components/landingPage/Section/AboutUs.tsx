@@ -10,36 +10,42 @@ const AboutUs = () => {
       img: "/images/atikuzzaman.png",
       profession: "Web Developer",
       role: "Team Leader/Developer",
+      url: "https://www.google.com"
     },
     {
       name: "Md Shamim",
       img: "/images/shamim.jpg",
       profession: "Web Developer",
       role: "UI Designer/Developer",
+      url: "https://www.google.com"
     },
     {
       name: "Sarajit Mandal",
       img: "/images/sarajit.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
+      url: "https://www.google.com"
     },
     {
       name: "Md. Nasim Mondal",
       img: "/images/nasim.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
+      url: "https://www.google.com"
     },
     {
       name: "Md Mahadi Hasan",
       img: "/images/mahadi.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
+      url: "https://www.google.com"
     },
     {
       name: "Ashraful Islam",
       img: "/images/asrafulislam.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
+      url: "https://www.google.com"
     },
   ];
 
@@ -52,7 +58,7 @@ const AboutUs = () => {
         </p>
       </div>
       <div className="flex gap-4 md:gap-2 flex-wrap justify-around">
-        {members.map(({ name, img, profession, role }, idx) => (
+        {members.map(({ name, img, profession, role, url }, idx) => (
           <motion.button
             key={idx + 1}
             initial={{ opacity: 0.6 }}
@@ -68,6 +74,7 @@ const AboutUs = () => {
               src={img}
               profession={profession}
               role={role}
+              url={url}
             />
           </motion.button>
         ))}
