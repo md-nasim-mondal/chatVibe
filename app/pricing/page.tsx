@@ -55,11 +55,11 @@ const Page = () => {
                     </span>
                     <span className="font-medium">/mon</span>
                   </p>
-                  <Link href="/payment?price=19">
+                  {/* <Link href="/payment?price=19">
                     <button className="mb-4 px-2 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300">
                       Buy Now
                     </button>
-                  </Link>
+                  </Link> */}
                 </motion.div>
               </th>
               <th
@@ -286,9 +286,11 @@ const Page = () => {
           </ul>
 
           <div className="text-center mt-4">
-            <button className="bg-[#227670] hover:bg-blue-950 text-white py-2 px-6 rounded-full font-semibold transition disabled duration-300">
-              Buy Now
-            </button>
+          <Link href="/payment?price=19">
+                    <button className="mb-4 px-4 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300">
+                      Buy Now
+                    </button>
+                  </Link>
           </div>
         </div>
 
