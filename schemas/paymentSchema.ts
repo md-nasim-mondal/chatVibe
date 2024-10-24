@@ -4,9 +4,8 @@ const paymentSchema = new Schema({
    fullName : {
     type: String, required: true
    },
-   emailAddress: {
-    type: String,required:true
-   },
+   emailAddresses: { type: String, required: true, unique: true },
+   imageUrl: { type: String ,default:"http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png"},
      // Amount in cents (or smallest unit of the currency)
   amount: {
     type: Number,
@@ -33,6 +32,6 @@ const paymentSchema = new Schema({
 
 })
 
-const Payment = mongoose.model('Payment', paymentSchema);
+const Payment = mongoose.models.Payment || mongoose.model("Payment", paymentSchema);
 
-export default Payment
+export default Payment;
