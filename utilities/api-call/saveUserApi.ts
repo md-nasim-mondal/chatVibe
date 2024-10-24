@@ -18,11 +18,11 @@ const saveUserApi = async (user: UserResource) => {
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/save`,
       userData
     );
-    // if (res.status === 201) {
-    //   console.log("User saved to MongoDB");
-    // }
+    if (res.status === 201) {
+      console.log("User saved to MongoDB");
+    }
   } catch (error) {
-    console.error("Error saving user to DB", error);
+    // console.error("Error saving user to DB", error);
   }
 };
 
