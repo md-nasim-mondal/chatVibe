@@ -332,7 +332,7 @@ const Page = () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span className="ml-2">10 GB Storage</span>
+              <span className="ml-2">100 GB Storage</span>
             </li>
             <li className="flex items-center">
               <svg
