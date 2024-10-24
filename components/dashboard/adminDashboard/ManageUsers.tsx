@@ -26,7 +26,8 @@ const ManageUsers: React.FC = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/all`
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/all`,
+          { headers: { "Cache-Control": "no-cache" } } // Disable cache
         );
         setUsers(response.data);
       } catch (err) {
@@ -49,13 +50,13 @@ const ManageUsers: React.FC = () => {
         Swal.fire("Premium user feature coming soon!");
         return; // No need to continue further if premium role is not implemented.
       }
-
+  
       // Update the role in the backend
       await axios.put(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/updateRole?email=${email}`,
         { role: newRole }
       );
-
+  
       // Show success message
       Swal.fire({
         position: "top",
@@ -68,13 +69,12 @@ const ManageUsers: React.FC = () => {
           title: "white-text",
         },
       });
-
-      // Update the role in state only after the API call succeeds
-      setUsers((prevUsers) =>
-        prevUsers.map((user) =>
-          user._id === userId ? { ...user, role: newRole } : user
-        )
+  
+      // Re-fetch the user list to reflect the updated role
+      const updatedUsersResponse = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/all`
       );
+      setUsers(updatedUsersResponse?.data); // Update the state with the fresh data
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -82,6 +82,7 @@ const ManageUsers: React.FC = () => {
       });
     }
   };
+  
 
   if (loading) {
     return (
