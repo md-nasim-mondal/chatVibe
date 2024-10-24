@@ -44,3 +44,16 @@
 // }
 
 // export default Page;
+
+
+import React from 'react';
+
+const page = () => {
+  return (
+    <div>
+      This Message Page
+    </div>
+  );
+};
+
+export default page;
