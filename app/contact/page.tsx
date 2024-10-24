@@ -25,7 +25,9 @@ const Page = () => {
 
   const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -35,35 +37,44 @@ const Page = () => {
     setError(null); // Reset any previous errors
 
     // Input validation
-    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.message
+    ) {
       setError("All fields are required.");
       return;
     }
 
     try {
-      const response = await fetch("/api/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/send`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await response.json();
 
       if (response.status === 200) {
-// Show success message
-Swal.fire({
-  position: "top",
-  icon: "success",
-  title: "Your message has been sent successfully. We will try to connect with you as soon as possible!",
-  showConfirmButton: false,
-  timer: 2200,
-  background: "#227670",
-  customClass: {
-    title: "white-text",
-  },
-});
+        // Show success message
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title:
+            "Your message has been sent successfully. We will try to connect with you as soon as possible!",
+          showConfirmButton: false,
+          timer: 2200,
+          background: "#227670",
+          customClass: {
+            title: "white-text",
+          },
+        });
 
         setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
@@ -76,7 +87,11 @@ Swal.fire({
 
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeInOut" },
+    },
   };
 
   const formVariants = {
@@ -101,10 +116,9 @@ Swal.fire({
     <SectionContainer>
       <motion.div
         className='flex flex-col md:flex-row justify-between items-center max-w-5xl mx-auto'
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
+        initial='hidden'
+        animate='visible'
+        variants={containerVariants}>
         {/* Left Side Form */}
         <motion.div
           className='w-full max-w-md rounded-xl p-4 py-6 md:p-8 shadow-md'
@@ -113,16 +127,26 @@ Swal.fire({
             transition: "background-color 0.5s ease",
           }}
           variants={formVariants}
-          animate={formData.name || formData.email || formData.phone || formData.message ? "shake" : "visible"}
+          animate={
+            formData.name ||
+            formData.email ||
+            formData.phone ||
+            formData.message
+              ? "shake"
+              : "visible"
+          }
           whileHover={{ scale: 1.05 }} // Add a slight scaling effect on hover
         >
           <h2 className='text-center text-2xl md:text-3xl font-extrabold text-gray-900 uppercase mb-4'>
             Contact Us
           </h2>
-          {error && <p className="text-red-500 text-center">{error}</p>} {/* Display error message if exists */}
+          {error && <p className='text-red-500 text-center'>{error}</p>}{" "}
+          {/* Display error message if exists */}
           <form onSubmit={handleSubmit} className='space-y-4'>
             <div>
-              <label htmlFor='name' className='block text-sm font-medium text-gray-700'>
+              <label
+                htmlFor='name'
+                className='block text-sm font-medium text-gray-700'>
                 Name
               </label>
               <input
@@ -134,12 +158,14 @@ Swal.fire({
                 onChange={handleChange}
                 required
                 className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5'
-                onFocus={(e) => e.currentTarget.style.borderColor = "#1d4ed8"}
-                onBlur={(e) => e.currentTarget.style.borderColor = "#d1d5db"}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#1d4ed8")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "#d1d5db")}
               />
             </div>
             <div>
-              <label htmlFor='email' className='block text-sm font-medium text-gray-700'>
+              <label
+                htmlFor='email'
+                className='block text-sm font-medium text-gray-700'>
                 Email address
               </label>
               <input
@@ -151,12 +177,14 @@ Swal.fire({
                 onChange={handleChange}
                 required
                 className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5'
-                onFocus={(e) => e.currentTarget.style.borderColor = "#1d4ed8"}
-                onBlur={(e) => e.currentTarget.style.borderColor = "#d1d5db"}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#1d4ed8")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "#d1d5db")}
               />
             </div>
             <div>
-              <label htmlFor='phone' className='block text-sm font-medium text-gray-700'>
+              <label
+                htmlFor='phone'
+                className='block text-sm font-medium text-gray-700'>
                 Phone number
               </label>
               <input
@@ -168,12 +196,14 @@ Swal.fire({
                 onChange={handleChange}
                 required
                 className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5'
-                onFocus={(e) => e.currentTarget.style.borderColor = "#1d4ed8"}
-                onBlur={(e) => e.currentTarget.style.borderColor = "#d1d5db"}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#1d4ed8")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "#d1d5db")}
               />
             </div>
             <div>
-              <label htmlFor='message' className='block text-sm font-medium text-gray-700'>
+              <label
+                htmlFor='message'
+                className='block text-sm font-medium text-gray-700'>
                 Message
               </label>
               <textarea
@@ -184,9 +214,10 @@ Swal.fire({
                 onChange={handleChange}
                 required
                 className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5'
-                onFocus={(e) => e.currentTarget.style.borderColor = "#1d4ed8"}
-                onBlur={(e) => e.currentTarget.style.borderColor = "#d1d5db"}
-              ></textarea>
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#1d4ed8")}
+                onBlur={(e) =>
+                  (e.currentTarget.style.borderColor = "#d1d5db")
+                }></textarea>
             </div>
             <div className='flex items-center justify-center'>
               <motion.button
@@ -219,18 +250,21 @@ Swal.fire({
         {/* Social Links and Contact Info */}
         <motion.div
           className='flex flex-col gap-4 items-center md:items-start text-white'
-          variants={containerVariants}
-        >
+          variants={containerVariants}>
           <h3 className='text-3xl font-medium capitalize'>
             Visit our social pages
           </h3>
           <motion.div className='text-4xl flex gap-4 text-main-1'>
-            {[<FaFacebookSquare />, <FaInstagramSquare />, <FaTwitterSquare />, <FaLinkedinIn />].map((icon, index) => (
+            {[
+              <FaFacebookSquare />,
+              <FaInstagramSquare />,
+              <FaTwitterSquare />,
+              <FaLinkedinIn />,
+            ].map((icon, index) => (
               <motion.a
                 href='#'
                 whileHover={{ scale: 1.2, color: "#0ea5e9" }} // Change the color on hover
-                key={index}
-              >
+                key={index}>
                 {icon}
               </motion.a>
             ))}
