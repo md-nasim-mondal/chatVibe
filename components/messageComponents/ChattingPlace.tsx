@@ -23,7 +23,7 @@ interface Message {
 }
 
 interface ChattingPlaceProps {
-  partner: Partner;
+  partner: Partner | undefined;
   senderId: string;
 }
 

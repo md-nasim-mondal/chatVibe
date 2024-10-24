@@ -12,8 +12,9 @@ interface Params {
   user: object;
 }
 
+
 function Page() {
-  const [userId, setUserId] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string >("");
   const { id } = useParams() as unknown as Params; // Type assertion for `useParams`
   
   // Fetch user data using the custom hook

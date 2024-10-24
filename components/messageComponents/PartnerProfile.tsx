@@ -9,8 +9,8 @@ interface User{
   imageUrl?: string;
 }
 
-interface PartnerProfileProps{
-  user : User;
+interface PartnerProfileProps {
+  user?: User; // 'user' is now optional
 }
 const PartnerProfile: React.FC<PartnerProfileProps>=({user})=> {
   

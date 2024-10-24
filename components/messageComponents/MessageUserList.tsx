@@ -14,7 +14,6 @@ interface User {
   imageUrl: string;
   role: string;
   data: object;
-  
 }
 
 interface MessageUserListProps {
@@ -23,16 +22,17 @@ interface MessageUserListProps {
 }
 
 const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) => {
+  // Change type to User[] (array of User objects)
   const [users, setUsers] = useState<User[]>([]);
 
   const { data, loading, error } = useGetAllUsers();
 
-  // Use useEffect to update users when data is available
-  useEffect(() => {
-    if (data) {
-      setUsers(data); // Only set users if data is available
-    }
-  }, [data]); // Depend on data to avoid unnecessary renders
+  // // Use useEffect to update users when data is available
+  // useEffect(() => {
+  //   if (data) {
+  //     setUsers(data); // Only set users if data is available
+  //   }
+  // }, [data]); // Depend on data to avoid unnecessary renders
 
   if (loading) return <div><Loader /></div>;
   if (error) return <div>Error fetching users</div>;
@@ -43,8 +43,8 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
         className={` ${position} ${place} mt-6 p-2 md:w-96 bg-gray-900 shadow-lg rounded-lg z-50 border-2 overflow-y-scroll max-h-[calc(100vh-71px)]`}
       >
         <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2">
-          {users.length > 0 ? (
-            users.map((user) => (
+          {data.length > 0 ? (
+            data.map((user) => (
               <li key={user._id}>
                 <Link href={`/messages/${user._id}`}>
                   <div className="flex items-center">

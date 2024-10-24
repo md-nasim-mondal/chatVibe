@@ -10,13 +10,13 @@ interface User {
 }
 
 interface UseGetOneUserReturn {
-  user: User | [];
+  user?: User; // 'user' is now optional
   loading: boolean;
   error: string | null;
 }
 
 const useGetOneUser = (id: string): UseGetOneUserReturn => {
-  const [user, setUser] = useState<User | []>([]);
+  const [user, setUser] = useState<User >();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
