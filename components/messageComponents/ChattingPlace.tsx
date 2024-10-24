@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import connectSocket from "@/lib/connectSocket";
 import { useParams } from "next/navigation";
 
-
 interface Partner {
   _id: string;
   emailAddresses: string;
@@ -16,44 +15,64 @@ interface Partner {
   imageUrl?: string;
 }
 
+interface Message {
+  text: string;
+  imageUrl: string;
+  videoUrl: string;
+  msgByUserId: string;
+}
+
 interface ChattingPlaceProps {
   partner: Partner;
   senderId: string;
 }
 
-const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner,senderId}) => {
+const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
   const [message, setMessage] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [messages, setMessages] = useState<Message[]>([]);
+
+  // Get receiverId from the URL params
+  const { id: receiverId } = useParams();
+
+  // Connect to the socket server
+  const  socket  = connectSocket();
+  // Handle receiving messages from the server
+useEffect(() => {
+  if (socket) {
+    socket.on("getMessage", (data) => {
+      console.log('Received conversation data:', data);
+       setMessages(data); // Update the state with new messages
+    });
+
+    return () => {
+      socket.off("getMessage"); // Correct event name for cleanup
+    };
+  }
+}, [socket]);
 
 
-  // get reciverID
-  const { id: reciverId } = useParams();
-
-  // connect socket server
-  const socketIo = connectSocket();
-
-  
-
-  // send message
+  // Send message
   const handleSendMessage = () => {
     if (message.trim()) {
-      // Add logic to send message or file
-       if(socketIo){
-         socketIo.emit('new message',{
+      if (socket) {
+        // Emit the new message to the server
+        socket.emit('new message', {
           sender: senderId,
-          reciver: reciverId,
-          text : message,
+          reciver: receiverId,
+          text: message,
           imageUrl: '',
           videoUrl: '',
           msgByUserId: senderId
-         })
-       }
-      
+        });
+      }
+
       setMessage("");
       setFile(null);
     }
   };
 
+  // Handle file change
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setFile(e.target.files[0]);
@@ -64,8 +83,16 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner,senderId}) => {
     <div>
       <div className="bg-gray-900 p-4 rounded-xl shadow-lg mx-auto">
         <div className="h-[60vh] bg-gray-800 rounded-xl p-4 overflow-y-auto">
-          {/* Placeholder for the chat messages */}
-          <div className="text-gray-400 text-center my-5">No messages yet...</div>
+          {/* Display the chat messages */}
+          {messages.length > 0 ? (
+            messages.map((msg, index) => (
+              <div key={index} className="text-gray-300 mb-2">
+                {msg.text}
+              </div>
+            ))
+          ) : (
+            <div className="text-gray-400 text-center my-5">No messages yet...</div>
+          )}
         </div>
 
         <div className="mt-4 flex items-center space-x-3">
@@ -90,10 +117,7 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner,senderId}) => {
           <input
             type="text"
             value={message}
-            onChange={(e) => {
-              e.preventDefault();
-              setMessage(e.target.value);
-            }}
+            onChange={(e) => setMessage(e.target.value)}
             placeholder="Type your message..."
             className="w-full p-3 text-gray-300 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300"
           />
