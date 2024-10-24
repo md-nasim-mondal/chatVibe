@@ -35,10 +35,10 @@ function Page() {
   return (
     <div>
       {/* Pass user data to the PartnerProfile component */}
-      <PartnerProfile user={user} /> 
+      {/*<PartnerProfile user={user} /> *}
       
       {/* Pass partner and senderId to the ChattingPlace component */}
-      <ChattingPlace partner={user} senderId={userId} /> 
+      {/* <ChattingPlace partner={user} senderId={userId} /> */} 
     </div>
   );
 }
