@@ -94,7 +94,7 @@ const CheckoutForm = ({ price }) => {
             >
               Pay ${price} &rarr;
                       </button>
-                      <button>Cancel</button>
+                      <button className="w-full mt-2 bg-red-500 text-white font-semibold py-3 rounded-lg hover:bg-red-700 transition duration-300">Cancel</button>
           </div>
         </div>
       </form>
