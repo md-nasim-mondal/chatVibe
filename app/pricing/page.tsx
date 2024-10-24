@@ -365,8 +365,8 @@ const Page = () => {
           </ul>
 
           <div className="text-center mt-4">
-          <Link href="/payment?price=19">
-                    <button className="mb-4 px-4 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300">
+          <Link href="/payment?price=49">
+                    <button className="mb-4 px-2 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300">
                       Buy Now
                     </button>
                   </Link>
