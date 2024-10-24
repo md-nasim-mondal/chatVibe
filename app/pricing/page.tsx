@@ -137,16 +137,14 @@ const Page = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-
-
         <div className="bg-gradient-to-b h-[460px] from-[#227670] to-[#111024] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between">
           <div className="bg-pink-500 text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
-            <span className="font-bold text-sm">STANDARD</span>
+            <span className="font-bold uppercase text-sm">Starter</span>
           </div>
 
           <div className="text-center">
             <h1 className="text-3xl font-extrabold">
-              $9.99<span className="text-sm font-light">/mon</span>
+              $0<span className="text-sm font-light">/mon</span>
             </h1>
           </div>
 
@@ -163,7 +161,7 @@ const Page = () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span className="ml-2">50 GB Bandwidth</span>
+              <span className="ml-2">100 Minutes Video Call</span>
             </li>
             <li className="flex items-center">
               <svg
@@ -177,7 +175,7 @@ const Page = () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span className="ml-2">Finance Analyzing</span>
+              <span className="ml-2">0.5 GB Storage</span>
             </li>
             <li className="flex items-center">
               <svg
@@ -224,18 +222,12 @@ const Page = () => {
           </ul>
 
           <div className="text-center mt-4">
-            <button className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded-full font-semibold transition duration-300">
+            <button className="bg-[#227670] hover:bg-blue-950 text-white py-2 px-6 rounded-full font-semibold transition duration-300">
               BUY NOW
             </button>
           </div>
         </div>
-
-      
-
-
       </div>
-
-
     </SectionContainer>
   );
 };
