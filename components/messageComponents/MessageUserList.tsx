@@ -23,23 +23,23 @@ interface MessageUserListProps {
 }
 
 const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) => {
-  const [users, setUsers] = useState<User[]>([]);
+  // const [users, setUsers] = useState<User[]>([]);
 
-  const { data, loading, error } = useGetAllUsers();
+  // const { data, loading, error } = useGetAllUsers();
 
-  // Use useEffect to update users when data is available
-  useEffect(() => {
-    if (data) {
-      setUsers(data); // Only set users if data is available
-    }
-  }, [data]); // Depend on data to avoid unnecessary renders
+  // // Use useEffect to update users when data is available
+  // useEffect(() => {
+  //   if (data) {
+  //     setUsers(data); // Only set users if data is available
+  //   }
+  // }, [data]); // Depend on data to avoid unnecessary renders
 
-  if (loading) return <div><Loader /></div>;
-  if (error) return <div>Error fetching users</div>;
+  // if (loading) return <div><Loader /></div>;
+  // if (error) return <div>Error fetching users</div>;
 
   return (
     <div>
-      <div
+      {/* <div
         className={` ${position} ${place} mt-6 p-2 md:w-96 bg-gray-900 shadow-lg rounded-lg z-50 border-2 overflow-y-scroll max-h-[calc(100vh-71px)]`}
       >
         <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2">
@@ -62,7 +62,8 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
             <li>No users found</li>
           )}
         </ul>
-      </div>
+      </div> */}
+      This Message User List Page
     </div>
   );
 };
