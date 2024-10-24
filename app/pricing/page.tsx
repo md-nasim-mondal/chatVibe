@@ -189,7 +189,7 @@ const Page = () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span className="ml-2">24 hour support</span>
+              <span className="ml-2">High-Quality Video</span>
             </li>
             <li className="flex items-center">
               <svg
