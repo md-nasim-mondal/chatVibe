@@ -38,7 +38,7 @@ const AboutUs = () => {
       img: "/images/mahadi.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
-      url: "https://www.google.com"
+      url: "https://mdmahadihasanportfolio.netlify.app/"
     },
     {
       name: "Ashraful Islam",
