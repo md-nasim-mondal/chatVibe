@@ -158,15 +158,15 @@ const MeetingRoom = () => {
                   key={index}
                   className={`${
                     user?.username === msg.userinfo
-                      ? "text-right bg-dark-4 my-1 rounded-lg overflow-hidden leading-[10px] mr-2"
-                      : "bg-gray-500 my-1  rounded-lg overflow-hidden leading-[10px] ml-2"
+                      ? "text-right bg-dark-4 my-1 rounded-xl rounded-br-sm overflow-hidden mr-2"
+                      : "bg-gray-500 my-1 rounded-xl rounded-bl-sm overflow-hidden ml-2"
                   }`}
                 >
-                  <span className="text-xs font-medium block bg-gray-200 px-2  text-blue-1">
+                  <span className="text-xs font-medium block bg-gray-200 px-4  text-blue-1">
                     {msg.userinfo === user?.username ? "You" : msg.userinfo}
                   </span>
                   <br />
-                  <span className="text-lg font-bold px-2">{msg.message}</span>
+                  <span className="text-md font-bold px-4">{msg.message}</span>
                 </li>
               ))}
             </ul>
