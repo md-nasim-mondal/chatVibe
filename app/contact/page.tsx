@@ -25,7 +25,9 @@ const Page = () => {
 
   const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -35,19 +37,27 @@ const Page = () => {
     setError(null); // Reset any previous errors
 
     // Input validation
-    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.message
+    ) {
       setError("All fields are required.");
       return;
     }
 
     try {
-      const response = await fetch("/api/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/send`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await response.json();
 
@@ -56,7 +66,8 @@ const Page = () => {
         Swal.fire({
           position: "top",
           icon: "success",
-          title: "Your message has been sent successfully. We will try to connect with you as soon as possible!",
+          title:
+            "Your message has been sent successfully. We will try to connect with you as soon as possible!",
           showConfirmButton: false,
           timer: 2200,
           background: "#227670",
@@ -76,7 +87,11 @@ const Page = () => {
 
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeInOut" },
+    },
   };
 
   const formVariants = {
@@ -96,11 +111,10 @@ const Page = () => {
   return (
     <SectionContainer>
       <motion.div
-        className="flex flex-col md:flex-row justify-between items-center max-w-5xl mx-auto"
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
+        className='flex flex-col md:flex-row justify-between items-center max-w-5xl mx-auto'
+        initial='hidden'
+        animate='visible'
+        variants={containerVariants}>
         {/* Left Side Form */}
         <motion.div
           className="w-full max-w-md rounded-xl p-4 py-6 md:p-8 shadow-md"
@@ -109,16 +123,26 @@ const Page = () => {
             transition: "background-color 0.5s ease",
           }}
           variants={formVariants}
-          animate={formData.name || formData.email || formData.phone || formData.message ? "shake" : "visible"}
+          animate={
+            formData.name ||
+            formData.email ||
+            formData.phone ||
+            formData.message
+              ? "shake"
+              : "visible"
+          }
           whileHover={{ scale: 1.05 }} // Add a slight scaling effect on hover
         >
           <h2 className="text-center text-2xl md:text-3xl font-extrabold text-gray-900 uppercase mb-4">
             Contact Us
           </h2>
-          {error && <p className="text-red-500 text-center">{error}</p>} {/* Display error message if exists */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {error && <p className='text-red-500 text-center'>{error}</p>}{" "}
+          {/* Display error message if exists */}
+          <form onSubmit={handleSubmit} className='space-y-4'>
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor='name'
+                className='block text-sm font-medium text-gray-700'>
                 Name
               </label>
               <input
@@ -129,13 +153,15 @@ const Page = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5"
-                onFocus={(e) => e.currentTarget.style.borderColor = "#1d4ed8"}
-                onBlur={(e) => e.currentTarget.style.borderColor = "#d1d5db"}
+                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5'
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#1d4ed8")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "#d1d5db")}
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor='email'
+                className='block text-sm font-medium text-gray-700'>
                 Email address
               </label>
               <input
@@ -146,13 +172,15 @@ const Page = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5"
-                onFocus={(e) => e.currentTarget.style.borderColor = "#1d4ed8"}
-                onBlur={(e) => e.currentTarget.style.borderColor = "#d1d5db"}
+                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5'
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#1d4ed8")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "#d1d5db")}
               />
             </div>
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor='phone'
+                className='block text-sm font-medium text-gray-700'>
                 Phone number
               </label>
               <input
@@ -163,13 +191,15 @@ const Page = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5"
-                onFocus={(e) => e.currentTarget.style.borderColor = "#1d4ed8"}
-                onBlur={(e) => e.currentTarget.style.borderColor = "#d1d5db"}
+                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5'
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#1d4ed8")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "#d1d5db")}
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor='message'
+                className='block text-sm font-medium text-gray-700'>
                 Message
               </label>
               <textarea
@@ -179,10 +209,11 @@ const Page = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5"
-                onFocus={(e) => e.currentTarget.style.borderColor = "#1d4ed8"}
-                onBlur={(e) => e.currentTarget.style.borderColor = "#d1d5db"}
-              ></textarea>
+                className='mt-1 block w-full sm:text-base border-gray-300 rounded-md focus:ring-main-1 focus:border-main-1 p-2.5'
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#1d4ed8")}
+                onBlur={(e) =>
+                  (e.currentTarget.style.borderColor = "#d1d5db")
+                }></textarea>
             </div>
             <div className="flex items-center justify-center">
               <motion.button
@@ -214,35 +245,22 @@ const Page = () => {
 
         {/* Social Links and Contact Info */}
         <motion.div
-          className="flex flex-col gap-4 items-center md:items-start text-white"
-          variants={containerVariants}
-        >
-          <h3 className="text-3xl font-medium capitalize">
+          className='flex flex-col gap-4 items-center md:items-start text-white'
+          variants={containerVariants}>
+          <h3 className='text-3xl font-medium capitalize'>
             Visit our social pages
           </h3>
-          <motion.div className="text-4xl flex gap-4 text-main-1">
-            {[<FaFacebookSquare />, <FaInstagramSquare />, <FaTwitterSquare />, <FaLinkedinIn />].map((icon, index) => (
+          <motion.div className='text-4xl flex gap-4 text-main-1'>
+            {[
+              <FaFacebookSquare />,
+              <FaInstagramSquare />,
+              <FaTwitterSquare />,
+              <FaLinkedinIn />,
+            ].map((icon, index) => (
               <motion.a
-                href="#"
-                whileHover={{ scale: 1.2, color: "#0ea5e9" }} // Change color on hover
-                key={index}
-                className="hover:text-main-3"
-              >
-                {icon}
-              </motion.a>
-            ))}
-          </motion.div>
-          <h3 className="text-3xl font-medium capitalize">
-            Contact us through
-          </h3>
-          <motion.div className="text-4xl flex gap-4 text-main-1">
-            {[<FaFacebookMessenger />, <FaTelegram />, <FaWhatsappSquare />].map((icon, index) => (
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2, color: "#0ea5e9" }} // Change color on hover
-                key={index}
-                className="hover:text-main-3"
-              >
+                href='#'
+                whileHover={{ scale: 1.2, color: "#0ea5e9" }} // Change the color on hover
+                key={index}>
                 {icon}
               </motion.a>
             ))}
