@@ -40,7 +40,7 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
   return (
     <div>
       <div
-        className={` ${position} ${place} mt-6 p-2 md:w-96 bg-gray-900 shadow-lg rounded-lg z-50 border-2 overflow-y-scroll max-h-[calc(100vh-71px)]`}
+        className={` ${position} ${place} mt-6 p-2 md:w-96 bg-gray-900 shadow-lg rounded-lg z-50 border-2 overflow-y-auto resize-x  scrollbar-custom max-h-[calc(100vh-71px)] scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent scroll-smooth`}
       >
         <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2">
           {data.length > 0 ? (

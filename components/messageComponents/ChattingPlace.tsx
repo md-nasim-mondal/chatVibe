@@ -42,7 +42,7 @@ useEffect(() => {
   if (socket) {
     socket.on("getMessage", (data) => {
       console.log('Received conversation data:', data);
-       setMessages(data); // Update the state with new messages
+       setMessages(data.messages); // Update the state with new messages
     });
 
     return () => {
@@ -82,12 +82,14 @@ useEffect(() => {
   return (
     <div>
       <div className="bg-gray-900 p-4 rounded-xl shadow-lg mx-auto">
-        <div className="h-[60vh] bg-gray-800 rounded-xl p-4 overflow-y-auto">
+        <div className="h-[60vh] bg-gray-800 rounded-xl p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent scroll-smooth ">
           {/* Display the chat messages */}
           {messages.length > 0 ? (
             messages.map((msg, index) => (
-              <div key={index} className={`text-gray-300 mb-2 bg-red-500 }`} >
+              <div key={index} className={`text-gray-300 mx-2 my-5 text-lg font-semibold ${msg.msgByUserId === senderId && "text-right"} }`} >
+                  <span>
                   <h3> {msg.text}</h3>
+                  </span>
               </div>
             ))
           ) : (
