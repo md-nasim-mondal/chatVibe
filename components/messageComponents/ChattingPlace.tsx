@@ -86,10 +86,10 @@ useEffect(() => {
           {/* Display the chat messages */}
           {messages.length > 0 ? (
             messages.map((msg, index) => (
-              <div key={index} className={`text-gray-300 mx-2 my-5 text-lg font-semibold ${msg.msgByUserId === senderId && "text-right"} }`} >
-                  <span>
+              <div key={index} className={`text-gray-300 m-5 text-lg font-semibold ${msg.msgByUserId === senderId && "text-right"} }`} >
+                  <div className= {`inline-block py-2 rounded-xl px-3 ${msg.msgByUserId === senderId ? "bg-green-900" : "bg-gray-900"}`}>
                   <h3> {msg.text}</h3>
-                  </span>
+                  </div>
               </div>
             ))
           ) : (
