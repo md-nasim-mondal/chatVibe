@@ -86,8 +86,8 @@ useEffect(() => {
           {/* Display the chat messages */}
           {messages.length > 0 ? (
             messages.map((msg, index) => (
-              <div key={index} className="text-gray-300 mb-2">
-                {msg.text}
+              <div key={index} className={`text-gray-300 mb-2 bg-red-500 }`} >
+                  <h3> {msg.text}</h3>
               </div>
             ))
           ) : (

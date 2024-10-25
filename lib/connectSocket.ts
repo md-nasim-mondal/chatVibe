@@ -1,17 +1,23 @@
 import { useEffect, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { DefaultEventsMap } from '@socket.io/component-emitter';
+import { useParams } from 'next/navigation';
 
 // Define the type for your socket hook
 const connectSocket = (): Socket<DefaultEventsMap, DefaultEventsMap> | null => {
   const [socket, setSocket] = useState<Socket<DefaultEventsMap, DefaultEventsMap> | null>(null);
+  const {id} = useParams()
 
   useEffect(() => {
     // Use http://localhost:5000/ as the server URL
     const serverUrl = 'http://localhost:5000';
     
     // Create a new Socket.IO connection
-    const socketIo = io(serverUrl);
+    const socketIo = io(serverUrl,{
+      auth:{
+          user : id
+      }
+    });
 
     // Set the socket connection in the state
     setSocket(socketIo);
