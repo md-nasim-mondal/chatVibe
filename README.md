@@ -45,9 +45,24 @@ By using the dashboard panel users can use the feature of our application.
 
 First, run the development server:
 
-```bash
-#for cloneing the repo
+#for cloning the repo
 [git clone https:www.github.com/](https://github.com/md-nasim-mondal/chatVibe.git)
+
+after cloning the repo you need to manage the some secret
+
+* NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+* CLERK_SECRET_KEY
+* NEXT_PUBLIC_CLERK_SIGN_IN_UR
+* NEXT_PUBLIC_CLERK_SIGN_UP_URL
+* NEXT_PUBLIC_STREAM_API_KEY
+* STREAM_SECRET_KEY
+* NEXT_PUBLIC_BASE_URL
+* MONGODB_URL
+* appName
+
+After adding .env.local you need to provide this secret in .env.local file
+
+```bash
 
 #then run `npm i` for install dependencies
 npm i
