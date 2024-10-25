@@ -72,7 +72,10 @@ By using the dashboard panel users can use the feature of our application.
 First, run the development server:
 
 #for cloning the repo
+```bash
 [git clone https:www.github.com/](https://github.com/md-nasim-mondal/chatVibe.git)
+
+```
 
 After cloning the repo you need to manage the some secret
 
