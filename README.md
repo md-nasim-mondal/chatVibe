@@ -37,6 +37,32 @@ By using the dashboard panel users can use the feature of our application.
 * Disable screen share
 
 
+## Used Technologies
+* Next js
+* react
+* mongodb
+* mongose
+* nodemailer
+* typescript
+* react hot toast
+* react tooltip
+* react select
+* react icons
+* react hook form
+* react datepicker
+* socket io client
+* sweet alert2
+* tailwind css
+* tailwindcss animate
+* axios
+* streem-io/react video sdk
+* streem-io/node sdk
+* clerk / clerk-react
+* clerk/nextjs
+* redix ui
+* lucid react
+* clsx
+* framer motion
 
 
 
