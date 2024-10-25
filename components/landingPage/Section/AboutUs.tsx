@@ -10,36 +10,42 @@ const AboutUs = () => {
       img: "/images/atikuzzaman.png",
       profession: "Web Developer",
       role: "Team Leader/Developer",
+      url: "https://atikuzzaman.netlify.app/"
     },
     {
       name: "Md Shamim",
       img: "/images/shamim.jpg",
       profession: "Web Developer",
       role: "UI Designer/Developer",
+      url: "https://my-portfolio-tau-gules.vercel.app/"
     },
     {
       name: "Sarajit Mandal",
       img: "/images/sarajit.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
+      url: "https://protfolio-sarajit-mandal.netlify.app/"
     },
     {
       name: "Md. Nasim Mondal",
       img: "/images/nasim.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
+      url: "https://md-nasim-mondal-portfolio1.netlify.app/"
     },
     {
       name: "Md Mahadi Hasan",
       img: "/images/mahadi.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
+      url: "https://mdmahadihasanportfolio.netlify.app/"
     },
     {
       name: "Ashraful Islam",
       img: "/images/asrafulislam.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
+      url: "https://www.google.com"
     },
   ];
 
@@ -52,7 +58,7 @@ const AboutUs = () => {
         </p>
       </div>
       <div className="flex gap-4 md:gap-2 flex-wrap justify-around">
-        {members.map(({ name, img, profession, role }, idx) => (
+        {members.map(({ name, img, profession, role, url }, idx) => (
           <motion.button
             key={idx + 1}
             initial={{ opacity: 0.6 }}
@@ -68,6 +74,7 @@ const AboutUs = () => {
               src={img}
               profession={profession}
               role={role}
+              url={url}
             />
           </motion.button>
         ))}
