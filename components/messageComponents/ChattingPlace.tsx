@@ -86,8 +86,8 @@ useEffect(() => {
           {/* Display the chat messages */}
           {messages.length > 0 ? (
             messages.map((msg, index) => (
-              <div key={index} className={`text-gray-300 m-5 text-lg font-semibold ${msg.msgByUserId === senderId && "text-right"} }`} >
-                  <div className= {`inline-block py-2 rounded-xl px-3 ${msg.msgByUserId === senderId ? "bg-green-900" : "bg-gray-900"}`}>
+              <div key={index} className={`text-gray-300 mx-5 my-2 text-lg font-semibold ${msg.msgByUserId === senderId && "text-right"} }`} >
+                  <div className= {`inline-block py-2 rounded-xl px-4 text-center ${msg.msgByUserId === senderId ? "bg-green-900" : "bg-gray-900"}`}>
                   <h3> {msg.text}</h3>
                   </div>
               </div>
@@ -104,6 +104,7 @@ useEffect(() => {
               id="file-upload"
               className="hidden"
               onChange={handleFileChange}
+              accept="image/*,video/*"
             />
             <label htmlFor="file-upload" className="cursor-pointer">
               <motion.div

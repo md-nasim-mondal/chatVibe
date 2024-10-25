@@ -104,10 +104,10 @@ const Nav = () => {
                 >
                     <BsChatSquareText  className="text-main-1 text-xl font-extrabold hover:scale-105 transition-all"/>
                     
-                    {
+                </div>
+                {
                       isDropDown && <MessageUserList    position ="right-0" place="absolute"/>
                     }
-                </div>
 
            {/* notification icon */}
                <div
