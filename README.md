@@ -1,4 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is project [ChatVibe](https://chat-vibe-ashy.vercel.app) created by team MERNMaestro.
+
+This is a video and audio conference application, crated for seamless and high performance audio and video conference. At first a user can see the landing page of our application. After login or register user can access the user dashboard by clicking try now button or dashboard page. 
+
+By using the dashboard panel users can use the feature of our application.
+
+## Features
+* Create Instant meeting
+* Join a meeting
+* Schedule Meeting
+* See all of the Schedule meeting on Upcoming page.
+* See all the old meeting on previous page
+
+
 
 ## Getting Started
 
