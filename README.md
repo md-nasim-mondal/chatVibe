@@ -4,12 +4,25 @@ This is a video and audio conference application, crated for seamless and high p
 
 By using the dashboard panel users can use the feature of our application.
 
-## Features
+## Dashboard Features
 * Create Instant meeting
 * Join a meeting
 * Schedule Meeting
 * See all of the Schedule meeting on Upcoming page.
 * See all the old meeting on previous page
+* See meeting recordings in Recording page.
+
+## In meeting Features
+* Camera and mic toggling
+* Multiple camera and mic support
+* Send multiple types of reaction in meeting
+* Screen sharing
+* Record meeting
+* Leave call
+* Select layout
+* See all the percents
+* In call messaging
+* End call for everyone button only for meeting creator
 
 
 
