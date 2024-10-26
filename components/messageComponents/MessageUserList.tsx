@@ -5,6 +5,7 @@ import { Loader } from 'lucide-react';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import connectSocket from "@/lib/connectSocket";
+import { FaArrowUp } from 'react-icons/fa';
 interface User {
   _id: string;
   emailAddresses: string;
@@ -64,10 +65,8 @@ const handleInputChange = async (e: { target: { value: any; }; }) => {
           placeholder="Search here..."
           className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-green-500 text-gray-700"
         />
-      </div>
-  
-      
-        <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2">
+
+          <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2 absolute mt-1 z-10">
           {results ? (
             results.map((user) => (
               <li key={user._id}>
@@ -89,6 +88,14 @@ const handleInputChange = async (e: { target: { value: any; }; }) => {
             <li>No users found</li>
           )}
         </ul>
+      </div>
+  
+      
+      <p className="text-gray-600 text-xl text-center px-5  font-semibold my-5">
+        Your chat history is not available. Please search  <FaArrowUp className="text-main-1 mx-2 inline animate-bounce" size={24} /> for your chatting partner.
+      </p>
+     
+       
       </div>
     </div>
   );
