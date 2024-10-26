@@ -49,8 +49,7 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
         reciver: receiverId,
       })
       socket.on("getMessage", (data) => {
-        console.log('Received conversation data:', data);
-        setMessages(data.messages); // Update the state with new messages
+        setMessages(data?.messages); // Update the state with new messages
       });
 
       return () => {

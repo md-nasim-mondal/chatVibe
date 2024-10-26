@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import connectSocket from "@/lib/connectSocket";
 import { FaArrowUp } from 'react-icons/fa';
+import useGetRoleOrUser from '@/hooks/apiHooks/userHooks/useGetRoleOrUser';
 interface User {
   _id: string;
   emailAddresses: string;
@@ -23,11 +24,23 @@ interface MessageUserListProps {
 }
 
 const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) => {
+  const [conversation,setConversation] = useState([])
   // Change type to User[] (array of User objects)
  
   const {socket,onlineUsers} = connectSocket();
+ const {userData}= useGetRoleOrUser()
 
 
+  useEffect(()=>{
+    if(socket){
+      socket.emit("sidebar",userData?._id)
+
+      socket.on("conversation",(data)=>{
+       setConversation(data)
+       console.log(data)
+      })
+    }
+  },[socket,userData?._id])
 // search functionality
 const [query, setQuery] = useState('');
 const [results, setResults] = useState<User[]>([]);
