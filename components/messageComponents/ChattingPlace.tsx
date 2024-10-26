@@ -44,6 +44,10 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
   // Handle receiving messages from the server
   useEffect(() => {
     if (socket) {
+      socket.emit("message Page", {
+        sender: senderId,
+        reciver: receiverId,
+      })
       socket.on("getMessage", (data) => {
         console.log('Received conversation data:', data);
         setMessages(data.messages); // Update the state with new messages
@@ -53,7 +57,7 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
         socket.off("getMessage"); // Clean up event listener
       };
     }
-  }, [socket]);
+  }, [socket,senderId,receiverId]);
 
   // Scroll to the bottom of the messages
   useEffect(() => {
@@ -96,7 +100,7 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
           {/* Display the chat messages */}
           {messages.length > 0 ? (
             messages.map((msg, index) => (
-              <div key={index} className={`text-gray-300 mx-5 my-2 text-lg font-semibold ${msg.msgByUserId === senderId ? "text-right" : ""}`}>
+              <div key={index} className={`text-gray-300 mx-3 my-2 text-lg font-semibold ${msg.msgByUserId === senderId ? "text-right" : ""}`}>
                 <div className={`inline-block py-2 rounded-xl px-4 text-center ${msg.msgByUserId === senderId ? "bg-green-900" : "bg-gray-900"}`}>
                   <h3>{msg.text}</h3>
                 </div>
