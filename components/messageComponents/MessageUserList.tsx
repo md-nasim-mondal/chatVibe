@@ -24,13 +24,14 @@ interface MessageUserListProps {
 
 const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) => {
   // Change type to User[] (array of User objects)
-  const [users, setUsers] = useState<User[]>([]);
-
+ 
   const { data, loading, error } = useGetAllUsers();
+
+
 
 // search functionality
 const [query, setQuery] = useState('');
-const [results, setResults] = useState([]);
+const [results, setResults] = useState<User[]>([]);
 
 // Handle input change and fetch data based on the query
 const handleInputChange = async (e: { target: { value: any; }; }) => {
@@ -38,10 +39,10 @@ const handleInputChange = async (e: { target: { value: any; }; }) => {
   setQuery(value);
 
   // Fetch data if query length is more than 2 characters
-  if (value.length > 2) {
+  if (value) {
     try {
-      const response = await axios.get(`https://api.example.com/search?query=${value}`);
-      setResults(response.data); // Adjust to match your data structure
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/search?text=${value}`);
+      setResults(response.data.users); // Adjust to match your data structure
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -49,14 +50,7 @@ const handleInputChange = async (e: { target: { value: any; }; }) => {
     setResults([]); // Clear results if query length is less than 3
   }
 };
-// search functionality
-
-
-
-
-
-
-
+// search functionalit
 
 
 
@@ -78,11 +72,11 @@ const handleInputChange = async (e: { target: { value: any; }; }) => {
           className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-green-500 text-gray-700"
         />
       </div>
-
-
+  
+      
         <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2">
-          {data.length > 0 ? (
-            data.map((user) => (
+          {results ? (
+            results.map((user) => (
               <li key={user._id}>
                 <Link href={`/messages/${user._id}`}>
                   <div className="flex items-center">
