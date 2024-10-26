@@ -1,11 +1,10 @@
 'use client';
 
-import useGetAllUsers from '@/hooks/apiHooks/userHooks/useGetAllUser';
 import axios from 'axios';
 import { Loader } from 'lucide-react';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-
+import connectSocket from "@/lib/connectSocket";
 interface User {
   _id: string;
   emailAddresses: string;
@@ -25,8 +24,7 @@ interface MessageUserListProps {
 const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) => {
   // Change type to User[] (array of User objects)
  
-  const { data, loading, error } = useGetAllUsers();
-
+  const {socket,onlineUsers} = connectSocket();
 
 
 // search functionality
@@ -52,15 +50,10 @@ const handleInputChange = async (e: { target: { value: any; }; }) => {
 };
 // search functionalit
 
-
-
-  if (loading) return <div><Loader /></div>;
-  if (error) return <div>Error fetching users</div>;
-
   return (
     <div>
       <div
-        className={` ${position} ${place} mt-6 p-2 md:w-96 bg-gray-900 shadow-lg rounded-lg z-50 border-2 overflow-y-auto resize-x  scrollbar-custom max-h-[calc(100vh-71px)] scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent scroll-smooth`}
+        className={` ${position} ${place} mt-6 p-2 md:w-96 bg-gray-900 shadow-lg rounded-lg z-50 border-2 overflow-y-auto resize-x  scrollbar-custom min-h-[calc(100vh-71px)] max-h-[calc(100vh-71px)] scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent scroll-smooth`}
       >
        {/* Search bar */}
        <div className="relative max-w-md mx-auto my-2">
@@ -82,7 +75,8 @@ const handleInputChange = async (e: { target: { value: any; }; }) => {
                   <div className="flex items-center">
                     <span className="p-2 relative">
                       <img src={user.imageUrl} alt={user.fullName} className="w-10 h-10 rounded-full" />
-                      <span className='inline-block bg-main-1 size-3 rounded-full absolute right-2 bottom-2'></span>
+                      <span className={`inline-block size-3 
+                      ${onlineUsers.some(onliene => onliene === user?._id) ? "bg-main-1" : "bg-gray-400"} rounded-full absolute right-2 bottom-2`}></span>
                     </span>
                     <div>
                       <h2 className="py-2 px-4 text-lg text-white">{user.fullName}</h2>

@@ -39,7 +39,7 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
   const { id: receiverId } = useParams();
 
   // Connect to the socket server
-  const socket = connectSocket();
+  const {socket,onlineUsers} = connectSocket();
 
   // Handle receiving messages from the server
   useEffect(() => {
