@@ -37,14 +37,13 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
 
       socket.on("conversation",(data)=>{
        setConversation(data)
-       console.log(data)
       })
     }
   },[socket,userData?._id])
 // search functionality
 const [query, setQuery] = useState('');
 const [results, setResults] = useState<User[]>([]);
-
+console.log(conversation)
 // Handle input change and fetch data based on the query
 const handleInputChange = async (e: { target: { value: any; }; }) => {
   const value = e.target.value;
