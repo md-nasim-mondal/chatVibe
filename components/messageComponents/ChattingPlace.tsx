@@ -97,7 +97,7 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
       <div className="bg-gray-900 p-4 rounded-xl shadow-lg mx-auto">
         <div className="h-[60vh] bg-gray-800 rounded-xl p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent scroll-smooth">
           {/* Display the chat messages */}
-          {messages.length > 0 ? (
+          {messages?.length > 0 ? (
             messages.map((msg, index) => (
               <div key={index} className={`text-gray-300 mx-3 my-2 text-lg font-semibold ${msg.msgByUserId === senderId ? "text-right" : ""}`}>
                 <div className={`inline-block py-2 rounded-xl px-4 text-center ${msg.msgByUserId === senderId ? "bg-green-900" : "bg-gray-900"}`}>
