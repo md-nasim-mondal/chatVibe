@@ -1,3 +1,5 @@
+# Project [ChatVibe](https://chat-vibe-ashy.vercel.app)
+
 This is project [ChatVibe](https://chat-vibe-ashy.vercel.app) created by team MERNMaestro.
 
 This is a video and audio conference application, crated for seamless and high performance audio and video conference. At first a user can see the landing page of our application. After login or register user can access the user dashboard by clicking try now button or dashboard page. 
@@ -72,7 +74,12 @@ By using the dashboard panel users can use the feature of our application.
 First, run the development server:
 
 #for cloning the repo
-[git clone https:www.github.com/](https://github.com/md-nasim-mondal/chatVibe.git)
+
+```bash
+#Run
+git clone https://github.com/md-nasim-mondal/chatVibe.git
+
+```
 
 After cloning the repo you need to manage the some secret
 
