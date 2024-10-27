@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FiSend } from "react-icons/fi";
 import { AiOutlinePaperClip } from "react-icons/ai";
 import { motion } from "framer-motion";
@@ -23,7 +23,7 @@ interface Message {
 }
 
 interface ChattingPlaceProps {
-  partner: Partner;
+  partner: Partner | undefined;
   senderId: string;
 }
 
@@ -31,26 +31,39 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
   const [message, setMessage] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
-
+  
+  // Reference to the bottom of the message container
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  
   // Get receiverId from the URL params
   const { id: receiverId } = useParams();
 
   // Connect to the socket server
-  const  socket  = connectSocket();
+  const {socket,onlineUsers} = connectSocket();
+
   // Handle receiving messages from the server
-useEffect(() => {
-  if (socket) {
-    socket.on("getMessage", (data) => {
-      console.log('Received conversation data:', data);
-       setMessages(data); // Update the state with new messages
-    });
+  useEffect(() => {
+    if (socket) {
+      socket.emit("message Page", {
+        sender: senderId,
+        reciver: receiverId,
+      })
+      socket.on("getMessage", (data) => {
+        setMessages(data?.messages); // Update the state with new messages
+      });
 
-    return () => {
-      socket.off("getMessage"); // Correct event name for cleanup
-    };
-  }
-}, [socket]);
+      return () => {
+        socket.off("getMessage"); // Clean up event listener
+      };
+    }
+  }, [socket,senderId,receiverId]);
 
+  // Scroll to the bottom of the messages
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]); // This will run whenever messages change
 
   // Send message
   const handleSendMessage = () => {
@@ -82,17 +95,21 @@ useEffect(() => {
   return (
     <div>
       <div className="bg-gray-900 p-4 rounded-xl shadow-lg mx-auto">
-        <div className="h-[60vh] bg-gray-800 rounded-xl p-4 overflow-y-auto">
+        <div className="h-[60vh] bg-gray-800 rounded-xl p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent scroll-smooth">
           {/* Display the chat messages */}
-          {messages.length > 0 ? (
+          {messages?.length > 0 ? (
             messages.map((msg, index) => (
-              <div key={index} className="text-gray-300 mb-2">
-                {msg.text}
+              <div key={index} className={`text-gray-300 mx-3 my-2 text-lg font-semibold ${msg.msgByUserId === senderId ? "text-right" : ""}`}>
+                <div className={`inline-block py-2 rounded-xl px-4 text-center ${msg.msgByUserId === senderId ? "bg-green-900" : "bg-gray-900"}`}>
+                  <h3>{msg.text}</h3>
+                </div>
               </div>
             ))
           ) : (
             <div className="text-gray-400 text-center my-5">No messages yet...</div>
           )}
+          {/* Scroll reference div */}
+          <div ref={messagesEndRef} /> 
         </div>
 
         <div className="mt-4 flex items-center space-x-3">
@@ -102,6 +119,7 @@ useEffect(() => {
               id="file-upload"
               className="hidden"
               onChange={handleFileChange}
+              accept="image/*,video/*"
             />
             <label htmlFor="file-upload" className="cursor-pointer">
               <motion.div
