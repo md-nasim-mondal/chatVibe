@@ -108,6 +108,7 @@ const Nav = () => {
                 {
                       isDropDown && <MessageUserList    position ="right-0" place="absolute"/>
                     }
+                </div> */}
 
            {/* notification icon */}
                <div
