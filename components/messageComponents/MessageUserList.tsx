@@ -71,7 +71,7 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
     const value = e.target.value;
     setQuery(value);
 
-    if (value.length > 1) {
+    if (value?.length > 1) {
       try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/search?text=${value}`);
         setResults(response.data.users); // Adjust to match your data structure
