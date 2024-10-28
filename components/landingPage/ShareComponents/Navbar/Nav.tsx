@@ -10,11 +10,13 @@ import { motion } from "framer-motion";
 import { BsChatSquareText } from "react-icons/bs";
 import { IoNotifications } from "react-icons/io5";
 import MessageUserList from "@/components/messageComponents/MessageUserList";
+import Notification from "@/components/messageComponents/Notification";
 
 
 
 const Nav = () => {
   const [isDropDown,setIsDropDown] = useState(false)
+  const [isNotificationDropDown,setIsNotificationDropDown] = useState(false)
   const { user } = useUser() || {};
   const pathname = usePathname();
   const [activeRoute, setActiveRoute] = useState(pathname); 
@@ -99,7 +101,11 @@ const Nav = () => {
          <div className="flex gap-2 items-center">
             {/* chat icon */}
                 <div
-                  onClick={() => setIsDropDown(!isDropDown)}
+                  onClick={() => {setIsDropDown(!isDropDown)
+                   setIsNotificationDropDown(false)
+                  }
+                  }
+                  
                   className="size-8 flex justify-center rounded-full items-center  cursor-pointer"
                 >
                     <BsChatSquareText  className="text-main-1 text-xl font-extrabold hover:scale-105 transition-all"/>
@@ -110,16 +116,24 @@ const Nav = () => {
                     }
 
            {/* notification icon */}
-               <div
-                  onClick={() => setIsDropDown(false)}
+              <div>
+                 <div
+                  onClick={() => {setIsDropDown(false)
+                      setIsNotificationDropDown(!isNotificationDropDown)
+                  }}
                   className=" py-1 px-2 relative text-2xl text-main-1
                   hover:text-white  hover:scale-105 transition-all cursor-pointer"
                 >
                   <IoNotifications />
-                  <span className="bg-red-500 rounded-full size-4  text-[12px] font-bold absolute -top-1 left-5 flex justify-center items-center text-white">
+                  {/* <span className="bg-red-500 rounded-full size-4  text-[12px] font-bold absolute -top-1 left-5 flex justify-center items-center text-white">
                     3
-                  </span>
+                  </span> */}
                 </div>
+                 {
+                isNotificationDropDown &&  <Notification position ="right-0" place="absolute"/>
+                }
+              </div>
+               
            <motion.div 
           className="cursor-pointer"
           whileHover={{ scale: 1.2, rotate: 15 }}
