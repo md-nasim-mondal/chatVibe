@@ -7,7 +7,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import connectSocket from "@/lib/connectSocket";
 import { FaArrowUp } from "react-icons/fa";
 import useGetRoleOrUser from "@/hooks/apiHooks/userHooks/useGetRoleOrUser";
-import debounce from "lodash/debounce"; // Import debounce from lodash
+import debounce from "lodash/debounce";
 
 // Define the User interface
 interface User {
@@ -26,7 +26,7 @@ interface User {
 interface Conversation {
   _id: string;
   userDetails: User;
-  lastMsg: { text: string }; // Ensure lastMsg has `text`
+  lastMsg: { text: string };
   reciver: User;
 }
 
@@ -45,7 +45,7 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
     if (socket && userData?._id) {
       socket.emit("sidebar", userData._id);
 
-      socket.on("conversation", (data: any[]) => {
+      const conversationListener = (data: any[]) => {
         const conversationUserData = data.map((conversationData: any) => {
           const userDetails =
             conversationData?.sender?._id === conversationData.reciver ? conversationData.sender :
@@ -58,7 +58,13 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
           };
         });
         setConversation(conversationUserData);
-      });
+      };
+
+      socket.on("conversation", conversationListener);
+
+      return () => {
+        socket.off("conversation", conversationListener); // Cleanup
+      };
     }
   }, [socket, userData?._id]);
 
@@ -70,9 +76,9 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
           const response = await axios.get(
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/search?text=${value}`
           );
-          setResults(response.data.users); // Adjust to match your data structure
+          setResults(response.data.users || []);
         } catch (error) {
-          console.log("Error fetching data:", error);
+          console.error("Error fetching data:", error);
         }
       } else {
         setResults([]);
@@ -98,7 +104,7 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
             className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-green-500 text-gray-700"
           />
           <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2 absolute mt-1 z-10">
-            {results?.length > 0 ? (
+            {results.length > 0 ? (
               results.map((user) => (
                 <li key={user._id}>
                   <Link href={`/messages/${user._id}`}>
@@ -115,16 +121,16 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
                 </li>
               ))
             ) : (
-              <li></li>
+              <li className="text-gray-600 text-center py-2">No results found</li>
             )}
           </ul>
         </div>
 
         <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2 mt-1 z-10">
-          {conversation?.length > 0 ? (
-            conversation.map((conv, inx) => (
-              <li key={inx}>
-                <Link href={`/messages/${conv?.reciver?._id}`}>
+          {conversation.length > 0 ? (
+            conversation.map((conv, index) => (
+              <li key={index}>
+                <Link href={`/messages/${conv.reciver?._id}`}>
                   <div className="flex items-center">
                     <span className="p-2 relative">
                       <img
@@ -132,13 +138,13 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
                         alt={conv.userDetails?.fullName || "User"}
                         className="w-10 h-10 rounded-full"
                       />
-                      <span className={`inline-block size-3 ${onlineUsers.some(online => online === conv._id) ? "bg-main-1" : "bg-gray-400"}  rounded-full absolute right-2 bottom-2`}></span>
+                      <span className={`inline-block size-3 ${onlineUsers.some(online => online === conv.reciver?._id) ? "bg-main-1" : "bg-gray-400"}  rounded-full absolute right-2 bottom-2`}></span>
                     </span>
                     <div className='py-2 px-4'>
                       <h2 className="text-lg text-white">
                         {conv.userDetails?.fullName || "Unknown User"}
                       </h2>
-                      <small>{conv.lastMsg?.text || ""}</small>
+                      <small>{conv.lastMsg?.text || "No message available"}</small>
                     </div>
                   </div>
                 </Link>
