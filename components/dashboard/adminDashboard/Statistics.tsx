@@ -21,8 +21,8 @@ const Statistics = () => {
         />
       </div>
       <div className='container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4'>
-        <div className='flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800'>
-          <div className='flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-main-2'>
+        <div className='flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800 flex-wrap items-center justify-center xl:justify-normal'>
+          <div className='flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-main-2 h-[70px]'>
             <MdManageAccounts className='text-5xl text-white' />
           </div>
           <div className='flex flex-col justify-center align-middle'>
@@ -32,8 +32,8 @@ const Statistics = () => {
             <p className='capitalize'>Total Admin</p>
           </div>
         </div>
-        <div className='flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800'>
-          <div className='flex justify-center p-2 align-middle rounded-lg sm:p-4  bg-main-2'>
+        <div className='flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800 flex-wrap items-center justify-center xl:justify-normal'>
+          <div className='flex justify-center p-2 align-middle rounded-lg sm:p-4  bg-main-2 h-[70px]'>
             <FaUsers className='text-5xl text-white' />
           </div>
           <div className='flex flex-col justify-center align-middle'>
@@ -43,8 +43,8 @@ const Statistics = () => {
             <p className='capitalize'>All users</p>
           </div>
         </div>
-        <div className='flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800'>
-          <div className='flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-main-2'>
+        <div className='flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800 flex-wrap items-center justify-center xl:justify-normal'>
+          <div className='flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-main-2 h-[70px]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 512 512'
@@ -63,8 +63,8 @@ const Statistics = () => {
             <p className='capitalize'>Growth</p>
           </div>
         </div>
-        <div className='flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800'>
-          <div className='flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-main-2'>
+        <div className='flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800m flex-wrap items-center justify-center xl:justify-normal'>
+          <div className='flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-main-2 h-[70px]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 512 512'
