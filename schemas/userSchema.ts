@@ -10,6 +10,9 @@ interface IUser extends Document {
   password: string;
   role : string;
   // Add other fields as needed
+  // Add other fields as needed
+  // Add other fields as needed
+  // Add other fields as needed
 }
 
 const userSchema = new Schema<IUser>({
