@@ -50,6 +50,7 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
       })
       socket.on("getMessage", (data) => {
         setMessages(data?.messages); // Update the state with new messages
+       
       });
 
       return () => {
