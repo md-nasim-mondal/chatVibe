@@ -28,6 +28,7 @@ interface Conversation {
   userDetails: User;
   lastMsg: { text: string };
   reciver: User;
+ sender : User;
 }
 
 interface MessageUserListProps {
@@ -130,7 +131,7 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
           {conversation.length > 0 ? (
             conversation.map((conv, index) => (
               <li key={index}>
-                <Link href={`/messages/${conv.reciver?._id}`}>
+                <Link href={`/messages/${conv.sender?._id}`}>
                   <div className="flex items-center">
                     <span className="p-2 relative">
                       <img
