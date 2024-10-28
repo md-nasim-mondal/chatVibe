@@ -96,7 +96,7 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
             className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-green-500 text-gray-700"
           />
           <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2 absolute mt-1 z-10">
-            {results.length > 0 ? (
+            {results?.length > 0 ? (
               results.map((user) => (
                 <li key={user._id}>
                   <Link href={`/messages/${user._id}`}>
@@ -119,7 +119,7 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
         </div>
 
         <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2 mt-1 z-10">
-          {conversation.length > 0 ? (
+          {conversation?.length > 0 ? (
             conversation.map((conv, inx) => (
               <li key={inx}>
                 <Link href={`/messages/${conv?.reciver?._id}`}>
