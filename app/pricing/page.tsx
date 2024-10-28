@@ -1,7 +1,6 @@
 "use client";
 import SectionContainer from "@/components/landingPage/ShareComponents/SectionContainer";
 import React from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 const Page = () => {

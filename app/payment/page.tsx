@@ -9,9 +9,10 @@ const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_API_KEY}`);
 const PaymentPage = () => {
   const searchParams = useSearchParams(); // Get search params using the hook
   const price = searchParams.get("price"); // Extract the "price" parameter
+console.log(price);
 
   return (
-    <div className="mt-56">
+    <div className="mt-56"> 
       
       <Elements stripe={stripePromise}>
         <CheckoutForm price={price} /> {/* Pass price as prop */}
