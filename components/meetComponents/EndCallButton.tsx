@@ -9,7 +9,10 @@ import { useEffect } from "react";
 const EndCallButton = () => {
   const call = useCall();
   const router = useRouter();
-  const isPremium = false
+
+  // const meetingEndTime = 3600000;
+  const meetingEndTime = 10000;
+  const isPremium = false;
 
   if (!call)
     throw new Error(
@@ -32,17 +35,17 @@ const EndCallButton = () => {
     router.push("/dashboard");
   };
 
-  useEffect(()=>{
-    if(isPremium){
-      return
+  useEffect(() => {
+    if (isPremium) {
+      return;
     }
     setTimeout(() => {
-      endCall()
-    }, 10000);
-  },[])
+      endCall();
+    }, meetingEndTime);
+  }, []);
 
   return (
-    <Button onClick={endCall} className='bg-red-500'>
+    <Button onClick={endCall} className="bg-red-500">
       End call for everyone
       <span></span>
     </Button>
