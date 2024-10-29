@@ -52,19 +52,19 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
         setMessages(data?.messages); // Update the state with new messages
        
       });
-
+      
       return () => {
         socket.off("getMessage"); // Clean up event listener
       };
     }
-  }, [socket,senderId,receiverId]);
+  }, [socket,senderId,receiverId,messages]);
 
   // Scroll to the bottom of the messages
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages]); // This will run whenever messages change
+  }, [messages?.length]); // This will run whenever messages change
 
   // Send message
   const handleSendMessage = () => {
@@ -83,6 +83,8 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
 
       setMessage("");
       setFile(null);
+
+      
     }
   };
 
