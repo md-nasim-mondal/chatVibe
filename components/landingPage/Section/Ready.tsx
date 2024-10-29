@@ -72,7 +72,7 @@ const Ready = () => {
       </motion.h2>
 
       <motion.p
-        className="font-medium"
+        className="font-medium z-50"
         variants={containerVariants}
       >
         Let’s start your video meeting today
