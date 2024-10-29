@@ -63,7 +63,7 @@ const Ready = () => {
       </motion.svg>
 
       {/* Heading */}
-      <div className="z-10">
+      <div className="z-20">
         <motion.h2
           className="text-4xl font-extrabold mb-3 "
           variants={containerVariants}
