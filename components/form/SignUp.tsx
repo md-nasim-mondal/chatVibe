@@ -16,30 +16,33 @@ export default function Signup() {
 
   // Save user to the database once signed up and user data is loaded
   useEffect(() => {
-    const saveUserToDB = async () => {
-      if (user) {
-        const { emailAddresses, firstName, lastName, fullName, imageUrl } = user;
-        const userData = {
-          emailAddresses,
-          firstName,
-          lastName,
-          fullName,
-          imageUrl,
-        };
-        try {
-          const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/save-user`, userData);
-
-          // if (res.status === 201) {
-          //   console.log("User saved to MongoDB");
-          // }
-        } catch (error) {
-          console.error("Error saving user to DB", error);
+    if (user && !isUserExists) {
+      
+      const saveUserToDB = async () => {
+        if (user) {
+          const { emailAddresses, firstName, lastName, fullName, imageUrl } = user;
+          const userData = {
+            emailAddresses,
+            firstName,
+            lastName,
+            fullName,
+            imageUrl,
+          };
+          try {
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/save-user`, userData);
+  
+            // if (res.status === 201) {
+            //   console.log("User saved to MongoDB");
+            // }
+          } catch (error) {
+            console.error("Error saving user to DB", error);
+          }
         }
+      };
+  
+      if (isLoaded && user && !isUserExists) {
+        saveUserToDB();
       }
-    };
-
-    if (isLoaded && user && !isUserExists) {
-      saveUserToDB();
     }
   }, [isLoaded, user, isUserExists]);
 
