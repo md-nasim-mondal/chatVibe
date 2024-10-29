@@ -128,29 +128,44 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
         </div>
 
         <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2 mt-1 z-10">
-          {conversation.length > 0 ? (
-            conversation.map((conv, index) => (
-              <li key={index}>
-                <Link href={`/messages/${conv.reciver?._id}`}>
-                  <div className="flex items-center">
-                    <span className="p-2 relative">
-                      <img
-                        src={conv.userDetails?.imageUrl || "/default-avatar.png"}
-                        alt={conv.userDetails?.fullName || "User"}
-                        className="w-10 h-10 rounded-full"
-                      />
-                      <span className={`inline-block size-3 ${onlineUsers.some(online => online === conv.reciver?._id) ? "bg-main-1" : "bg-gray-400"}  rounded-full absolute right-2 bottom-2`}></span>
-                    </span>
-                    <div className='py-2 px-4'>
-                      <h2 className="text-lg text-white">
-                        {conv.userDetails?.fullName || "Unknown User"}
-                      </h2>
-                      <small>{conv.lastMsg?.text || "No message available"}</small>
+          {results.length > 0 ? (
+             results.map((user) => (
+                <li key={user?._id}>
+                  <Link href={`/messages/${user?._id}`}>
+                    <div className="flex items-center">
+                      <span className="p-2 relative">
+                        <img src={user.imageUrl} alt={user.fullName} className="w-10 h-10 rounded-full" />
+                        <span className={`inline-block size-3 ${onlineUsers.some(online => online === user?._id) ? "bg-main-1" : "bg-gray-400"} rounded-full absolute right-2 bottom-2`}></span>
+                      </span>
+                      <div>
+                        <h2 className="py-2 px-4 text-lg text-white">{user.fullName}</h2>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </li>
-            ))
+                  </Link>
+                </li>
+              ))
+            // conversation.map((conv, index) => (
+            //   <li key={index}>
+            //     <Link href={`/messages/${conv.reciver?._id}`}>
+            //       <div className="flex items-center">
+            //         <span className="p-2 relative">
+            //           <img
+            //             src={conv.userDetails?.imageUrl || "/default-avatar.png"}
+            //             alt={conv.userDetails?.fullName || "User"}
+            //             className="w-10 h-10 rounded-full"
+            //           />
+            //           <span className={`inline-block size-3 ${onlineUsers.some(online => online === conv.reciver?._id) ? "bg-main-1" : "bg-gray-400"}  rounded-full absolute right-2 bottom-2`}></span>
+            //         </span>
+            //         <div className='py-2 px-4'>
+            //           <h2 className="text-lg text-white">
+            //             {conv.userDetails?.fullName || "Unknown User"}
+            //           </h2>
+            //           <small>{conv.lastMsg?.text || "No message available"}</small>
+            //         </div>
+            //       </div>
+            //     </Link>
+            //   </li>
+            // ))
           ) : (
             <p className="text-gray-600 text-xl text-center px-5 font-semibold my-5">
               Your chat history is not available. Please search <FaArrowUp className="text-main-1 mx-2 inline animate-bounce" size={24} /> for your chatting partner.
