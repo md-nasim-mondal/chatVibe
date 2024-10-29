@@ -101,12 +101,12 @@ const ManageUsers: React.FC = () => {
   }
 
   return (
-    <div className='min-h-screen bg-[#161925] text-white p-4 text-center'>
+    <div className='bg-[#161925] text-white text-center'>
       <h1 className='text-2xl font-bold mb-6 text-center'>All Users</h1>
-      <div className='max-w-sm md:max-w-full overflow-x-auto mx-auto'>
+      <div className='max-w-sm md:max-w-full overflow-auto mx-auto'>
         <table className='bg-gray-800 border-separate border-spacing-y-2 mx-auto p-8 rounded-xl'>
           <thead>
-            <tr className='bg-main-2'>
+            <tr className='bg-main-2 hover:bg-main-3 font-semibold'>
               <th className='py-3 px-4 text-sm font-medium text-gray-300 text-center'>
                 #
               </th>
@@ -124,7 +124,7 @@ const ManageUsers: React.FC = () => {
               </th>
             </tr>
           </thead>
-          <tbody className='overflow-x-auto'>
+          <tbody className='overflow-auto'>
             {users.map((user, index) => (
               <tr
                 key={user._id}
@@ -156,7 +156,7 @@ const ManageUsers: React.FC = () => {
                       )
                     }
                     options={roleOptions}
-                    className='text-black mb-2'
+                    className='text-black mb-2 font-medium'
                     styles={{
                       control: (provided) => ({
                         ...provided,
@@ -169,7 +169,7 @@ const ManageUsers: React.FC = () => {
                       }),
                       option: (provided, state) => ({
                         ...provided,
-                        backgroundColor: state.isFocused ? "green" : "#1C1F2E", // Hover effect: green background
+                        backgroundColor: state.isFocused ? "#227670" : "#1C1F2E", // Hover effect: green background
                         color: state.isFocused ? "white" : "white", // Text color on hover
                       }),
                       singleValue: (provided) => ({
