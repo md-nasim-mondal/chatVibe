@@ -21,7 +21,7 @@ const Member: React.FC<MemberProps> = ({ src, name, profession, role, url }) => 
         width={200}
         className='rounded-t-lg min-w-[256px] min-h-[256px]'
       />
-      <Link href={url} className='bg-main-2 hover:bg-main-3 w-full text-white hover:text-[] p-2 rounded-b-lg'>
+      <Link href={url} target="_blank" className='bg-main-2 hover:bg-main-3 w-full text-white hover:text-[] p-2 rounded-b-lg'>
         <h3 className='text-2xl font-semibold'>{name}</h3>
         <p className='font-semibold'>{profession}</p>
         <p className='font-semibold'>{role}</p>
