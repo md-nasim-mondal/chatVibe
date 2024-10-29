@@ -45,7 +45,7 @@ const AboutUs = () => {
       img: "/images/asrafulislam.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
-      url: "https://www.google.com"
+      url: "https://my-portfolio-2153f.web.app/"
     },
   ];
 
