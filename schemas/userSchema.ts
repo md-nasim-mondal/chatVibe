@@ -10,14 +10,17 @@ interface IUser extends Document {
   password: string;
   role : string;
   // Add other fields as needed
+  // Add other fields as needed
+  // Add other fields as needed
+  // Add other fields as needed
 }
 
 const userSchema = new Schema<IUser>({
   emailAddresses: { type: String, required: true, unique: true },
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  fullName: { type: String, required: true },
-  imageUrl: { type: String },
+  firstName: { type: String },
+  lastName: { type: String },
+  fullName: { type: String },
+  imageUrl: { type: String ,default:"http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png"},
   role: { type: String, enum: ['user', 'admin'], default: 'user' }
   // Define other fields
 });
