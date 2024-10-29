@@ -117,7 +117,7 @@ import { useState, FormEvent } from "react";
 import { RiSecurePaymentFill } from "react-icons/ri";
 
 interface CheckoutFormProps {
-  price: number;
+  price: any;
 }
 
 const CheckoutForm: React.FC<CheckoutFormProps> = ({ price }) => {
