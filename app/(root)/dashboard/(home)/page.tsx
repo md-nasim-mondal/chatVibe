@@ -1,5 +1,6 @@
 "use client";
 import MeetingTypeList from "@/components/meetComponents/MeetingTypeList";
+import useGetAllUsers from "@/hooks/apiHooks/userHooks/useGetAllUser";
 import saveUserApi from "@/utilities/api-call/saveUserApi";
 import { useUser } from "@clerk/clerk-react";
 import React, { useEffect, useState } from "react";
@@ -7,11 +8,17 @@ import React, { useEffect, useState } from "react";
 const Home = () => {
   const { isLoaded, isSignedIn, user } = useUser();
 
+  const {data:users} = useGetAllUsers();
+
+  const isUserExists = user?.emailAddresses
+  ? !!users?.find(u => u?.emailAddresses === user.emailAddresses[0]?.emailAddress)
+  : undefined;
+
   useEffect(() => {
-    if (isSignedIn && isLoaded && user) {
+    if (isSignedIn && isLoaded && user && !isUserExists) {
       saveUserApi(user);
     }
-  }, [user]);
+  }, [user, isUserExists]);
   const now = new Date();
 
   const time = now.toLocaleTimeString("en-BD", {

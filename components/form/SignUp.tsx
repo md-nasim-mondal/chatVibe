@@ -3,9 +3,16 @@ import { SignUp, useUser } from "@clerk/nextjs";
 import axios from "axios";
 import { useEffect } from "react";
 import Loader from "../meetComponents/Loader";
+import useGetAllUsers from "@/hooks/apiHooks/userHooks/useGetAllUser";
 
 export default function Signup() {
   const { isLoaded, isSignedIn, user } = useUser();
+
+  const {data:users} = useGetAllUsers();
+
+  const isUserExists = user?.emailAddresses
+  ? !!users?.find(u => u?.emailAddresses === user.emailAddresses[0]?.emailAddress)
+  : undefined;
 
   // Save user to the database once signed up and user data is loaded
   useEffect(() => {
@@ -31,10 +38,10 @@ export default function Signup() {
       }
     };
 
-    if (isLoaded && user) {
+    if (isLoaded && user && !isUserExists) {
       saveUserToDB();
     }
-  }, [isLoaded, user]);
+  }, [isLoaded, user, isUserExists]);
 
   // Show a loader while the user data is loading
   if (!isLoaded) {

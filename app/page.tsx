@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect } from "react";
 import Communication from "@/components/landingPage/Section/Communication";
 import AboutUs from "@/components/landingPage/Section/AboutUs";
@@ -9,16 +9,23 @@ import saveUserApi from "@/utilities/api-call/saveUserApi";
 import Ready from "@/components/landingPage/Section/Ready";
 import ScreenRecording from "@/components/landingPage/Section/ScreenRecording";
 import IndustrySolutionsSection from "@/components/landingPage/Section/IndustrySolutionsSection";
-
+import useGetAllUsers from "@/hooks/apiHooks/userHooks/useGetAllUser";
 
 const LandingPage = () => {
   const { isLoaded, isSignedIn, user } = useUser();
- useEffect(()=>{
-  if(isSignedIn && isLoaded && user){
- saveUserApi(user)
 
-  }
-  },[user])
+  const {data:users} = useGetAllUsers();
+
+  const isUserExists = user?.emailAddresses
+  ? !!users?.find(u => u?.emailAddresses === user.emailAddresses[0]?.emailAddress)
+  : undefined;
+
+  useEffect(() => {
+    if (isSignedIn && isLoaded && user && !isUserExists) {
+      saveUserApi(user);
+    }
+  }, [user, isUserExists]);
+
   return (
     <div>
       <Banner />
@@ -27,7 +34,7 @@ const LandingPage = () => {
       <Conversations />
       <IndustrySolutionsSection />
       <AboutUs />
-     <Ready />
+      <Ready />
     </div>
   );
 };
