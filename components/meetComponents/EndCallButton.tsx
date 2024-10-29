@@ -4,10 +4,15 @@ import { useCall, useCallStateHooks } from "@stream-io/video-react-sdk";
 
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const EndCallButton = () => {
   const call = useCall();
   const router = useRouter();
+
+  // const meetingEndTime = 3600000;
+  const meetingEndTime = 10000;
+  const isPremium = false;
 
   if (!call)
     throw new Error(
@@ -30,8 +35,17 @@ const EndCallButton = () => {
     router.push("/dashboard");
   };
 
+  useEffect(() => {
+    if (isPremium) {
+      return;
+    }
+    setTimeout(() => {
+      endCall();
+    }, meetingEndTime);
+  }, []);
+
   return (
-    <Button onClick={endCall} className='bg-red-500'>
+    <Button onClick={endCall} className="bg-red-500">
       End call for everyone
     </Button>
   );
