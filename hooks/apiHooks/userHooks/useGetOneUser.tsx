@@ -24,7 +24,7 @@ const useGetOneUser = (id: string): UseGetOneUserReturn => {
     // Fetch the user when the component mounts or ID changes
     const fetchUser = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/user/oneUser?id=${id}`);
+        const response = await fetch(`https://chating-with-socket-oi.onrender.com/api/user?id=${id}`);
         
         if (!response.ok) {
           throw new Error("Failed to fetch user");
