@@ -8,6 +8,7 @@ import connectSocket from "@/lib/connectSocket";
 import { FaArrowUp } from "react-icons/fa";
 import useGetRoleOrUser from "@/hooks/apiHooks/userHooks/useGetRoleOrUser";
 import debounce from "lodash/debounce";
+import useGetAllUsers from "@/hooks/apiHooks/userHooks/useGetAllUser";
 
 // Define the User interface
 interface User {
@@ -41,6 +42,7 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
   const { socket, onlineUsers } = connectSocket();
   const { userData } = useGetRoleOrUser();
   const [results, setResults] = useState<User[]>([]);
+  const {data} = useGetAllUsers()
 
   useEffect(() => {
     if (socket && userData?._id) {
@@ -122,14 +124,15 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
                 </li>
               ))
             ) : (
-              <li className="text-gray-600 text-center py-2">No results found</li>
+              // <li className="text-gray-600 text-center py-2">No results found</li>
+              <li></li>
             )}
           </ul>
         </div>
 
         <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2 mt-1 z-10">
-          {results.length > 0 ? (
-             results.map((user) => (
+          {data.length > 0 ? (
+             data.map((user) => (
                 <li key={user?._id}>
                   <Link href={`/messages/${user?._id}`}>
                     <div className="flex items-center">
