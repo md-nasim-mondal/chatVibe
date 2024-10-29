@@ -41,9 +41,8 @@ const Conversations = () => {
             <span className="text-white">Conversations</span>
           </h2>
           <p className="text-base text-gray-300 lg:w-[500px] pt-4">
-            Many of the poses, such as downward dog, upward dog, and the plank
-            pose, build upper-body strength. The standing poses, especially if
-            you hold them for several long breaths.
+
+          The secure conversation feature enhances user privacy by implementing end-to-end encryption, ensuring that only intended participants can access the communication. This robust security measure appeals to users seeking confidentiality, making the application ideal for sensitive discussions, professional meetings, and personal conversations where data protection is essential.
           </p>
           <motion.button
             className="p-2 md:py-2 md:px-4 rounded-lg hover:bg-main-3 transition duration-300 border-0 text-white text-base mt-4 bg-main-2"

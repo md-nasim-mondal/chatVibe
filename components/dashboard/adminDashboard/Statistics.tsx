@@ -15,8 +15,9 @@ const Statistics = () => {
         <Image
           src='/images/banner.jpg'
           alt='banner'
-          width={500}
-          height={500}
+          width={900}
+          height={900}
+          priority
           className='w-full rounded-md'
         />
       </div>
