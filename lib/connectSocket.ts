@@ -10,6 +10,7 @@ interface UseSocketReturn {
 }
 
 // Custom hook for socket connection
+// Custom hook for socket connection
 const useSocket = (): UseSocketReturn => {
   const [socket, setSocket] = useState<Socket<DefaultEventsMap, DefaultEventsMap> | null>(null);
   const [onlineUsers, setOnlineUsers] = useState<[]>([]);
