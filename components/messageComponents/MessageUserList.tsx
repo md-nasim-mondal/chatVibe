@@ -50,7 +50,7 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
         const conversationUserData = data.map((conversationData: any) => {
           const userDetails =
             conversationData?.sender?._id === conversationData.reciver ? conversationData.sender :
-            conversationData?.reciver._id !== userData._id ? conversationData.reciver :
+            conversationData?.reciver?._id !== userData?._id ? conversationData.reciver :
             conversationData.sender;
 
           return {
@@ -107,12 +107,12 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
           <ul className="min-w-full table-auto bg-gray-800 border-separate border-spacing-y-2 absolute mt-1 z-10">
             {results.length > 0 ? (
               results.map((user) => (
-                <li key={user._id}>
-                  <Link href={`/messages/${user._id}`}>
+                <li key={user?._id}>
+                  <Link href={`/messages/${user?._id}`}>
                     <div className="flex items-center">
                       <span className="p-2 relative">
                         <img src={user.imageUrl} alt={user.fullName} className="w-10 h-10 rounded-full" />
-                        <span className={`inline-block size-3 ${onlineUsers.some(online => online === user._id) ? "bg-main-1" : "bg-gray-400"} rounded-full absolute right-2 bottom-2`}></span>
+                        <span className={`inline-block size-3 ${onlineUsers.some(online => online === user?._id) ? "bg-main-1" : "bg-gray-400"} rounded-full absolute right-2 bottom-2`}></span>
                       </span>
                       <div>
                         <h2 className="py-2 px-4 text-lg text-white">{user.fullName}</h2>
@@ -131,7 +131,7 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
           {conversation.length > 0 ? (
             conversation.map((conv, index) => (
               <li key={index}>
-                <Link href={`/messages/${conv.sender?._id}`}>
+                <Link href={`/messages/${conv.reciver?._id}`}>
                   <div className="flex items-center">
                     <span className="p-2 relative">
                       <img
