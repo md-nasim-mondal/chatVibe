@@ -28,7 +28,7 @@ const AboutUs = () => {
     },
     {
       name: "Md. Nasim Mondal",
-      img: "/images/nasim.jfif",
+      img: "/images/nasim.jpg",
       profession: "Web Developer",
       role: "Programmer/Developer",
       url: "https://md-nasim-mondal-portfolio1.netlify.app/"
