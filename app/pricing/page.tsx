@@ -20,12 +20,12 @@ const Page: React.FC = () => {
   const { amount } = useOnePayment(); // Directly destructure amount here
   const [perces, setPerces] = useState<number | null>(null); // State for amount
 
-  // Use useEffect to set perces when amount changes
+  
   useEffect(() => {
     if (amount) {
       setPerces(amount);
     }
-  }, [amount]); // Dependency on amount
+  }, [amount]); 
 
   // Pricing plans data
   const pricingPlans: PricingPlan[] = [
