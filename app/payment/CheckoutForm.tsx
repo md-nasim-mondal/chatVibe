@@ -115,12 +115,14 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Link from "next/link";
 import { useState, FormEvent } from "react";
 import { RiSecurePaymentFill } from "react-icons/ri";
+import { useRouter } from 'next/navigation'
 
 interface CheckoutFormProps {
   price: any;
 }
 
 const CheckoutForm: React.FC<CheckoutFormProps> = ({ price }) => {
+  const router = useRouter()
   const [error, setError] = useState<string>("");
   const stripe = useStripe();
   const elements = useElements();
@@ -147,12 +149,12 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ price }) => {
     } else {
       console.log("payment method success:", paymentMethod);
       setError("");
-
       // Show success toast
       toast.success("Payment successful!", {
         position: "top-right",
         autoClose: 3000,
       });
+      router.push('/pricing')
       card.clear();
     }
   };
