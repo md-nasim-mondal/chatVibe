@@ -10,8 +10,8 @@ const EndCallButton = () => {
   const call = useCall();
   const router = useRouter();
 
-  // const meetingEndTime = 3600000;
-  const meetingEndTime = 10000;
+  const meetingEndTime = 3600000;
+  // const meetingEndTime = 10000;
   const isPremium = false;
 
   if (!call)
