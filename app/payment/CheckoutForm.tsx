@@ -48,8 +48,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ price }) => {
       });
     } else {
       try {
-        savePayment(user,price,"dolar")
-        console.log("payment method success:", paymentMethod);
+      savePayment(user,price,"dolar")
       setError("");
       // Show success toast
       toast.success("Payment successful!", {
