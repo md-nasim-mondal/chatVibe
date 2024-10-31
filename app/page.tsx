@@ -1,5 +1,5 @@
-'use client'
-import React, { useEffect } from "react";
+"use client";
+import React, { useEffect, useMemo } from "react";
 import Communication from "@/components/landingPage/Section/Communication";
 import AboutUs from "@/components/landingPage/Section/AboutUs";
 import Banner from "@/components/landingPage/Section/Banner";
@@ -9,16 +9,29 @@ import saveUserApi from "@/utilities/api-call/saveUserApi";
 import Ready from "@/components/landingPage/Section/Ready";
 import ScreenRecording from "@/components/landingPage/Section/ScreenRecording";
 import IndustrySolutionsSection from "@/components/landingPage/Section/IndustrySolutionsSection";
-
+import useGetAllUsers from "@/hooks/apiHooks/userHooks/useGetAllUser";
 
 const LandingPage = () => {
   const { isLoaded, isSignedIn, user } = useUser();
- useEffect(()=>{
-  if(isSignedIn && isLoaded && user){
- saveUserApi(user)
+const { data: users, loading } = useGetAllUsers();
 
-  }
-  },[user])
+const isUserExists = useMemo(() => 
+  user?.emailAddresses
+    ? !!users?.find(u => u?.emailAddresses === user.emailAddresses[0]?.emailAddress)
+    : undefined,
+  [user, users]
+);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    if (isSignedIn && isLoaded && user && !isUserExists && !loading) {
+      saveUserApi(user);
+    }
+  }, 1000);
+
+  return () => clearTimeout(timer); // clear timeout on cleanup
+}, [isSignedIn, isLoaded, user, isUserExists, loading]);
+
   return (
     <div>
       <Banner />
@@ -27,7 +40,7 @@ const LandingPage = () => {
       <Conversations />
       <IndustrySolutionsSection />
       <AboutUs />
-     <Ready />
+      <Ready />
     </div>
   );
 };
