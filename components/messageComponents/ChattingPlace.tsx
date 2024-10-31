@@ -106,17 +106,17 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
 
   return (
     <div>
-      <div className="bg-gray-900 p-4 rounded-xl shadow-lg mx-auto relative">
-        <div className="h-[60vh] bg-gray-800 rounded-xl p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent scroll-smooth">
+      <div className="bg-gray-900 w-full md:px-4 rounded-xl shadow-lg mx-auto relative">
+        <div className="h-[62vh] bg-gray-800 rounded-xl  overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent scroll-smooth">
           {/* Display chat messages */}
           {messages?.length > 0 ? (
             messages.map((msg, index) => (
               <div key={index} className={`text-gray-300 mx-3 my-2 text-lg font-semibold ${msg.msgByUserId === senderId ? "text-right" : ""}`}>
-                <div className={`inline-block py-2 rounded-xl px-4 text-center ${msg.msgByUserId === senderId ? "bg-green-900" : "bg-gray-900"}`}>
-                  {msg.text && <h3>{msg.text}</h3>}
-                  {msg.imageUrl && <img src={msg.imageUrl} alt="Preview" className="w-full max-w-xs rounded mt-2" />}
+                <div className={`inline-block  rounded-xl text-center ${msg.msgByUserId === senderId ? "bg-green-900" : "bg-gray-900"}`}>
+                  {msg.text && <h3 className="py-2 px-4">{msg.text}</h3>}
+                  {msg.imageUrl && <img src={msg.imageUrl} alt="Preview" className="w-52 md:w-full max-w-xs rounded " />}
                   {msg.videoUrl && (
-                    <video src={msg.videoUrl} className="w-full max-w-xs rounded mt-2" controls autoPlay muted />
+                    <video src={msg.videoUrl} className="w-52 md:w-full max-w-xs rounded " controls autoPlay muted />
                   )}
                 </div>
               </div>
@@ -144,7 +144,7 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
         </div>
 
         {/* Message input and send button */}
-        <div className="mt-4 flex items-center space-x-3">
+        <div className="mt-2 flex items-center space-x-3">
           <div className="relative">
             <input
               type="file"
