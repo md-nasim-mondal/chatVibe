@@ -40,7 +40,6 @@ type Message = string | { [key: string]: any } | any; // Can be a string or an o
 const MeetingRoom = () => {
   // const socket = io("http://localhost:4000");
   const socket = io("https://chatvibecahtingbackend.onrender.com");
-  //  const serverUrl =`https://chating-with-socket-oi.onrender.com`
 
   const [displayChat, setDisplayChat] = useState(false);
   const [res, setRes] = useState<Message[]>([]);
