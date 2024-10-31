@@ -20,8 +20,8 @@ const useSocket = (): UseSocketReturn => {
   useEffect(() => {
     // Define the server URL
     // const serverUrl = 'http://localhost:5000';
-    //  const serverUrl =`https://chatvibecahtingbackend.onrender.com`
-     const serverUrl =`https://chating-with-socket-oi.onrender.com`
+     const serverUrl =`https://chatvibecahtingbackend.onrender.com`
+    //  const serverUrl =`https://chating-with-socket-oi.onrender.com`
 
     // Create a new Socket.IO connection
     const socketIo = io(serverUrl, {
