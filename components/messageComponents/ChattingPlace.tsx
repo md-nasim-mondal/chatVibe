@@ -5,6 +5,7 @@ import { AiOutlinePaperClip } from "react-icons/ai";
 import { motion } from "framer-motion";
 import connectSocket from "@/lib/connectSocket";
 import { useParams } from "next/navigation";
+import useCloudinaryUpload from "@/hooks/apiHooks/imageUpload/useCloudinaryUpload";
 
 interface Partner {
   _id: string;
@@ -28,18 +29,21 @@ interface ChattingPlaceProps {
 }
 
 const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
+    const { uploadFile, progress, isUploading, error } = useCloudinaryUpload()
   const [message, setMessage] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [url, setUrl] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
-
   // Reference to the bottom of the message container
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const { id: receiverId } = useParams();
+
   const { socket, onlineUsers } = connectSocket();
+
   
   const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
-
+  
   // Handle receiving messages from the server
   useEffect(() => {
     if (socket) {
@@ -62,15 +66,16 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
   }, [messages?.length]);
 
   // Send message
-  const handleSendMessage = () => {
+  const handleSendMessage = async() => {
     if (message.trim() || previewUrl) {
+ 
       if (socket) {
         socket.emit('new message', {
           sender: senderId,
           reciver: receiverId,
           text: message,
-          imageUrl: file?.type.startsWith('image') ? previewUrl : '',
-          videoUrl: file?.type.startsWith('video') ? previewUrl : '',
+          imageUrl: file?.type.startsWith('image') ? url : '',
+          videoUrl: file?.type.startsWith('video') ? url : '',
           msgByUserId: senderId,
         });
       }
@@ -81,7 +86,7 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
   };
 
   // Handle file change
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
 
     if (selectedFile) {
@@ -89,9 +94,14 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
         alert("File size should not exceed 10MB");
         return;
       }
-      
+  
       setFile(selectedFile);
       setPreviewUrl(URL.createObjectURL(selectedFile));
+        const result = await uploadFile(selectedFile)
+       if(result){
+        setUrl(result.url)
+       }
+      
     }
   };
 
