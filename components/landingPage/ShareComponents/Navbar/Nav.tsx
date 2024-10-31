@@ -98,7 +98,7 @@ const Nav = () => {
 
         {/* user profile and notification and message icon */}
         {user ? (
-         <div className="flex gap-2 items-center">
+         <div className="flex space-x-4 items-center">
             {/* chat icon */}
                 <div
                   onClick={() => {setIsDropDown(!isDropDown)
@@ -106,17 +106,17 @@ const Nav = () => {
                   }
                   }
                   
-                  className="size-8 flex justify-center rounded-full items-center  cursor-pointer"
+                  className="size-10 flex justify-center rounded-full items-center  cursor-pointer"
                 >
                     <BsChatSquareText  className="text-main-1 text-xl font-extrabold hover:scale-105 transition-all"/>
                     
                 </div>
                 {
-                      isDropDown && <MessageUserList    position ="right-0" place="absolute"/>
+                      isDropDown && <MessageUserList   position ="right-0" place="absolute"/>
                     }
 
            {/* notification icon */}
-              <div>
+              {/* <div>
                  <div
                   onClick={() => {setIsDropDown(false)
                       setIsNotificationDropDown(!isNotificationDropDown)
@@ -128,11 +128,11 @@ const Nav = () => {
                   {/* <span className="bg-red-500 rounded-full size-4  text-[12px] font-bold absolute -top-1 left-5 flex justify-center items-center text-white">
                     3
                   </span> */}
-                </div>
+                {/* </div>
                  {
                 isNotificationDropDown &&  <Notification position ="right-0" place="absolute"/>
                 }
-              </div>
+              </div>  */}
                
            <motion.div 
           className="cursor-pointer"
