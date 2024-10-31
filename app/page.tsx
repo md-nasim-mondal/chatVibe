@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import Communication from "@/components/landingPage/Section/Communication";
 import AboutUs from "@/components/landingPage/Section/AboutUs";
 import Banner from "@/components/landingPage/Section/Banner";
@@ -13,18 +13,24 @@ import useGetAllUsers from "@/hooks/apiHooks/userHooks/useGetAllUser";
 
 const LandingPage = () => {
   const { isLoaded, isSignedIn, user } = useUser();
+const { data: users, loading } = useGetAllUsers();
 
-  const {data:users} = useGetAllUsers();
+const isUserExists = useMemo(() => 
+  user?.emailAddresses
+    ? !!users?.find(u => u?.emailAddresses === user.emailAddresses[0]?.emailAddress)
+    : undefined,
+  [user, users]
+);
 
-  const isUserExists = user?.emailAddresses
-  ? !!users?.find(u => u?.emailAddresses === user.emailAddresses[0]?.emailAddress)
-  : undefined;
-
-  useEffect(() => {
-    if (isSignedIn && isLoaded && user && !isUserExists) {
+useEffect(() => {
+  const timer = setTimeout(() => {
+    if (isSignedIn && isLoaded && user && !isUserExists && !loading) {
       saveUserApi(user);
     }
-  }, [user, isUserExists]);
+  }, 1000);
+
+  return () => clearTimeout(timer); // clear timeout on cleanup
+}, [isSignedIn, isLoaded, user, isUserExists, loading]);
 
   return (
     <div>

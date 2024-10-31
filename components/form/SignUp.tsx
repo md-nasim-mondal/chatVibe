@@ -8,7 +8,7 @@ import useGetAllUsers from "@/hooks/apiHooks/userHooks/useGetAllUser";
 export default function Signup() {
   const { isLoaded, isSignedIn, user } = useUser();
 
-  const {data:users} = useGetAllUsers();
+  const {data:users, loading} = useGetAllUsers();
 
   const isUserExists = user?.emailAddresses
   ? !!users?.find(u => u?.emailAddresses === user.emailAddresses[0]?.emailAddress)
@@ -16,8 +16,7 @@ export default function Signup() {
 
   // Save user to the database once signed up and user data is loaded
   useEffect(() => {
-    if (user && !isUserExists) {
-      
+    if (user && !isUserExists && isLoaded && !loading) {
       const saveUserToDB = async () => {
         if (user) {
           const { emailAddresses, firstName, lastName, fullName, imageUrl } = user;
