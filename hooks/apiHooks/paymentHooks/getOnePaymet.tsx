@@ -51,6 +51,7 @@ const useOnePayment = () => {
           setUserData(res.data.paymentHistory[0]);
           setAmount(res.data.paymentHistory[0].amount);
         }
+        
       } catch (err) {
         console.error("Error fetching user data and role:", err);
         setError("Failed to fetch user data and role");
