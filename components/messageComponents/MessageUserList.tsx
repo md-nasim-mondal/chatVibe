@@ -81,7 +81,6 @@ const MessageUserList: React.FC<MessageUserListProps> = ({ position, place }) =>
       };
     }
   }, [socket, userData?._id]);
- console.log(allUser)
   // Debounced input handler
   const handleInputChange = useCallback(
     debounce(async (value: string) => {
