@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import connectSocket from "@/lib/connectSocket";
 import { useParams } from "next/navigation";
 import useCloudinaryUpload from "@/hooks/apiHooks/imageUpload/useCloudinaryUpload";
+import FadeLoader from "react-spinners/FadeLoader";
 
 interface Partner {
   _id: string;
@@ -29,22 +30,20 @@ interface ChattingPlaceProps {
 }
 
 const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
-    const { uploadFile, progress, isUploading, error } = useCloudinaryUpload()
+  const { uploadFile, progress, isUploading, error } = useCloudinaryUpload();
   const [message, setMessage] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [url, setUrl] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
-  // Reference to the bottom of the message container
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const { id: receiverId } = useParams();
 
   const { socket, onlineUsers } = connectSocket();
 
-  
   const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
-  
-  // Handle receiving messages from the server
+
+  // Fetch and display messages on load
   useEffect(() => {
     if (socket) {
       socket.emit("message Page", { sender: senderId, reciver: receiverId });
@@ -56,37 +55,37 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
         socket.off("getMessage");
       };
     }
-  }, [socket, senderId, receiverId, messages]);
+  }, [socket, senderId, receiverId, messages?.length]);
 
-  // Scroll to the bottom of the messages
+  // Auto-scroll to the latest message
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages?.length]);
 
-  // Send message
-  const handleSendMessage = async() => {
-    if (message.trim() || previewUrl) {
- 
+  // Send message function
+  const handleSendMessage = async () => {
+    if (message.trim() || url) {
       if (socket) {
-        socket.emit('new message', {
+        socket.emit("new message", {
           sender: senderId,
           reciver: receiverId,
           text: message,
-          imageUrl: file?.type.startsWith('image') ? url : '',
-          videoUrl: file?.type.startsWith('video') ? url : '',
+          imageUrl: file?.type.startsWith("image") ? url : undefined,
+          videoUrl: file?.type.startsWith("video") ? url : undefined,
           msgByUserId: senderId,
         });
       }
       setMessage("");
       setFile(null);
       setPreviewUrl(null);
+      setUrl(null); // Clear URL after sending
     }
   };
 
   // Handle file change
-  const handleFileChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
 
     if (selectedFile) {
@@ -94,14 +93,14 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
         alert("File size should not exceed 10MB");
         return;
       }
-  
+
       setFile(selectedFile);
       setPreviewUrl(URL.createObjectURL(selectedFile));
-        const result = await uploadFile(selectedFile)
-       if(result){
-        setUrl(result.url)
-       }
-      
+
+      const result = await uploadFile(selectedFile);
+      if (result) {
+        setUrl(result.url);
+      }
     }
   };
 
@@ -114,10 +113,10 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
             messages.map((msg, index) => (
               <div key={index} className={`text-gray-300 mx-3 my-2 text-lg font-semibold ${msg.msgByUserId === senderId ? "text-right" : ""}`}>
                 <div className={`inline-block py-2 rounded-xl px-4 text-center ${msg.msgByUserId === senderId ? "bg-green-900" : "bg-gray-900"}`}>
-                  <h3>{msg.text}</h3>
+                  {msg.text && <h3>{msg.text}</h3>}
                   {msg.imageUrl && <img src={msg.imageUrl} alt="Preview" className="w-full max-w-xs rounded mt-2" />}
                   {msg.videoUrl && (
-                    <video controls src={msg.videoUrl} className="w-full max-w-xs rounded mt-2" />
+                    <video src={msg.videoUrl} className="w-full max-w-xs rounded mt-2" controls autoPlay muted />
                   )}
                 </div>
               </div>
@@ -125,22 +124,24 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
           ) : (
             <div className="text-gray-400 text-center my-5">No messages yet...</div>
           )}
-          {/* Scroll reference div */}
           <div ref={messagesEndRef} />
 
-             {/* Show preview for selected file */}
-        {previewUrl && (
-          <div className="mt-3 text-gray-300 absolute left-2/4 bottom-20 -translate-x-2/4 mx-auto">
-            {file?.type.startsWith("image") ? (
-              <img src={previewUrl} alt="Preview" className="w-3/4 max-w-xs rounded mt-2" />
-            ) : (
-              <video controls src={previewUrl} className="w-3/4 max-w-xs rounded mt-2" />
-            )}
-          </div>
-        )}
-        </div>
+          {/* loder */}
+          {
+            isUploading && <div className="mt-3 text-gray-300 size-20 absolute left-2/4 bottom-2/4 -translate-x-2/4 mx-auto z-50"> <FadeLoader color="#36D7B7" /></div>
+          }
 
-     
+          {/* Preview selected file */}
+          {previewUrl && (
+            <div className="mt-3 text-gray-300 absolute left-2/4 bottom-20 -translate-x-2/4 mx-auto z-50">
+              {file?.type.startsWith("image") ? (
+                <img src={previewUrl} alt="Preview" className="w-3/4 max-w-xs rounded mt-2" />
+              ) : (
+                <video controls src={previewUrl} className="w-3/4 max-w-xs rounded mt-2" />
+              )}
+            </div>
+          )}
+        </div>
 
         {/* Message input and send button */}
         <div className="mt-4 flex items-center space-x-3">

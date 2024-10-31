@@ -25,7 +25,8 @@ const useCloudinaryUpload = (): CloudinaryUploadHook => {
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "chat-file"); // Replace with your actual preset
+    formData.append("upload_preset", "chat-file"); // Replace with your actual Cloudinary upload preset
+    formData.append("public_id", `upload_${new Date().getTime()}`); // Unique ID for each upload
 
     try {
       const response = await axios.post(
