@@ -6,6 +6,7 @@ const protectedRoutes = createRouteMatcher(["/dashboard", "/dashboard/(.*)"]);
 const allowedOrigins = [
   "https://chat-vibe-ashy.vercel.app",
   "https://chating-with-socket-oi.onrender.com",
+  "https://chatvibecahtingbackend.onrender.com",
   "*"
 ];
 
