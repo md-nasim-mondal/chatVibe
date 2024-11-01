@@ -133,7 +133,7 @@ const ChattingPlace: React.FC<ChattingPlaceProps> = ({ partner, senderId }) => {
 
           {/* Preview selected file */}
           {previewUrl && (
-            <div className="mt-3 text-gray-300 absolute left-2/4 bottom-20 -translate-x-2/4 mx-auto z-50">
+            <div className="mt-3 text-gray-300 absolute left-2/4 bottom-20 -translate-x-2/4 mx-auto z-20">
               {file?.type.startsWith("image") ? (
                 <img src={previewUrl} alt="Preview" className="w-3/4 max-w-xs rounded mt-2" />
               ) : (
