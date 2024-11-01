@@ -13,7 +13,6 @@ console.log(price);
 
   return (
     <div className="mt-56"> 
-      
       <Elements stripe={stripePromise}>
         <CheckoutForm price={price} /> {/* Pass price as prop */}
       </Elements>
