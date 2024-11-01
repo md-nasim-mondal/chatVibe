@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import SectionContainer from "@/components/landingPage/ShareComponents/SectionContainer";
 import Link from "next/link";
 import { useUser } from "@clerk/clerk-react";
@@ -20,12 +20,11 @@ const Page: React.FC = () => {
   const { amount } = useOnePayment(); // Directly destructure amount here
   const [perces, setPerces] = useState<number | null>(null); // State for amount
 
-  
   useEffect(() => {
     if (amount) {
       setPerces(amount);
     }
-  }, [amount]); 
+  }, [amount]);
 
   // Pricing plans data
   const pricingPlans: PricingPlan[] = [
@@ -79,14 +78,14 @@ const Page: React.FC = () => {
             <div
               key={index}
               data-aos="fade-up"
-              className={`bg-gradient-to-b h-[460px] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ${amount === plan.price ? "to-[#227670] from-[#111024] border-2 border-red-600" : "from-[#227670] to-[#111024]" }`}
+              className={`bg-gradient-to-b h-[460px] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ${amount === plan.price ? "to-[#227670] from-[#111024] border-2 border-red-600" : "from-[#227670] to-[#111024]"}`}
             >
               <div className="bg-[#4d99da] text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
                 <span className="font-bold uppercase text-sm">{plan.name}</span>
               </div>
               <div className="text-center">
                 <h1 className="text-3xl font-extrabold">
-                  ${plan.price}
+                  {plan.price === amount ? "Purchased" : plan.price}
                   <span className="text-sm font-light">/mon</span>
                 </h1>
               </div>
@@ -111,8 +110,13 @@ const Page: React.FC = () => {
               </ul>
               <div className="text-center mt-4">
                 <Link href={plan.buttonLink}>
-                  <button className="mb-4 px-4 py-2 bg-main-2 text-base font-medium text-white rounded-lg shadow hover:bg-main-3 transition-colors duration-300">
-                    {plan.buttonLabel}
+                  <button
+                    disabled={amount !== null} // Disable if amount is processed
+                    className={`mb-4 px-4 py-2 text-base font-medium text-white rounded-lg shadow transition-colors duration-300 ${
+                      amount !== null ? "bg-gray-400 cursor-not-allowed" : "bg-main-2 hover:bg-main-3"
+                    }`}
+                  >
+                    {amount !== null ? "Already Purchased" : plan.buttonLabel}
                   </button>
                 </Link>
               </div>
