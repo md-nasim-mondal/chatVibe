@@ -6,13 +6,20 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { sidebarLinks } from "@/constants";
+import useGetRoleOrUser from "@/hooks/apiHooks/userHooks/useGetRoleOrUser";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ToggleBtn from "../dashboard/ToggleBtn";
+import AdminRoutes from "../dashboard/adminDashboard/AdminRoutes";
+import UserRoutes from "../dashboard/userDashboard/UserRoutes";
+import { useState } from "react";
 
 const MobileNav = () => {
   const pathname = usePathname();
+  const { userData, role, loading } = useGetRoleOrUser();
+  const [toggle, setToggle] = useState<string>("user");
 
   return (
     <section className="w-full max-w-[264px]">
@@ -41,32 +48,32 @@ const MobileNav = () => {
           <div className="flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto ">
             <SheetClose>
               <section className="flex h-full flex-col gap-6 pt-16 text-white ">
-                {sidebarLinks.map((link) => {
-                  const isActive = pathname === link.route;
-
-                  return (
-                    <SheetClose asChild key={link.route}>
-                      <Link
-                        href={link.route}
-                        key={link.label}
-                        className={cn(
-                          "flex gap-4 items-center p-4 rounded-lg w-full max-w-60",
-                          {
-                            "bg-blue-1": isActive,
-                          }
-                        )}>
-                        <Image
-                          src={link.imgUrl}
-                          alt={link.label}
-                          width={20}
-                          height={20}
-                        />
-
-                        <p className="font-semibold">{link.label}</p>
-                      </Link>
-                    </SheetClose>
-                  );
-                })}
+                {userData?.emailAddresses && (
+                  <>
+                    {role === "admin" ? (
+                      <>
+                        <div className="py-6">
+                          <ToggleBtn setToggle={setToggle} toggle={toggle} />
+                        </div>
+                        <div>
+                          {toggle === "admin" ? (
+                            <>
+                              <AdminRoutes />
+                            </>
+                          ) : (
+                            <>
+                              <UserRoutes />
+                            </>
+                          )}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <UserRoutes />
+                      </>
+                    )}
+                  </>
+                )}
               </section>
             </SheetClose>
           </div>
