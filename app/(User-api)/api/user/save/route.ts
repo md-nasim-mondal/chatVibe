@@ -16,13 +16,15 @@ export async function POST(req: Request) {
 
     if (userExists) {
       // Return a 409 conflict status code if user already exists
-      return NextResponse.json({ message: 'User already exists' }, { status: 409 });
+      /* return NextResponse.json({ message: 'User already exists' }, { status: 409 }); */
+      return;
     }
     
     const newUser = new User(body); // Create a new user
     await newUser.save(); // Save the user to the database
     return NextResponse.json({ message: 'User created successfully' }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
+    /* return NextResponse.json({ error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 }); */
+    console.log({ error: error instanceof Error ? error.message : 'Unknown error' });
   }
 }
