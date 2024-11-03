@@ -28,7 +28,7 @@ const UserRoutes = () => {
               height={24}
             />
 
-            <p className='text-lg font-semibold max-sm:hidden'>{link?.label}</p>
+            <p className='text-lg font-semibold'>{link?.label}</p>
           </Link>
         );
       })}
