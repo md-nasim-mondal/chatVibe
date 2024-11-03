@@ -9,6 +9,7 @@ import { RiSecurePaymentFill } from "react-icons/ri";
 import { useRouter } from 'next/navigation'
 import { useUser } from "@clerk/clerk-react";
 import savePayment from "@/utilities/api-call/savePayment";
+import axios from "axios";
 
 interface CheckoutFormProps {
   price: any;
@@ -18,12 +19,14 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ price }) => {
   const router = useRouter()
  
   const {user} = useUser()
+  const emailAddresses = user?.emailAddresses[0].emailAddress;
   const [error, setError] = useState<string>("");
   const stripe = useStripe();
   const elements = useElements();
 
   const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault();
+    if(user){
+      event.preventDefault();
 
     if (!stripe || !elements) {
       return;
@@ -50,6 +53,15 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ price }) => {
       try {
       savePayment(user,price,"dolar")
       setError("");
+  
+       axios.put(
+        `${process.env.NEXT_PUBLIC_BASE_URL}api/payment/premium?email=${emailAddresses}`,
+        {
+          isPremium: true
+        }
+       
+      );
+      
       // Show success toast
       toast.success("Payment successful!", {
         position: "top-right",
@@ -65,6 +77,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ price }) => {
       });
       }
       
+    }
     }
   };
   }

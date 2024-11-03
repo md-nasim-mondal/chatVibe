@@ -9,6 +9,7 @@ interface IUser extends Document {
   imageUrl : string;
   password: string;
   role : string;
+  isPremium : boolean;
   // Add other fields as needed
   // Add other fields as needed
   // Add other fields as needed
@@ -21,7 +22,9 @@ const userSchema = new Schema<IUser>({
   lastName: { type: String },
   fullName: { type: String },
   imageUrl: { type: String ,default:"http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png"},
-  role: { type: String, enum: ['user', 'admin'], default: 'user' }
+  isPremium : {type:Boolean,default:false},
+  role: { type: String, enum: ['user', 'admin'], default: 'user' },
+
   // Define other fields
 });
 
