@@ -22,7 +22,7 @@ const userSchema = new Schema<IUser>({
   lastName: { type: String },
   fullName: { type: String },
   imageUrl: { type: String ,default:"http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png"},
-  isPremium : {type:Boolean,default:true},
+  isPremium : {type:Boolean,default:false},
   role: { type: String, enum: ['user', 'admin'], default: 'user' },
 
   // Define other fields
