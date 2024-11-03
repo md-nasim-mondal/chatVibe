@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import SectionContainer from "@/components/landingPage/ShareComponents/SectionContainer";
 import Link from "next/link";
 import { useUser } from "@clerk/clerk-react";
@@ -13,6 +13,7 @@ type PricingPlan = {
   features: string[];
   buttonLabel: string;
   buttonLink: string;
+  plan: string;
 };
 
 const Page: React.FC = () => {
@@ -32,35 +33,27 @@ const Page: React.FC = () => {
       name: "Starter",
       price: 0,
       features: [
-        "100 Minutes Video Call",
-        "0.5 GB Storage",
+        "1 Hours Per Meeting",
         "High-Quality Video",
         "Multi-User Calls",
       ],
+      plan: "LifeTime",
       buttonLabel: "Free",
       buttonLink: "dashboard",
     },
     {
       name: "Standard",
       price: 19,
-      features: [
-        "500 Minutes Video Call",
-        "10 GB Storage",
-        "High-Quality Video",
-        "Multi-User Calls",
-      ],
+      plan: "Month",
+      features: ["Unlimited", "High-Quality Video", "Multi-User Calls"],
       buttonLabel: "Buy Now",
       buttonLink: "/payment?price=19",
     },
     {
       name: "Premium",
       price: 49,
-      features: [
-        "Unlimited Video Call",
-        "100 GB Storage",
-        "High-Quality Video",
-        "Multi-User Calls",
-      ],
+      plan: "Year",
+      features: ["Unlimited", "High-Quality Video", "Multi-User Calls"],
       buttonLabel: "Buy Now",
       buttonLink: "/payment?price=49",
     },
@@ -78,7 +71,11 @@ const Page: React.FC = () => {
             <div
               key={index}
               data-aos="fade-up"
-              className={`bg-gradient-to-b h-[460px] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ${amount === plan.price ? "to-[#227670] from-[#111024] border-2 border-red-600" : "from-[#227670] to-[#111024]"}`}
+              className={`bg-gradient-to-b h-[460px] rounded-lg p-6 text-white shadow-lg flex flex-col justify-between ${
+                amount === plan.price
+                  ? "to-[#227670] from-[#111024] border-2 border-red-600"
+                  : "from-[#227670] to-[#111024]"
+              }`}
             >
               <div className="bg-[#4d99da] text-white rounded-full text-center py-1 px-4 w-fit mx-auto">
                 <span className="font-bold uppercase text-sm">{plan.name}</span>
@@ -86,7 +83,7 @@ const Page: React.FC = () => {
               <div className="text-center">
                 <h1 className="text-3xl font-extrabold">
                   {plan.price === amount ? "Purchased" : plan.price}
-                  <span className="text-sm font-light">/mon</span>
+                  <span className="text-sm font-light">/{plan?.plan}</span>
                 </h1>
               </div>
               <ul className="space-y-2">
@@ -113,7 +110,9 @@ const Page: React.FC = () => {
                   <button
                     disabled={amount !== null} // Disable if amount is processed
                     className={`mb-4 px-4 py-2 text-base font-medium text-white rounded-lg shadow transition-colors duration-300 ${
-                      amount !== null ? "bg-gray-400 cursor-not-allowed" : "bg-main-2 hover:bg-main-3"
+                      amount !== null
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-main-2 hover:bg-main-3"
                     }`}
                   >
                     {amount !== null ? "Already Purchased" : plan.buttonLabel}
