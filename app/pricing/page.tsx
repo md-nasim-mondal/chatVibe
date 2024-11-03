@@ -13,13 +13,13 @@ type PricingPlan = {
   features: string[];
   buttonLabel: string;
   buttonLink: string;
+  plan: string;
 };
 
 const Page: React.FC = () => {
   const { isLoaded, user } = useUser();
   const { amount } = useOnePayment(); // Directly destructure amount here
   const [perces, setPerces] = useState<number | null>(null); // State for amount
-
 
   useEffect(() => {
     if (amount) {
@@ -33,35 +33,27 @@ const Page: React.FC = () => {
       name: "Starter",
       price: 0,
       features: [
-        "100 Minutes Video Call",
-        "0.5 GB Storage",
+        "1 Hours Per Meeting",
         "High-Quality Video",
         "Multi-User Calls",
       ],
+      plan: "LifeTime",
       buttonLabel: "Free",
       buttonLink: "dashboard",
     },
     {
       name: "Standard",
       price: 19,
-      features: [
-        "500 Minutes Video Call",
-        "10 GB Storage",
-        "High-Quality Video",
-        "Multi-User Calls",
-      ],
+      plan: "month",
+      features: ["Unlimited", "High-Quality Video", "Multi-User Calls"],
       buttonLabel: "Buy Now",
       buttonLink: "/payment?price=19",
     },
     {
       name: "Premium",
       price: 49,
-      features: [
-        "Unlimited Video Call",
-        "100 GB Storage",
-        "High-Quality Video",
-        "Multi-User Calls",
-      ],
+      plan: "Year",
+      features: ["Unlimited", "High-Quality Video", "Multi-User Calls"],
       buttonLabel: "Buy Now",
       buttonLink: "/payment?price=49",
     },
@@ -91,7 +83,7 @@ const Page: React.FC = () => {
               <div className="text-center">
                 <h1 className="text-3xl font-extrabold">
                   {plan.price === amount ? "Purchased" : plan.price}
-                  <span className="text-sm font-light">/mon</span>
+                  <span className="text-sm font-light">/{plan?.plan}</span>
                 </h1>
               </div>
               <ul className="space-y-2">
