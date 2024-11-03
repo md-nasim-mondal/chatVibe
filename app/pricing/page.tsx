@@ -44,7 +44,7 @@ const Page: React.FC = () => {
     {
       name: "Standard",
       price: 19,
-      plan: "month",
+      plan: "Month",
       features: ["Unlimited", "High-Quality Video", "Multi-User Calls"],
       buttonLabel: "Buy Now",
       buttonLink: "/payment?price=19",
