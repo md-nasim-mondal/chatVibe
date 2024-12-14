@@ -5,15 +5,16 @@ import { useCall, useCallStateHooks } from "@stream-io/video-react-sdk";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import useGetRoleOrUser from "@/hooks/apiHooks/userHooks/useGetRoleOrUser";
 
 const EndCallButton = () => {
- 
+  const { userData } = useGetRoleOrUser();
+
   const call = useCall();
   const router = useRouter();
 
-  const meetingEndTime = 3600000;
-  // const meetingEndTime = 10000;
-  const isPremium = false;
+  // const meetingEndTime = 3600000;
+  const meetingEndTime = 10000;
 
   if (!call)
     throw new Error(
@@ -37,13 +38,15 @@ const EndCallButton = () => {
   };
 
   useEffect(() => {
-    if (isPremium) {
+    if (userData?.isPremium) {
       return;
     }
+
+    alert("Your meeting time 10s")
     setTimeout(() => {
       endCall();
     }, meetingEndTime);
-  }, []);
+  }, [userData]);
 
   return (
     <Button onClick={endCall} className="bg-red-500">

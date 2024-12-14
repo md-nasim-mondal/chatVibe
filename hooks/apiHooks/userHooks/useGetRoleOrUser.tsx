@@ -12,6 +12,7 @@ interface User {
   lastName?: string;
   fullName?: string;
   imageUrl?: string;
+  isPremium?: Boolean;
 }
 
 interface APIResponse {
