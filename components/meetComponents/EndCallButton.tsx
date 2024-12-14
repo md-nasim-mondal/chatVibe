@@ -13,8 +13,8 @@ const EndCallButton = () => {
   const call = useCall();
   const router = useRouter();
 
-  // const meetingEndTime = 3600000;
-  const meetingEndTime = 10000;
+  const meetingEndTime = 3600000;
+  // const meetingEndTime = 10000;
 
   if (!call)
     throw new Error(
@@ -42,7 +42,7 @@ const EndCallButton = () => {
       return;
     }
 
-    alert("Your meeting time 10s")
+    alert("Your meeting time 1h")
     setTimeout(() => {
       endCall();
     }, meetingEndTime);
