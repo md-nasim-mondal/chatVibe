@@ -1,7 +1,7 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 
-const protectedRoutes = createRouteMatcher(["/dashboard", "/dashboard/(.*)"]);
+const protectedRoutes = createRouteMatcher(["/dashboard", "/dashboard/(.*)", "/pricing"]);
 
 const allowedOrigins = [
   "https://chat-vibe-ashy.vercel.app",
