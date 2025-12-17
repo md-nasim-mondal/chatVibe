@@ -39,7 +39,6 @@ useEffect(() => {
       <ScreenRecording />
       <Conversations />
       <IndustrySolutionsSection />
-      <AboutUs />
       <Ready />
     </div>
   );
